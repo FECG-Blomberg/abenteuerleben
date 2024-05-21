@@ -13,4 +13,4 @@ on:
 
 jobs:
   test:
-    uses: anosim114/abenteuerleben-rails/.github/workflows/tests.yml@master
+    uses: FECG-Blomberg/abenteuerleben/.github/workflows/tests.yml@master
