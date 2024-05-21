@@ -13,4 +13,4 @@ on:
 
 jobs:
   test:
-    uses: FECG-Blomberg/abenteuerleben/.github/workflows/tests.yml@master
+    uses: FECG-Blomberg/abenteuerleben/.github/workflows/tests.yml@add-hcaptcha
