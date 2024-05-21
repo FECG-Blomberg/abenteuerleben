@@ -8,10 +8,10 @@ on:
 
 jobs:
   test:
-    uses: anosim114/abenteuerleben-rails/.github/workflows/tests.yml@master
+    uses: FECG-Blomberg/abenteuerleben/.github/workflows/tests.yml@master
 
   deploy-staging:
-    uses: anosim114/abenteuerleben-rails/.github/workflows/deploy.yml@master
+    uses: FECG-Blomberg/abenteuerleben/.github/workflows/deploy.yml@master
     needs:
       - test
     with:
@@ -20,7 +20,7 @@ jobs:
     secrets: inherit
 
   deploy-production:
-    uses: anosim114/abenteuerleben-rails/.github/workflows/deploy.yml@master
+    uses: FECG-Blomberg/abenteuerleben/.github/workflows/deploy.yml@master
     needs: deploy-staging
     with:
       application: aleben
