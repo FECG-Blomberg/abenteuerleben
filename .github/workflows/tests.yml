@@ -30,6 +30,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       RAILS_ENV: test
+      HCAPTCHA_SECRET_KEY: test
+      HCAPTCHA_SITE_KEY: test
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
