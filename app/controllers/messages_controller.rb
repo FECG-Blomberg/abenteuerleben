@@ -26,7 +26,7 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
 
-    if @message.save
+    if verify_hcaptcha(model: @message) && @message.save
       redirect_to(root_path, notice: "Nachricht erfolgreich abgeschickt.")
     else
       render :new, status: :unprocessable_entity

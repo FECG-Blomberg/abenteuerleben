@@ -30,3 +30,5 @@ gem "rubocop-rails-omakase", require: false, group: [ :development ]
 gem 'sqlite3', group: [ :development, :test ]
 gem 'capybara', group: [ :development, :test ]
 gem 'selenium-webdriver', group: [ :development, :test ]
+
+gem "hcaptcha", "~> 7.1"
