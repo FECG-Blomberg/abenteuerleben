@@ -8,7 +8,7 @@ on:
 
 jobs:
   test:
-    uses: FECG-Blomberg/abenteuerleben/.github/workflows/tests.yml@add-hcaptcha
+    uses: FECG-Blomberg/abenteuerleben/.github/workflows/tests.yml@master
 
   deploy-staging:
     uses: FECG-Blomberg/abenteuerleben/.github/workflows/deploy.yml@master
