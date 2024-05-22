@@ -1,14 +1,7 @@
+<div data-turbo="false">
 <%= form_with(model: message) do |form| %>
-  <% if message.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(message.errors.count, "error") %> prohibited this message from being saved:</h2>
-
-      <ul>
-        <% message.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
+  <% unless message.has_errors.nil? %>
+      <p style="color: red">Nachricht konnte nicht abgeschickt werden. Bitte nochmal versuchen</p>
   <% end %>
 
   <div>
@@ -34,10 +27,11 @@
   <% end %>
 
   <div style="margin-top: 1rem;">
-    <%= hcaptcha_tags theme: :light %>
+    <%= hcaptcha_tags theme: :light, hl: 'de' %>
   </div>
 
   <div>
     <%= form.submit "Absenden" %>
   </div>
 <% end %>
+</div>

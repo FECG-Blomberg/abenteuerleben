@@ -12,10 +12,12 @@
     <%= hotwire_livereload_tags if Rails.env.development? %>
   </head>
 
-  <body>
+  <body <%= 'data-turbo="false"' if controller_name == 'home'%>>
+
     <% if notice %>
       <p style="padding: .4rem; color: green; text-align: center; border-bottom: 1px solid #aaa;"><%= notice %></p>
     <% end %>
+
     <header class="header">
       <%= link_to root_path do %>
         <%= image_tag '/images/logo.png',
