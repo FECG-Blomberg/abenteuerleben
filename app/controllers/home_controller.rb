@@ -12,6 +12,9 @@ class HomeController < ApplicationController
     @events = Event
               .where(['start_date >= ? OR end_date >= ?', Time.zone.today, Time.zone.today])
               .order('start_date ASC')
-    @message = Message.new
+
+    logger.info flash
+    @message = Message.new flash[:message]
+    @message.errored = true if flash[:message]
   end
 end

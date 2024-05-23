@@ -14,7 +14,9 @@
 
   <body>
     <% if notice %>
-      <p style="padding: .4rem; color: green; text-align: center; border-bottom: 1px solid #aaa;"><%= notice %></p>
+      <p style="padding: .4rem; text-align: center; border-bottom: 1px solid #aaa; color: <%= flash[:error] ?  'red' : 'green' %>">
+        <%= notice %>
+      </p>
     <% end %>
     <header class="header">
       <%= link_to root_path do %>

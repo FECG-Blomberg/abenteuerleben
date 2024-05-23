@@ -29,7 +29,10 @@ class MessagesController < ApplicationController
     if verify_hcaptcha(model: @message) && @message.save
       redirect_to(root_path, notice: "Nachricht erfolgreich abgeschickt.")
     else
-      render :new, status: :unprocessable_entity
+      flash[:message] = @message
+      flash[:notice] = 'Fehler beim abschicken der Nachricht. Bitte erneut versuchen.'
+      flash[:error] = true
+      redirect_to(root_path)
     end
   end
 
