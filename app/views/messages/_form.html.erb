@@ -1,7 +1,7 @@
 <%= form_with(model: message) do |form| %>
-  <% if message.errors.any? %>
+  <% if message.errors.any? || message.errored %>
     <div style="color: red">
-      <h2><%= pluralize(message.errors.count, "error") %> prohibited this message from being saved:</h2>
+      <p style="color: red">Fehler beim abschicken der Nachricht. Bitte erneut versuchen.</p>
 
       <ul>
         <% message.errors.each do |error| %>
@@ -34,7 +34,10 @@
   <% end %>
 
   <div style="margin-top: 1rem;">
-    <%= hcaptcha_tags theme: :light %>
+    <%= hcaptcha_tags theme: :light, hl: 'de' %>
+    <script>
+    hcaptcha.render(document.querySelector('.h-captcha'))
+    </script>
   </div>
 
   <div>
