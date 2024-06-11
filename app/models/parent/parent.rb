@@ -15,5 +15,15 @@ module Parent
     # contact
     validates :telephone, presence: true
     validates :email, presence: true
+
+    def wa_telephone
+      trimmed = telephone.strip.gsub(" ", "")
+      first_two = trimmed[0..1]
+
+      return "49" + trimmed[1..] if first_two[0] == "0"
+      return "49" + trimmed[3..] if first_two == "+4"
+      return trimmed[1..2] + trimmed[3..] if first_two[0] == "+"
+      trimmed
+    end
   end
 end
