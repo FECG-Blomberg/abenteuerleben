@@ -17,7 +17,15 @@ module Parent
     validates :email, presence: true
 
     def wa_telephone
-      trimmed = telephone.strip.gsub(" ", "")
+      whatsapp_format telephone
+    end
+
+    def wa_housephone
+      whatsapp_format housephone
+    end
+
+    def whatsapp_format number
+      trimmed = number.strip.gsub(" ", "")
       first_two = trimmed[0..1]
 
       return "49" + trimmed[1..] if first_two[0] == "0"
