@@ -36,7 +36,38 @@
     <p><%= @parent.email %></p>
     <div>
       <div class="share">
-        <a href="https://wa.me/<%= @parent.wa_telephone %>"><%= image_tag '/images/icon-whatsapp.svg', height: 48 %></a>
+        <% if @parent.housephone.blank? %>
+          <a href="https://wa.me/<%= @parent.wa_telephone %>"><%= image_tag '/images/icon-whatsapp.svg', height: 48 %></a>
+        <% else %>
+          <style>
+            #whatsapp-dialog {
+              margin: auto;
+                padding: 1rem;
+                border: 1px solid #444;
+                border-radius: 5px;
+
+              ::backdrop {
+                  background-color: white;
+                  opacity: 0.75;
+              }
+            }
+          </style>
+          <div onclick="document.querySelector('#whatsapp-dialog').showModal()" style="cursor: pointer">
+            <%= image_tag '/images/icon-whatsapp.svg', height: 48 %>
+          </div>
+
+          <dialog href="https://wa.me/<%= @parent.wa_telephone %>" id="whatsapp-dialog">
+            <p>
+              Telefon 1:
+              <a href="https://wa.me/<%= @parent.wa_telephone %>" onclick="this.closest('dialog').close()"><%= @parent.telephone %></a>
+            </p>
+            <p>
+              Telefon 2:
+              <a href="https://wa.me/<%= @parent.wa_housephone %>" onclick="this.closest('dialog').close()"><%= @parent.housephone %></a>
+            </p>
+            <button style="margin: auto; display: block;" onclick="document.querySelector('#whatsapp-dialog').close()">schließen</button>
+          </dialog>
+        <% end %>
       </div>
     </div>
   </div>
