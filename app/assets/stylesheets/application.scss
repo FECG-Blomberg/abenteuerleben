@@ -1,0 +1,39 @@
+@use 'global/reset';
+@use 'vars/colors' as *;
+@use 'vars/spacings' as  *;
+
+// Components
+@use 'components/text-input';
+@use 'components/button';
+
+body {
+  background-color: $white;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 768px;
+  margin: auto;
+}
+
+.footer {
+  background-color: $black;
+  width: 100%;
+  padding: $space-16 0;
+}
+
+.footer__link-line {
+  display: flex;
+  flex-direction: row;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+
+  a {
+    padding: 0 $space-4;
+    text-decoration: none;
+    color: $brown-1;
+  }
+
+}

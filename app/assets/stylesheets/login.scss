@@ -1,0 +1,20 @@
+@use 'vars/colors' as *;
+
+.login-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.login-banner-img {
+  fill: $green-3
+}
+
+.login-form {
+  max-width: 256px;
+}
+
+.login-form__input {
+  width: 100%;
+}

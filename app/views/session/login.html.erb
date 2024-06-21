@@ -1,27 +1,25 @@
-<%= link_to '< Startseite', root_path %>
-<h1>Login</h1>
+<%= stylesheet_link_tag "login" %>
+<%= render 'common/header' %>
 
-<%= form_tag do |form| %>
-  <% if @current_user.has_read_rights %>
-    <p>You are already loggin in!</p>
-  <% end %>
+<div class="container mb-64">
+  <h1 class="mb-16">Login</h1>
 
-  <% if @error %>
-    <p style="color: red;">Login failed, please try again!</p>
-  <% end %>
+  <div class="login-container">
+    <%= forticon :lock, height: 128, class: 'login-banner-img' %>
 
-  <div>
-    <%= label_tag 'user_name', 'Username', style: "display: block" %>
-    <%= text_field 'user', 'name' %>
+    <%= form_with html: {class: 'login-form'} do |form| %>
+      <% if @current_user.has_read_rights %>
+        <p>You are already loggin in!</p>
+      <% end %>
+
+      <% if @error %>
+        <p style="color: red;">Login failed, please try again!</p>
+      <% end %>
+
+      <%= render TextInputComponent.new('Username', 'user[name]', classes: 'mb-16') %>
+      <%= render TextInputComponent.new('Passwort', 'user[password]', classes: 'mb-24') %>
+      <%= render ButtonComponent.new('Anmelden', style: 'primary') %>
+    <% end %>
   </div>
 
-  <div>
-    <%= label_tag 'user_password', 'Password', style: "display: block" %>
-    <%= password_field 'user', 'password' %>
-  </div>
-
-  <div>
-    <%= submit_tag 'Anmelden' %>
-  </div>
-<% end %>
-
+</div>

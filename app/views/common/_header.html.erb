@@ -1,0 +1,33 @@
+<%= stylesheet_link_tag 'header' %>
+
+<% if defined? show_text_title %>
+  <div class="header__title">
+    <h1 class="header__title-text">Abenteuer Leben e.V.</h1>
+  </div>
+<% end %>
+
+<header class="header">
+  <%= link_to root_path, class: 'header__home-link' do %>
+    <%= image_tag '/images/logo.png',
+                  class: 'header__image',
+                  srcset: {
+                    '/images/logo-sm.png': '640w',
+                    '/images/logo-md.png': '1024w'
+                  },
+                  sizes: '100vw',
+                  alt: 'logo',
+                  id: 'logo',
+                  data: {turbo_permanent: true} %>
+  <% end %>
+</header>
+
+<%= yield %>
+
+<nav class="nav">
+  <a href="/" class="nav__link <%= 'nav__link--active' if current_page?(root_path) %>"><strong>Startseite</strong></a>
+  <a href="/registrations/children" class="nav__link">Anmelden Kinder</a>
+  <a href="/registrations/staff" class="nav__link">Anmelden Mitarbeiter</a>
+  <a href="/downloads" class="nav__link">Downloads</a>
+  <a href="/sponsors" class="nav__link">Sponsoren</a>
+  <a href="/about" class="nav__link">Ueber uns</a>
+</nav>

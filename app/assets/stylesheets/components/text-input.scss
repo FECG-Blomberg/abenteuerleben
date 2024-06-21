@@ -1,0 +1,31 @@
+@use 'vars/colors' as *;
+@use 'vars/spacings' as *;
+@use 'vars/borders';
+
+.text-input {
+  width: 100%;
+}
+
+.text-input__label-wrapper {
+  width: 100%;
+  display: block;
+}
+
+.text-input__label {
+  font-size: 1.2rem;
+  margin-bottom: $space-4;
+}
+
+.text-input__input {
+  height: 48px;
+  box-shadow: 0 6px 0 -2px $brown-transparent;
+  border-radius: borders.$radius;
+  border: 2px solid $brown-5;
+  padding: $space-4 $space-8;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.text-input__error {
+  margin-top: $space-4;
+}
