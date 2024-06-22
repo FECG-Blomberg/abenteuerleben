@@ -5,10 +5,18 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
+
+  @media  (max-width: 480px) {
+    flex-direction: column;
+  }
 }
 
 .login-banner-img {
-  fill: $green-3
+  fill: $green-3;
+
+  @media (max-width: 480px) {
+    height: 4rem;
+  }
 }
 
 .login-form {

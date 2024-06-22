@@ -15,5 +15,7 @@ class HomeController < ApplicationController
 
     @message = Message.new flash[:message]
     @message.errored = true if flash[:message]
+
+    @no_header = true
   end
 end

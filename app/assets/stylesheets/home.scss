@@ -4,6 +4,8 @@
 // header overwrites
 .header {
   background-color: transparent !important;
+  background: linear-gradient(to bottom, #fff, #00000000) !important;
+  border-radius: 0 0 0 0!important;
 }
 
 .header__image {
@@ -12,6 +14,11 @@
   @media (min-width: 768px) {
     max-height: 20rem !important;
   }
+}
+
+.nav {
+  position: absolute;
+  top: 0;
 }
 
 .filler-one {
@@ -35,9 +42,8 @@
   display: block;
   height: 24rem;
   width: 100%;
-  background: linear-gradient(to bottom, #fff, #fff, #00000000, #00000000);
   @media (min-width: 768px) {
-    background: linear-gradient(to bottom, #fff, #fff, #fff, #00000000, #00000000);
+    //background: linear-gradient(to bottom, #fff, #fff, #fff, #00000000, #00000000);
   }
 }
 
@@ -50,3 +56,4 @@
   position: absolute;
   bottom: 0;
 }
+

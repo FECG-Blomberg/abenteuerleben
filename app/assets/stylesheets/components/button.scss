@@ -13,8 +13,12 @@
   border-radius: borders.$radius;
 
   &:hover, &:focus {
-    background-color: $gray-1;
+    background-color: $brown-1;
   }
+
+  &:active {
+    background-color: $brown-2;
+  };
 }
 
 .btn-primary {

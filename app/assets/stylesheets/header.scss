@@ -39,6 +39,7 @@
   margin-bottom: $space-32;
 
   @media (max-width: 768px) {
+    display: none;
     flex-direction: column;
   }
 }
@@ -62,4 +63,15 @@
   padding-left: 8px;
   border-left: 8px solid $brown-2;
   border-bottom: 8px solid $brown-2;
+}
+
+.nav__link-start {
+  display: flex;
+  align-items: center;
+}
+
+.nav__link-start-img {
+  border-radius: 2rem;
+  margin-right: $space-2;
+  height: 24px;
 }

@@ -34,15 +34,15 @@ Rails.application.routes.draw do
   # resources :children
   # --------------------------
 
-  # get 'admin/dashboard'
+  get 'admin/dashboard'
   # get 'admin/dev'
 
   get 'login', to: 'session#login'
   post 'login', to: 'session#auth'
   get 'logout', to: 'session#logout'
 
-  get 'downloads/admin', to: 'downloads#admin'
-  # resources :downloads
+  resources :downloads
+  get 'admin/downloads', to: 'downloads#admin'
   # resources :messages
   # resources :pages
   # resources :events

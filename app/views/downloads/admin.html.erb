@@ -1,16 +1,37 @@
-<%= link_to '< Admin Dashboard', admin_dashboard_path %>
+<%= stylesheet_link_tag "download" %>
 
-<p style="color: green"><%= notice %></p>
+<div class="container">
+  <p style="color: green"><%= notice %></p>
 
-<h1>Downloads</h1>
+  <h1 class="mb-16">Downloads - Adminbereich</h1>
 
-<div id="downloads">
-  <% @downloads.each do |download| %>
-    <%= render download %>
-    <p>
-      <%= link_to "Download Anzeigen", download %>
-    </p>
-  <% end %>
+  <div class="downloads-actions mb-16">
+    <!--left    -->
+    <div>
+      <%= render TextInputComponent.new 'suchen', 'searchterm', no_label: true, placeholder: 'suchbegriff...' %>
+    </div>
+
+    <!--right-->
+    <div>
+      <%= render IconButtonComponent.new text: 'Neuen hinzufuegen', icon: :plus, height: 16 %>
+    </div>
+  </div>
+
+  <table style="width: 100%">
+    <thead>
+    <tr>
+      <th>one</th>
+      <th>two</th>
+      <th>three</th>
+      <th>four</th>
+    </tr>
+    </thead>
+    <% @downloads.each do |download| %>
+      <div class="admin-download">
+
+      </div>
+    <% end %>
+  </table>
+
+  <%= link_to "Neuer Download", new_download_path, class: '--bordered' %>
 </div>
-
-<%= link_to "Neuer Download", new_download_path, class: '--bordered' %>

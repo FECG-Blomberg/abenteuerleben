@@ -1,0 +1,7 @@
+@use 'vars/spacings' as *;
+
+.icon-btn {
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+}

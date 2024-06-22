@@ -24,7 +24,17 @@
 <%= yield %>
 
 <nav class="nav">
-  <a href="/" class="nav__link <%= 'nav__link--active' if current_page?(root_path) %>"><strong>Startseite</strong></a>
+  <a href="/" class="nav__link nav__link-start <%= 'nav__link--active' if current_page?(root_path) %>">
+    <%= image_tag '/images/logo.png',
+                  class: 'nav__link-start-img',
+                  srcset: {
+                    '/images/logo-sm.png': '640w',
+                    '/images/logo-md.png': '1024w'
+                  },
+                  sizes: '100vw',
+                  alt: 'logo' %>
+    <strong>Startseite</strong>
+  </a>
   <a href="/registrations/children" class="nav__link">Anmelden Kinder</a>
   <a href="/registrations/staff" class="nav__link">Anmelden Mitarbeiter</a>
   <a href="/downloads" class="nav__link">Downloads</a>

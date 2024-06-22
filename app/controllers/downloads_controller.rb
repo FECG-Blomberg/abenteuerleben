@@ -1,10 +1,12 @@
 class DownloadsController < ApplicationController
   before_action :set_download, only: %i[ show edit update destroy download ]
-  before_action :admin_only, except: %i[ index download ]
+  before_action :admin_only, except: %i[ index download admin ]
 
   def index
-    @download_page_before = Page.where(url: 'download_before').first!
-    @download_page_after = Page.where(url: 'download_after').first!
+    # todo: to be removed
+    # todo: add key:value database for such stuff
+    # @download_page_before = Page.where(url: 'download_before').first!
+    # @download_page_after = Page.where(url: 'download_after').first!
     @downloads = Download.where(download_area: true)
   end
 
