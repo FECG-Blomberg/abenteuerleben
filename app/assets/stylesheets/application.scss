@@ -22,6 +22,7 @@ body {
 }
 
 .footer {
+  z-index: -1;
   background-color: $black;
   width: 100%;
   padding: $space-16 0;

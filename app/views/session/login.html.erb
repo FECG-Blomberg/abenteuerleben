@@ -15,8 +15,8 @@
         <p style="color: red;">Login failed, please try again!</p>
       <% end %>
 
-      <%= render TextInputComponent.new('Username', 'user[name]', classes: 'mb-16') %>
-      <%= render TextInputComponent.new('Passwort', 'user[password]', classes: 'mb-24') %>
+      <%= render TextInputComponent.new('Username', 'user[name]', '', classes: 'mb-16') %>
+      <%= render TextInputComponent.new('Passwort', 'user[password]', '', classes: 'mb-24') %>
       <%= render ButtonComponent.new('Anmelden', style: 'primary') %>
     <% end %>
   </div>

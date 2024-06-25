@@ -8,7 +8,11 @@ class TextInputComponent < ViewComponent::Base
           <span class="text-input__label"><%= @label %><%= ' *' if @required %></span>
         <% end %>
         
-        <input class="text-input__input" name="<%= @name %> type="text" placeholder="<%= @placeholder %>">
+        <input class="text-input__input"
+               <% unless @value.blank? then %>value="<%= @value %>"<% end %>
+               name="<%= @name %>"
+               type="text"
+               <% unless @placeholder.blank? then %>placeholder="<%= @placeholder %>"><% end %>
         
         <% unless @error_msg.blank? %>
           <span class="text-input__error"><%= @error_msg %></span>
@@ -17,9 +21,10 @@ class TextInputComponent < ViewComponent::Base
     </div>
   ERB
 
-  def initialize(label, name, placeholder: '', no_label: false, required: false, dark: false, error_msg: '', classes: '')
+  def initialize(label, name, value, placeholder: '', no_label: false, required: false, dark: false, error_msg: '', classes: '')
     @label = label
     @name = name
+    @value = value
     @placeholder = placeholder
     @no_label = no_label
     @required = required

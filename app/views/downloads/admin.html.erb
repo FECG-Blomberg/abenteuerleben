@@ -8,7 +8,7 @@
   <div class="downloads-actions mb-16">
     <!--left    -->
     <div>
-      <%= render TextInputComponent.new 'suchen', 'searchterm', no_label: true, placeholder: 'suchbegriff...' %>
+      <%= render TextInputComponent.new 'suchen', 'searchterm', '', no_label: true, placeholder: 'suchbegriff...' %>
     </div>
 
     <!--right-->
@@ -19,19 +19,32 @@
 
   <table style="width: 100%">
     <thead>
-    <tr>
-      <th>one</th>
-      <th>two</th>
-      <th>three</th>
-      <th>four</th>
+    <tr class="download-table__table-header">
+      <th>Dateiname</th>
+      <th>Geaender am</th>
+      <th>Erstellt am</th>
+      <th>...</th>
     </tr>
     </thead>
     <% @downloads.each do |download| %>
-      <div class="admin-download">
-
-      </div>
+      <tr class="admin-download">
+        <td><%= download.file.filename %></td>
+        <td><%= l download.updated_at %></td>
+        <td><%= l download.created_at %></td>
+        <td>
+          <a class="download-show-link"
+             data-hx-get="<%= download_path download %>"
+             data-hx-swap="innerHTML"
+             data-hx-target="#modal"
+             data-hx-on--after-request="document.querySelector('#modal > dialog').showModal()">
+            Aendern
+          </a>
+        </td>
+      </tr>
     <% end %>
   </table>
+
+  <div id="modal"></div>
 
   <%= link_to "Neuer Download", new_download_path, class: '--bordered' %>
 </div>

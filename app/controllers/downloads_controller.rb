@@ -1,6 +1,6 @@
 class DownloadsController < ApplicationController
   before_action :set_download, only: %i[ show edit update destroy download ]
-  before_action :admin_only, except: %i[ index download admin ]
+  # before_action :admin_only, except: %i[ index download ]
 
   def index
     # todo: to be removed
@@ -14,13 +14,13 @@ class DownloadsController < ApplicationController
     @downloads = Download.all
   end
 
-  def show; end
+  def show;
+    render layout: false
+  end
 
   def new
     @download = Download.new
   end
-
-  def edit; end
 
   def create
     @download = Download.new(download_params)
