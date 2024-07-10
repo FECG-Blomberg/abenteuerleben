@@ -1,17 +1,19 @@
-<%= link_to '< Admin Dashboard', admin_dashboard_path %>
+<%= stylesheet_link_tag "message" %>
 
-<h1>Messages</h1>
+<div class="container">
+  <h1>Messages - Adminbereich</h1>
 
-<div id="messages">
-  <div class="message-preview">
-    <% @messages.each do |message| %>
-      <%= link_to message, class: class_names('message-preview__unread': !message.read) do %>
-        <span>
-          <%= "(#{l message.created_at})" %>
-        </span>
-        <%= "#{message.name}: #{message.desc_short}" %>
+  <div id="messages">
+    <div class="message-preview">
+      <% @messages.each do |message| %>
+        <%= link_to message, class: class_names('message-preview__unread': !message.read) do %>
+          <span>
+            <%= "(#{l message.created_at})" %>
+          </span>
+          <%= "#{message.name}: #{message.desc_short}" %>
+        <% end %>
+        <br>
       <% end %>
-      <br>
-    <% end %>
+    </div>
   </div>
 </div>

@@ -20,23 +20,27 @@ class DownloadsController < ApplicationController
 
   def new
     @download = Download.new
+
+    render layout: false
   end
 
   def create
     @download = Download.new(download_params)
 
     if @download.save
-      redirect_to download_url(@download), notice: "Download was successfully created."
+      redirect_to admin_downloads_path(@download), notice: "Download erfolgreich erstellt"
     else
       render :new, status: :unprocessable_entity
     end
   end
 
   def update
+    logger.info 'trying to update download now'
+
     if @download.update(download_params)
-      redirect_to download_url(@download), notice: "Download was successfully updated."
+      redirect_to admin_downloads_path, notice: "Download erfolgrech geändert"
     else
-      render :edit, status: :unprocessable_entity
+      render :show, layout: false, status: :unprocessable_entity
     end
   end
 

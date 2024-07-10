@@ -1,32 +1,21 @@
-<form>
+<form method="post" action="<%= form_path %>">
 
-<%#= form_with(model: download) do |form| %>
-<%# if download.errors.any? %>
-<!--    <div style="color: var(--red-100)">-->
-<!--      <h2>-->
-        <%#= pluralize(download.errors.count, "Error hat", plural: "Errors haben") %>
-<!--        das Anlegen von dem Download verhindert:-->
-<!--      </h2>-->
-<!--    </div>-->
-  <%# end %>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 
   <%= render TextInputComponent.new 'Name', 'download[name]', download.name, classes: 'mb-16' %>
-  <%= render TextInputComponent.new 'Interne Beschreibung', 'download[description]', download.name, classes: 'mb-16' %>
+  <%= render TextInputComponent.new 'Interne Beschreibung', 'download[description]', download.description, classes: 'mb-16' %>
 
   <%= render TextInputComponent.new 'Im Downloadbereich anzeigen? (true, false)', 'download[download_area]', download.download_area, classes: 'mb-32' %>
-<!--  <div class="mb-16">-->
-    <%#= form.label :download_area, 'Im Downloadbereich anzeigen', style: "display: block" %>
-    <%#= render 'formelements/errormsg', record: download, field: :download_area %>
-    <%#= form.check_box :download_area %>
-<!--  </div>-->
 
-<!--  <div class="mb-24">-->
+  <%# 'download file' %>
+  <%#  <div class="mb-24"> %>
     <%#= form.label :file, 'Datei', style: "display: block" %>
     <%#= render 'formelements/errormsg', record: download, field: :file %>
     <%#= form.hidden_field :file, value: download.file.signed_id if download.file.attached? %>
     <%#= form.file_field :file %>
-<!--  </div>-->
+  <%#  </div> %>
+
+  <%# 'possible errors' %>
 
   <%= render IconButtonComponent.new icon: :check, text: 'Speichern', classes: "download-modal__save mb-16"%>
-<%# end %>
 </form>

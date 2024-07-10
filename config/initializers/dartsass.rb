@@ -3,5 +3,6 @@ Rails.application.config.dartsass.builds = {
   "header.scss" => "header.css",
   "login.scss" => "login.css",
   "home.scss" => "home.css",
-  "download.scss" => "download.css"
+  "download.scss" => "download.css",
+  "message.scss" => "message.css"
 }

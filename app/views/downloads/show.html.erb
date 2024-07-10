@@ -1,5 +1,5 @@
 <dialog class="download-modal">
-  <%= render 'downloads/form', download: @download %>
+  <%= render 'downloads/form', download: @download, form_path: admin_download_path(@download) %>
 
   <form method="dialog">
     <%= render IconButtonComponent.new icon: :x, text: 'Abbrechen', classes: "download-modal__close btn--plain"%>

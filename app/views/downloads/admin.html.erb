@@ -3,24 +3,34 @@
 <div class="container">
   <p style="color: green"><%= notice %></p>
 
+  <a href="<%= admin_dashboard_path %>" class="mb-16" style="display: block;">
+    <%= forticon 'arrow-left', height: 16 %>
+    Zurück zur Adminübersicht
+  </a>
+
   <h1 class="mb-16">Downloads - Adminbereich</h1>
 
   <div class="downloads-actions mb-16">
     <!--left    -->
     <div>
-      <%= render TextInputComponent.new 'suchen', 'searchterm', '', no_label: true, placeholder: 'suchbegriff...' %>
+      <!-- <%= render TextInputComponent.new 'suchen', 'searchterm', '', no_label: true, placeholder: 'suchbegriff...' %> -->
     </div>
 
     <!--right-->
     <div>
-      <%= render IconButtonComponent.new text: 'Neuen hinzufuegen', icon: :plus, height: 16 %>
+      <div data-hx-get="<%= admin_downloads_new_path %>"
+           data-hx-swap="innerHTML"
+           data-hx-target="#modal"
+           data-hx-on--after-request="document.querySelector('#modal > dialog').showModal()">
+         <%= render IconButtonComponent.new text: 'Neuen Download hinzufügen', icon: :plus, height: 16 %>
+      </div>
     </div>
   </div>
 
   <table style="width: 100%">
     <thead>
     <tr class="download-table__table-header">
-      <th>Dateiname</th>
+      <th>Name</th>
       <th>Geaender am</th>
       <th>Erstellt am</th>
       <th>...</th>
@@ -28,12 +38,12 @@
     </thead>
     <% @downloads.each do |download| %>
       <tr class="admin-download">
-        <td><%= download.file.filename %></td>
+        <td><%= download.name %></td>
         <td><%= l download.updated_at %></td>
         <td><%= l download.created_at %></td>
         <td>
           <a class="download-show-link"
-             data-hx-get="<%= download_path download %>"
+             data-hx-get="<%= admin_download_path download %>"
              data-hx-swap="innerHTML"
              data-hx-target="#modal"
              data-hx-on--after-request="document.querySelector('#modal > dialog').showModal()">
@@ -45,6 +55,4 @@
   </table>
 
   <div id="modal"></div>
-
-  <%= link_to "Neuer Download", new_download_path, class: '--bordered' %>
 </div>

@@ -37,7 +37,7 @@
   </a>
   <a href="/registrations/children" class="nav__link">Anmelden Kinder</a>
   <a href="/registrations/staff" class="nav__link">Anmelden Mitarbeiter</a>
-  <a href="/downloads" class="nav__link">Downloads</a>
+  <a href="/downloads" class="nav__link  <%= 'nav__link--active' if current_page?(downloads_path) %>">Downloads</a>
   <a href="/sponsors" class="nav__link">Sponsoren</a>
   <a href="/about" class="nav__link">Ueber uns</a>
 </nav>

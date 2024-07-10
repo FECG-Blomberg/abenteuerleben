@@ -37,13 +37,23 @@ Rails.application.routes.draw do
   get 'admin/dashboard'
   # get 'admin/dev'
 
+  # Login / Logout 
   get 'login', to: 'session#login'
   post 'login', to: 'session#auth'
   get 'logout', to: 'session#logout'
 
-  resources :downloads
+  # Downloads
+  get 'downloads', to: 'downloads#index'
   get 'admin/downloads', to: 'downloads#admin'
-  # resources :messages
+  get 'admin/downloads/new', to: 'downloads#new'
+  post 'admin/downloads', to: 'downloads#create'
+  get 'admin/downloads/:id', to: 'downloads#show'
+  post 'admin/downloads/:id', to: 'downloads#update', as: 'admin_download'
+  # delete 'admin/downloads/:id', to: 'downloads#destroy'
+
+  resources :messages
+  get 'admin/messages', to: 'messages#index'
+
   # resources :pages
   # resources :events
 

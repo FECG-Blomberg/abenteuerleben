@@ -1,9 +1,10 @@
-<h1>New download</h1>
+<%= stylesheet_link_tag "download" %>
 
-<%= render "form", download: @download %>
+<dialog class="download-modal">
+  <h1>Neuer download</h1>
+  <%= render 'downloads/form', download: @download, form_path: admin_downloads_path %>
 
-<br>
-
-<div>
-  <%= link_to "Zurück zu allen Downloads", downloads_admin_path %>
-</div>
+  <form method="dialog">
+    <%= render IconButtonComponent.new icon: :x, text: 'Abbrechen', classes: "download-modal__close btn--plain"%>
+  </form>
+</dialog>
