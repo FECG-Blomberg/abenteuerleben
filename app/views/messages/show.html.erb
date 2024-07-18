@@ -1,7 +1,33 @@
-<%= render @message %>
+<dialog class="modal message-modal">
+  <div class="modal-top-left-action">
+    <form method="dialog">
+      <button class="modal-action__close">
+        <%= forticon :x, height: 16 %>
+      </button>
+    </form>
+  </div>
 
-<div>
-  <%= render "formelements/delete_action", url: @message %>
-  <br>
-  <%= link_to "Zurück zu allen Nachrichten", messages_path %>
-</div>
+  <div class="message-header">
+    <table>
+      <tr>
+        <th class="message-header__row">Name: </th>
+        <td><%= @message.name %></td>
+      </tr>
+      <tr>
+        <th class="message-header__row">Email: </th>
+        <td><%= @message.email %></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="message-content mb-16"><%= @message.message %></div>
+
+  <%# todo: hide delte if user is not permitted %>
+  <form method="post" action="<%= message_path @message %>">
+    <input type="hidden" value="delete" name="_method">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+    <%= render IconButtonComponent.new icon: :trash, text: 'Löschen', classes: 'btn-danger' %>
+  </form>
+</dialog>
+

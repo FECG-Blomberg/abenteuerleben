@@ -1,3 +1,57 @@
+@use "vars/colors" as *;
+@use 'vars/spacings' as *;
+@use 'vars/borders';
+
 .message {
   color: red;
+}
+
+.message-table__table-header {
+  text-align: left;
+}
+
+.message-show-link {
+  cursor: pointer;
+  text-decoration: underline;
+  color: $green-4;
+}
+
+.message-header {
+  font-size: 1.2rem;
+  margin-bottom: $space-16;
+}
+
+.message-header__row {
+  padding-right: $space-2;
+}
+
+.message-content {
+  padding: $space-8;
+  white-space: pre-line;
+  border-radius: borders.$radius;
+  border: 1px solid $gray-1;
+}
+
+.message-form > .text-input:not(:last-child) {
+  margin-bottom: $space-16;
+}
+
+.message-form__submit-row {
+  display: flex;
+  justify-content: center;
+}
+
+.message-form__submit-btn {
+  padding-left: $space-32;
+  padding-right: $space-32;
+  width: auto;
+
+  @media(max-width: 768px) {
+    width: 100%;
+  }
+}
+
+
+.message-form-notice {
+  margin-bottom: $space-16;
 }

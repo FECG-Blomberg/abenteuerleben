@@ -11,6 +11,8 @@ class MessagesController < ApplicationController
   def show
     @message.read = true
     @message.save
+
+    render layout: false
   end
 
   # GET /messages/new
@@ -26,13 +28,15 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
 
-    if verify_hcaptcha(model: @message) && @message.save
-      redirect_to(root_path, notice: "Nachricht erfolgreich abgeschickt.")
+    if valid_captcha && @message.save
+      @notice = :success
+      @message = Message.new
+
+      render 'new', layout: false
     else
-      flash[:message] = @message
-      flash[:notice] = 'Fehler beim abschicken der Nachricht. Bitte erneut versuchen.'
-      flash[:error] = true
-      redirect_to(root_path)
+      @notice = :failure
+      logger.error 'failed to save message'
+      render 'new', layout: false
     end
   end
 
@@ -53,6 +57,12 @@ class MessagesController < ApplicationController
   end
 
   private
+    def valid_captcha
+      return true if Rails.env.development?
+
+      verify_hcaptcha(model: @message)
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_message
       @message = Message.find(params[:id])

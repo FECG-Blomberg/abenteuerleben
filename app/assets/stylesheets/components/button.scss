@@ -34,6 +34,28 @@
   }
 }
 
+.btn-secondary {
+  color: $white;
+  background-color: $green-5;
+  border: 1px solid $green-2;
+
+  &:hover, &:focus {
+    background-color: $green-4;
+    box-shadow: 0 0 0 0 $green-transparent;
+  }
+}
+
+.btn-danger {
+  color: $white;
+  background-color: $red-4;
+  border: 1px solid $red-2;
+  fill: $white;
+
+  &:hover, &:focus {
+    background-color: $red-3;
+  }
+}
+
 .btn--plain {
   border: none;
   box-shadow: none;

@@ -1,4 +1,5 @@
 @use 'global/reset';
+@use 'global/modal';
 @use 'vars/colors' as *;
 @use 'vars/spacings' as  *;
 
@@ -6,6 +7,7 @@
 @use 'components/text-input';
 @use 'components/button';
 @use 'components/icon-button';
+@use 'components/alert';
 
 body {
   background-color: $white;

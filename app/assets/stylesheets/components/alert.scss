@@ -1,0 +1,26 @@
+@use '../vars/spacings' as *;
+@use '../vars/colors' as *;
+@use '../vars/borders';
+
+.alert {
+  padding: $space-8 $space-16;
+  display: flex;
+  align-items: center;
+  gap: $space-8;
+  width: 100%;
+}
+
+.alert-success {
+  fill: $green-5;
+  background-color: $green-1;
+  border: 1px solid $green-5;
+  border-radius : borders.$radius;
+}
+
+.alert-error {
+  fill: $red-5;
+  background-color: $red-1;
+  border: 1px solid $red-5;
+  border-radius : borders.$radius;
+}
+

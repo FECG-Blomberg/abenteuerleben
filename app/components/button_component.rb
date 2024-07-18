@@ -11,13 +11,15 @@ class ButtonComponent < ViewComponent::Base
     @text = text
     @type = type
     @style = style
-    @classes = (classes + style_classes).strip
+    @classes = (style_classes + ' ' + classes).strip
   end
 
   def style_classes
     case @style
     when 'primary'
       return 'btn-primary'
+    when 'secondary'
+      return 'btn-secondary'
     else
       return ''
     end
