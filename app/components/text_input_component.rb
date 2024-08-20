@@ -32,7 +32,7 @@ class TextInputComponent < ViewComponent::Base
 
         <% unless @error_msg.blank? %>
           <span class="text-input__error">
-            o%= forticon 'circle-xmark', height: 16 %>
+            <%= forticon 'circle-xmark', height: 16 %>
             <%= @error_msg %>
           </span>
         <% end %>

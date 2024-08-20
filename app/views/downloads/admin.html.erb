@@ -3,10 +3,7 @@
 <div class="container">
   <p style="color: green"><%= notice %></p>
 
-  <a href="<%= admin_dashboard_path %>" class="mb-16" style="display: block;">
-    <%= forticon 'arrow-left', height: 16 %>
-    Zurück zur Adminübersicht
-  </a>
+  <%= render 'admin/back-to-dashboard' %>
 
   <h1 class="mb-16">Downloads - Adminbereich</h1>
 

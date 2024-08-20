@@ -18,6 +18,7 @@ gem 'sprockets-rails', '3.4.2'
 gem 'tzinfo-data', '1.2023.4'
 gem "hcaptcha", "~> 7.1"
 gem 'sqlite3'
+gem 'kramdown', '2.4.0'
 
 # development
 gem 'web-console', group: [ :development ]

@@ -1,0 +1,22 @@
+<%= stylesheet_link_tag "page" %>
+
+<form data-hx-post="<%= admin_page_path(page) %>"
+      data-hx-swap="outerHTML"
+      data-hx-select=".page-form"
+      class="page-form">
+
+  <%= yield %>
+
+  <p>* = Pflichtfelder</p>
+  <br>
+
+  <input type="hidden" value="patch" name="_method">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+  <%= render(TextInputComponent.new 'Url', 'page[url]', page.url, required: true, error_msg: page.errors[:url].first, classes: 'page-edit__input') %>
+  <%= render(TextInputComponent.new 'Inhalt', 'page[content]', page.content, required: true, error_msg: page.errors[:content].first, type: :textarea, classes: 'page-edit__input') %>
+
+  <div class="page-form__submit-row">
+    <%= render(ButtonComponent.new 'Abschicken', classes: 'page-form__submit-btn', style: 'secondary') %>
+  </div>
+</form>

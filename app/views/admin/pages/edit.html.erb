@@ -1,0 +1,13 @@
+<div class="container">
+  <%= link_to 'Zurueck zur Seitenuebersicht', admin_pages_path %>
+
+  <h1 class="page-edit-header">Seite bearbeiten - /<%= @page.url %></h1>
+
+  <%= render "form", page: @page do %>
+    <% if notice %>
+      <%= render(AlertComponent.new text: 'Erfolgreich geändert', icon: 'circle-check', style: :success) %>
+    <% end %>
+  <% end %>
+
+  <%= link_to 'Ansehen', page_path(@page.url), class: 'page-preview-link', target: '_blank' %>
+</div>
