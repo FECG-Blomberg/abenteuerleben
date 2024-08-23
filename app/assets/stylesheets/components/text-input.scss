@@ -4,6 +4,7 @@
 
 .text-input {
   width: 100%;
+  margin-bottom: $space-16;
 }
 
 .text-input__label-wrapper {
@@ -13,7 +14,6 @@
 
 .text-input__label {
   font-size: 1.2rem;
-  margin-bottom: $space-4;
 }
 
 .text-input__input {

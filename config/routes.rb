@@ -57,10 +57,13 @@ Rails.application.routes.draw do
   delete 'admin/message/:id', to: 'messages#destroy'
 
   get 'pages/:id', to: 'pages#show', as: :page
+
   namespace :admin do
-    resources :pages, except: [:show]
+    resources :pages, except: [ :show ]
+    resources :events, only: [ :index, :new, :create, :edit, :update, :destroy ]
   end
-  # resources :events
+
+  resources :events, only: [ :index, :show ]
 
   root 'home#index'
 end

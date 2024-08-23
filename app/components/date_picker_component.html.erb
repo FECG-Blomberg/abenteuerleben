@@ -1,0 +1,15 @@
+<div class="date-picker">
+  <label>
+    <span class="date-picker__label"><%= @label %></span>
+    <div class="date-picker__pickers">
+      <%= date_select @object, @method, selected: @date %>
+    </div>
+  </label>
+
+  <% unless @error_msg.blank? %>
+    <span class="date-picker__error">
+              <%= forticon 'circle-xmark', height: 16 %>
+      <%= @error_msg %>
+            </span>
+  <% end %>
+</div>

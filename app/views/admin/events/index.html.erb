@@ -1,0 +1,14 @@
+<%= stylesheet_link_tag "event" %>
+
+<div class="container">
+  <div class="admin-event-list">
+      <% @events.each do |event| %>
+        <div class="admin-event">
+          <p><strong><%= event.title %></strong></p>
+          <p><%= event.description %></p>
+        </div>
+      <% end %>
+  </div>
+  <%= paginate @events %>
+</div>
+

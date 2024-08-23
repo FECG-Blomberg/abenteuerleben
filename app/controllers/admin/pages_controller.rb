@@ -1,6 +1,6 @@
 class Admin::PagesController < ApplicationController
   before_action :set_page, only: %i[ edit update destroy ]
-  before_action :admin_only, except: %i[ show ]
+  before_action :admin_only
 
   # GET /pages or /pages.json
   def index

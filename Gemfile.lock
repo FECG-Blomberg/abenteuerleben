@@ -141,6 +141,18 @@ GEM
       rdoc
       reline (>= 0.4.2)
     json (2.7.1)
+    kaminari (1.2.2)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.2.2)
+      kaminari-activerecord (= 1.2.2)
+      kaminari-core (= 1.2.2)
+    kaminari-actionview (1.2.2)
+      actionview
+      kaminari-core (= 1.2.2)
+    kaminari-activerecord (1.2.2)
+      activerecord
+      kaminari-core (= 1.2.2)
+    kaminari-core (1.2.2)
     kramdown (2.4.0)
       rexml
     loofah (2.22.0)
@@ -284,6 +296,7 @@ DEPENDENCIES
   hcaptcha (~> 7.1)
   image_processing (= 1.12.2)
   importmap-rails (= 2.0.1)
+  kaminari (= 1.2.2)
   kramdown (= 2.4.0)
   puma (= 6.4.2)
   rails (= 7.1.3.4)

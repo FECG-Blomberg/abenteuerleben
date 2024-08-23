@@ -5,5 +5,6 @@ Rails.application.config.dartsass.builds = {
   "home.scss" => "home.css",
   "download.scss" => "download.css",
   "message.scss" => "message.css",
-  "page.scss" => "page.css"
+  "page.scss" => "page.css",
+  "event.scss" => "event.css"
 }

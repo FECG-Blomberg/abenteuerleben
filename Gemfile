@@ -19,6 +19,7 @@ gem 'tzinfo-data', '1.2023.4'
 gem "hcaptcha", "~> 7.1"
 gem 'sqlite3'
 gem 'kramdown', '2.4.0'
+gem 'kaminari', '1.2.2'
 
 # development
 gem 'web-console', group: [ :development ]
