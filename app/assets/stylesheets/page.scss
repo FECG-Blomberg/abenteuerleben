@@ -1,0 +1,23 @@
+@use 'vars/spacings';
+@use 'vars/colors';
+
+.page-edit-header {
+  margin-bottom: spacings.$space-32;
+}
+
+.page-update-success-notice {
+  font-size: 1.2rem;
+  color: colors.$green-4;
+  margin-bottom: spacings.$space-16;
+}
+
+.page-edit__input {
+  margin-bottom: spacings.$space-16;
+}
+
+.page-preview-link {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-top: spacings.$space-24;
+}

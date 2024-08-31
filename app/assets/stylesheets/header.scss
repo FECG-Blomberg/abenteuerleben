@@ -1,0 +1,77 @@
+@use 'vars/colors' as *;
+@use 'vars/spacings' as *;
+
+.header__title {
+  background-color: #fff;
+  padding-top: $space-48;
+}
+
+.header__title-text {
+  text-align: center;
+  background: linear-gradient(to bottom, rgba(119, 180, 110, 1) 0%, rgba(113, 139, 70, 1) 100%);
+  background-clip: text;
+  color: transparent;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  background-color: #fff;
+  border-radius: 0 0 100% 100%;
+  margin-bottom: $space-16;
+}
+
+.header__home-link {
+  display: inline-block;
+  margin: auto;
+}
+
+.header__image {
+  max-height: 10rem;
+  border-radius: 999rem;
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  border-bottom: 1px solid $brown-5;
+  margin-bottom: $space-32;
+
+  @media (max-width: 768px) {
+    display: none;
+    flex-direction: column;
+  }
+}
+
+.nav__link {
+  padding: 16px;
+  text-decoration: none;
+  color: $black;
+
+  &:hover {
+    background-color: $brown-1;
+  }
+
+  &:active {
+    background-color: $brown-2;
+  }
+}
+
+.nav__link--active {
+  padding-bottom: 8px;
+  padding-left: 8px;
+  border-left: 8px solid $brown-2;
+  border-bottom: 8px solid $brown-2;
+}
+
+.nav__link-start {
+  display: flex;
+  align-items: center;
+}
+
+.nav__link-start-img {
+  border-radius: 2rem;
+  margin-right: $space-2;
+  height: 24px;
+}

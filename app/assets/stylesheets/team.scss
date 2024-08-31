@@ -1,0 +1,49 @@
+@use './vars/spacings';
+@use './vars/colors';
+
+.teams-table-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.teams-table-actions__item-actions {
+  padding: .4rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  gap: .4rem;
+
+  svg {
+    margin-top: -2px;
+  }
+}
+
+.teams-table {
+  border: 1px solid colors.$black;
+  border-collapse: collapse;
+  width: 100%;
+
+  tr {
+    border: 1px solid colors.$black;
+  }
+
+  td, th {
+    padding: spacings.$space-2 spacings.$space-16;
+    border: 1px solid colors.$black;
+  }
+}
+
+.teams-table-item__enabled {
+  color: colors.$green-3;
+}
+
+.teams-table-item__disabled {
+  color: colors.$red-3;
+}
+
+.team-action__delete {
+  margin-top: spacings.$space-24;
+  background-color: colors.$red-4;
+  color: colors.$black;
+}

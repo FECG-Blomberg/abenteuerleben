@@ -1,0 +1,38 @@
+@use 'vars/colors' as *;
+@use 'vars/spacings' as *;
+@use 'vars/borders';
+
+.downloads-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.download-btn-new {
+  text-decoration: none;
+}
+
+.download-table__table-header {
+  text-align: left;
+}
+
+.download-show-link {
+  cursor: pointer;
+  text-decoration: underline;
+  color: $green-4;
+}
+
+.download-modal {
+  padding: $space-24;
+  border-radius: borders.$radius;
+  box-shadow: 0 8px 0 2px $black-transparent;
+
+  ::backdrop {
+    background-image: linear-gradient(45deg, $brown-1, $brown-5);
+  }
+}
+
+.download-modal__save {
+  border-color: $green-4;
+}

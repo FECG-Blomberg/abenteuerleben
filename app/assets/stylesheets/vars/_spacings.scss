@@ -1,0 +1,39 @@
+@use 'sass:math' as math;
+
+/* base step is 16px */
+$base-space: 16px;
+
+$space-0: $base-space * 0.0;
+$space-2:   calc($base-space  / 1.68 / 1.68 / 1.68);
+$space-4:   calc($base-space / 1.68 / 1.68);
+$space-8:   calc($base-space / 1.68);
+$space-16:  calc($base-space * 1);
+$space-24:  calc($base-space * math.pow(1.68, 1));
+$space-32:  calc($base-space * math.pow(1.68, 2));
+$space-48:  calc($base-space * math.pow(1.68, 3));
+$space-64:  calc($base-space * math.pow(1.68, 4));
+$space-128: calc($base-space * math.pow(1.68, 5));
+
+.m-8 {
+  margin: $space-8;
+}
+
+.mb-8 {
+  margin-bottom: $space-8;
+}
+
+.mb-16 {
+  margin-bottom: $space-16;
+}
+
+.mb-24 {
+  margin-bottom: $space-24;
+}
+
+.mb-32 {
+  margin-bottom: $space-32;
+}
+
+.mb-64 {
+  margin-bottom: $space-64;
+}

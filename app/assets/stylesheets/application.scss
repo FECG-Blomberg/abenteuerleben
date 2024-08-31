@@ -1,0 +1,48 @@
+@use 'global/reset';
+@use 'global/modal';
+@use 'vars/colors' as *;
+@use 'vars/spacings' as  *;
+
+// Components
+@use 'components/text-input';
+@use 'components/button';
+@use 'components/icon-button';
+@use 'components/alert';
+@use 'components/date-picker';
+
+body {
+  background-color: $white;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 768px;
+  margin: auto;
+
+  @media (max-width: 768px) {
+    margin: $space-16;
+  }
+}
+
+.footer {
+  z-index: -1;
+  background-color: $black;
+  width: 100%;
+  padding: $space-16 0;
+  margin-top: $space-32;
+}
+
+.footer__link-line {
+  display: flex;
+  flex-direction: row;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+
+  a {
+    padding: 0 $space-4;
+    text-decoration: none;
+    color: $brown-1;
+  }
+}

@@ -1,0 +1,82 @@
+@use 'vars/colors' as *;
+@use 'vars/spacings' as *;
+@use 'vars/borders';
+
+// header overwrites
+.header {
+  background-color: transparent !important;
+  background: linear-gradient(to bottom, #fff, #00000000) !important;
+  border-radius: 0 0 0 0!important;
+}
+
+.header__image {
+  margin-top: $space-16 !important;
+
+  @media (min-width: 768px) {
+    max-height: 20rem !important;
+  }
+}
+
+.nav {
+  position: absolute;
+  top: 0;
+}
+
+.filler-one {
+  z-index: -1;
+  margin-top: -14rem;
+  background-color: $gray-1;
+  height: 68vh;
+  width: 100%;
+  display: block;
+  background-image: url('/images/filler-one-bg.jpeg');
+  background-size: cover;
+  background-position: top;
+  position: relative;
+
+  @media (min-width: 768px) {
+    margin-top: -24rem;
+  }
+}
+
+.filler-one__white-top {
+  display: block;
+  height: 24rem;
+  width: 100%;
+  @media (min-width: 768px) {
+    //background: linear-gradient(to bottom, #fff, #fff, #fff, #00000000, #00000000);
+  }
+}
+
+.filler-one__white-bottom {
+  display: block;
+  height: 8rem;
+  width: 100%;
+  background-color: $white;
+  border-radius: 100% 100% 0 0;
+  position: absolute;
+  bottom: 0;
+}
+
+.contact {
+  border: 1px solid $green-4;
+  background-color: $green-2;
+  border-radius: borders.$radius;
+  padding: $space-16;
+}
+
+.contact-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-8;
+}
+
+.contact-title__text {
+  text-align: center;
+  flex: 1;
+}
+.contact-title__icon {
+  fill: $green-4;
+}
+

@@ -1,0 +1,50 @@
+<%# locals: (team: ,method: ,url:) %>
+
+<form class="team-form" method="post" action="<%= url %>">
+
+  <p>* = Pflichtfelder</p>
+
+  <%= hidden_field_tag :_method, method %>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+  <%= render(TextInputComponent.new 'Name', 'team[name]', @team.name, required: true, error_msg: @team.errors[:name].first) %>
+  <%= render(TextInputComponent.new 'Beschreibung', 'team[description]', @team.description, type: :textarea, required: true, error_msg: @team.errors[:description].first) %>
+
+  <div class="message-form__submit-row">
+    <%= render(ButtonComponent.new 'Abbrechen', classes: 'team-form__cancle-btn', style: 'primary') %>
+    <%= render(ButtonComponent.new 'Speichern', classes: 'team-form__submit-btn', style: 'secondary') %>
+  </div>
+</form>
+
+<%#= form_with(model: team) do |form| %>
+  <%# if team.errors.any? %>
+<!--    <div style="color: red">-->
+<!--      <h2><%#= pluralize(team.errors.count, "error") %> prohibited this team from being saved:</h2>-->
+
+<!--      <ul>-->
+        <%# team.errors.each do |error| %>
+<!--          <li><%#= error.full_message %></li>-->
+        <%# end %>
+<!--      </ul>-->
+<!--    </div>-->
+  <%# end %>
+
+<!--  <div class="input">-->
+    <%#= form.label :name, "Titel", style: "display: block" %>
+    <%#= form.text_field :name, required: true %>
+<!--  </div>-->
+
+<!--  <div class="input">-->
+    <%#= form.label :description, "Beschreibung", style: "display: block" %>
+    <%#= form.text_field :description, required: true %>
+<!--  </div>-->
+
+<!--  <div class="input">-->
+    <%#= form.label :enabled, "Aktiv", style: "display: block" %>
+    <%#= form.check_box :enabled %>
+<!--  </div>-->
+
+<!--  <div class="submit">-->
+    <%#= form.submit "Speichern" %>
+<!--  </div>-->
+<%# end %>

@@ -1,21 +1,21 @@
-<h1>Downloads</h1>
+<div class="container mb-16">
+  <h1>Downloads</h1>
+  <%#= raw @download_page_before.content %>
 
-<%= raw @download_page_before.content %>
+  <div id="downloads">
+    <p class="m-8">
+      <%= "Zurzeit sind keine Downloads verfügbar." if @downloads.empty? %>
+    </p>
+    <% @downloads.each do |download| %>
+      <% if download.file.attached? %>
 
-<br>
+        <%= link_to rails_blob_path(download.file, disposition: 'attachment'), class: 'download-link' do %>
+          <%= forticon 'angle-right', height: 18, class: 'download-link__icon' %><%= download.file.filename %>
+        <% end %>
 
-<div id="downloads">
-  <% @downloads.each do |download| %>
-    <% if download.file.attached? %>
-
-      <%= link_to rails_blob_path(download.file, disposition: 'attachment'), class: 'download-link' do %>
-        <%= forticon 'angle-right', height: 18, class: 'download-link__icon' %><%= download.file.filename %>
       <% end %>
-
     <% end %>
-  <% end %>
+  </div>
+
+  <%#= raw @download_page_after.content %>
 </div>
-
-<br>
-
-<%= raw @download_page_after.content %>

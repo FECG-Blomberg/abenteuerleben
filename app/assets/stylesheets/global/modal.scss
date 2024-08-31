@@ -1,0 +1,41 @@
+@use "../vars/spacings" as *;
+@use '../vars/colors' as *;
+@use '../vars/borders';
+
+.modal {
+  min-width: 400px;
+  max-width: 90%;
+  padding: $space-24;
+  border-radius: borders.$radius;
+  box-shadow: 0 8px 0 2px $black-transparent;
+
+  ::backdrop {
+    background-image: linear-gradient(45deg, $brown-1, $brown-5);
+  }
+
+  @media (max-width: 786px) {
+    min-width: 250px;
+  }
+}
+
+.modal-top-left-action {
+  display: flex;
+  justify-content: end;
+}
+
+.modal-action__close {
+  cursor: pointer;
+  height: 2rem;
+  width: 2rem;
+  border-radius: 2rem;
+  border: 1px solid $gray-2;
+  background-color: $white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    background-color: hsl(0, 0%, 90%);
+    border: 1px solid $gray-3;
+  }
+}

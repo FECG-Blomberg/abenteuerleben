@@ -1,112 +1,25 @@
-<%= stylesheet_link_tag "home", "data-turbo-track": "reload" %>
+<%= stylesheet_link_tag "home" %>
+<%= stylesheet_link_tag "message" %>
 
-<hgroup class="centered">
-  <h1>Abenteuer Leben e.V.</h1>
-  <h2>Sommercamps für Kinder und Teens</h2>
-</hgroup>
+<%= render 'common/header', show_text_title: true do %>
 
-<div class="nav">
-  <div class="background-mask"></div>
-  <nav class="container">
-    <ul>
-      <% if @helpers_open %>
-        <li>
-          <%= link_to new_helper_path, style: 'font-weight: bold; color: #967159; fill: #967159;' do %>
-            <%= forticon 'angle-right', height: 18 %></i>Mitarbeiteranmeldung
-          <% end %>
-        </li>
-      <% end %>
-      <% if participant_registrations_open %>
-        <li>
-          <a href="/kinderanmeldung", style="font-weight: bold; color: #967159"><%= forticon 'angle-right', height: 18 %></i>Kinderanmeldung</a>
-        </li>
-      <% end %>
-      <li>
-        <a href="#wer-wir-sind"><%= forticon 'angle-right', height: 18 %>Wer wir sind</a>
-      </li>
-      <li>
-        <a href="#was-wir-machen"><%= forticon 'angle-right', height: 18 %>Was wir machen</a>
-      </li>
-      <li>
-        <a href="#termine"><%= forticon 'angle-right', height: 18 %>Termine</a>
-      </li>
-      <li>
-        <a href="#kontakt"><%= forticon 'angle-right', height: 18 %>Kontakt</a>
-      </li>
-      <li>
-        <%= link_to downloads_path do %><%= forticon 'angle-right', height: 18 %>Downloads<% end %>
-      </li>
-      <li>
-        <a href="/pages/spenden"><%= forticon 'angle-right', height: 18 %>Spenden / Unterstützen</a>
-      </li>
-    </ul>
-  </nav>
-</div>
-
-<div class="about">
-  <div class="background-mask"></div>
-  <div class="container">
-    <article id="wer-wir-sind">
-      <div class="ico">
-        <%= forticon 'people-line', height: 32, style: 'fill: var(--gray-200)' %>
-      </div>
-      <h2>
-        Wer wir sind
-      </h2>
-      <p>
-        Wir sind eine Gruppe motivierter Christen, die biblische Werte und Prinzipien vertreten und diese gemeinsam mit der heranwachsenden Generation ausleben möchten.
-        <br>
-        Ein Team ehrenamtlicher Mitarbeiter macht es sich zur Aufgabe, zwei Wochen Ferienzeit zu einem interessanten und außergewöhnlichen Erlebnis zu gestalten!
-      </p>
-    </article>
-
-    <article id="was-wir-machen">
-      <div class="ico">
-        <%= forticon :briefcase, height: 32, style: 'fill: var(--gray-200)' %>
-      </div>
-      <h2 class="centered">Was wir machen</h2>
-      <p>
-        Unsere Camps bieten eine gute Möglichkeit, eine Woche lang zusammen zu sein, gute Gemeinschaft zu erleben, miteinander in der Bibel zu forschen, zu beten, Jesus Christus persönlich zu begegnen, persönliche Gespräche zu führen und neue Freunde kennenzulernen.
-        <br>
-        Auf den Sommercamps sollen junge Menschen die Möglichkeit haben, christlichen Glauben zu leben, zu vertiefen, bzw. diesen ganz neu kennenzulernen.
-      </p>
-    </article>
-  </div>
-</div>
-
-<div class="container">
-  <div id="termine" style="margin-top: var(--spacing-xl);">
-    <div class="ico centered">
-      <% if @events.length == 0 %>
-        <%= forticon 'calendar', height: 32, style: 'fill: var(--gray-200)' %>
-      <% else %>
-        <%= forticon 'calendar-day', height: 32, style: 'fill: var(--gray-200)' %>
-      <% end %>
-    </div>
-    <h2 class="centered">Termine</h2>
-    <div style="display: flex; flex-direction: column; align-items: start;">
-
-      <% if @events.length == 0 %>
-      <div class="termine--empty">
-        <span>
-          Derzeit stehen keine Termine an
-        </span>
-      </div>
-      <% end %>
-
-      <% @events.each do |event| %>
-        <%= render 'events/event', event: event %>
-      <% end %>
-    </div>
+  <div class="filler-one">
+    <div class="filler-one__white-top"></div>
+    <div class="filler-one__white-bottom"></div>
   </div>
 
-  <hr style="margin: var(--spacing-xl) 0;">
+<% end %>
 
-  <div id="kontakt" style="margin: 0 var(--spacing-sm);">
-    <div class="ico centered">
-        <%= forticon 'envelope', height: 32, style: 'fill: var(--gray-200)' %>
-    </div>
-    <h2 class="centered">Kontakt</h2>
-    <%= render 'messages/form', message: @message %>
+<p style="text-align: center; margin-bottom: 3rem;">wir sind im umbau</p>
+
+<div class="container contact" id="contact">
+  <div class="mb-24 contact-title">
+    <%= forticon :envelope, height: 32, class: 'contact-title__icon' %>
+
+    <h2 class="contact-title__text">
+      Kontakt
+    </h2>
   </div>
+
+  <%= render 'messages/form', message: @message %>
 </div>

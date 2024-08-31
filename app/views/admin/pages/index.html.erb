@@ -1,0 +1,15 @@
+<%= stylesheet_link_tag "page" %>
+
+<div class="container">
+  <%= render 'admin/back-to-dashboard' %>
+
+  <h1>Seiten</h1>
+
+  <div>
+    <% @pages.each do |page| %>
+      <p>
+        &gt; <%= link_to page.url, edit_admin_page_path(page) %>
+      </p>
+    <% end %>
+  </div>
+</div>

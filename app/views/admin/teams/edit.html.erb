@@ -1,0 +1,12 @@
+<%= stylesheet_link_tag "team" %>
+
+<div class="container">
+  <%= link_to "zurueck zu allen teams", admin_teams_path %>
+  <h1>Team <%= @team.name %></h1>
+
+  <%= render("form", team: @team, method: 'patch', url: admin_team_path(@team)) %>
+
+  <hr>
+
+  <%= render ButtonComponent.new("loeschen", classes: 'team-action__delete') %>
+</div>

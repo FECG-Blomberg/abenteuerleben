@@ -1,0 +1,40 @@
+@use 'vars/spacings';
+
+.admin-event-dates {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  @media(max-width: 768px) {
+    flex-direction: column;
+
+    .date-picker__pickers {
+      display: flex;
+    }
+
+    .date-picker__pickers > select:nth-child(2) {
+      flex-grow: 1;
+    }
+  }
+}
+
+.admin-event-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: spacings.$space-16;
+
+  @media(max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.admin-event {
+  box-shadow: 0 0 2px black;
+  background-color: white;
+  cursor: pointer;
+  padding: spacings.$space-8;
+}
+
+.admin-event:hover {
+  box-shadow: 0 0 4px black;
+}

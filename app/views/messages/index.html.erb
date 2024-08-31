@@ -1,17 +1,54 @@
-<%= link_to '< Admin Dashboard', admin_dashboard_path %>
+<%= stylesheet_link_tag "message" %>
 
-<h1>Messages</h1>
+<div class="container">
+  <p style="color: green"><%= notice %></p>
 
-<div id="messages">
-  <div class="message-preview">
+  <%= render 'admin/back-to-dashboard' %>
+
+  <h1>Messages - Adminbereich</h1>
+
+  <table style="width: 100%">
+    <thead>
+    <tr class="message-table__table-header">
+      <!-- todo: make the table abstract scss element to be able to reuse the style -->
+      <th>Gelesen</th>
+      <th>Name</th>
+      <th>Nachricht</th>
+      <th>...</th>
+    </tr>
+    </thead>
     <% @messages.each do |message| %>
-      <%= link_to message, class: class_names('message-preview__unread': !message.read) do %>
-        <span>
-          <%= "(#{l message.created_at})" %>
-        </span>
-        <%= "#{message.name}: #{message.desc_short}" %>
-      <% end %>
-      <br>
+      <tr class="admin-message">
+        <td><%= forticon :check, height: 16 if message.read %></td>
+        <td><%= message.name %></td>
+        <td><%= message.desc_short %></td>
+        <td><%= l message.created_at %></td>
+        <td>
+          <a class="message-show-link"
+             data-hx-get="<%= admin_message_path message %>"
+             data-hx-swap="innerHTML"
+             data-hx-target="#modal"
+             data-hx-on--after-request="document.querySelector('#modal > dialog').showModal()">
+            Anzeigen
+          </a>
+        </td>
+      </tr>
     <% end %>
-  </div>
+  </table>
+
+  <div id="modal"></div>
+
+  <%# <div id="messages"> %>
+  <%#   <div class="message-preview"> %>
+  <%#     <% @messages.each do |message| %1> %>
+  <%#       <%= link_to message, class: class_names('message-preview__unread': !message.read) do %1> %>
+  <%#         <span> %>
+  <%#           <%= "(#{l message.created_at})" %1> %>
+  <%#         </span> %>
+  <%#         <%= "#{message.name}: #{message.desc_short}" %1> %>
+  <%#       <% end %1> %>
+  <%#       <br> %>
+  <%#     <% end %1> %>
+  <%#   </div> %>
+  <%# </div> %>
 </div>

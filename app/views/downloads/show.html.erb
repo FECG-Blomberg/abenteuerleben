@@ -1,10 +1,14 @@
-<p style="color: green"><%= notice %></p>
+<dialog class="download-modal">
+  <%= render 'downloads/form', download: @download, form_path: admin_download_path(@download) %>
 
-<%= render @download %>
+  <form method="dialog">
+    <%= render IconButtonComponent.new icon: :x, text: 'Abbrechen', classes: "download-modal__close btn--plain"%>
+  </form>
+</dialog>
 
-<div>
-  <%= link_to "Download bearbeiten", edit_download_path(@download) %> |
-  <%= link_to "Zurück zu allen Downloads", downloads_admin_path %>
+<!--<div>-->
+<!--  <%#= link_to "Download bearbeiten", edit_download_path(@download) %> |-->
+  <%#= link_to "Zurück zu allen Downloads", downloads_admin_path %>
 
-  <%= render "formelements/delete_action", url: @download %>
-</div>
+  <%#= render "formelements/delete_action", url: @download %>
+<!--</div>-->

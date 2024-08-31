@@ -1,16 +1,55 @@
-<%= link_to '< Admin Dashboard', admin_dashboard_path %>
+<%= stylesheet_link_tag "download" %>
 
-<p style="color: green"><%= notice %></p>
+<div class="container">
+  <p style="color: green"><%= notice %></p>
 
-<h1>Downloads</h1>
+  <%= render 'admin/back-to-dashboard' %>
 
-<div id="downloads">
-  <% @downloads.each do |download| %>
-    <%= render download %>
-    <p>
-      <%= link_to "Download Anzeigen", download %>
-    </p>
-  <% end %>
+  <h1 class="mb-16">Downloads - Adminbereich</h1>
+
+  <div class="downloads-actions mb-16">
+    <!--left    -->
+    <div>
+      <!-- <%= render TextInputComponent.new 'suchen', 'searchterm', '', no_label: true, placeholder: 'suchbegriff...' %> -->
+    </div>
+
+    <!--right-->
+    <div>
+      <div data-hx-get="<%= admin_downloads_new_path %>"
+           data-hx-swap="innerHTML"
+           data-hx-target="#modal"
+           data-hx-on--after-request="document.querySelector('#modal > dialog').showModal()">
+         <%= render IconButtonComponent.new text: 'Neuen Download hinzufügen', icon: :plus, height: 16 %>
+      </div>
+    </div>
+  </div>
+
+  <table style="width: 100%">
+    <thead>
+    <tr class="download-table__table-header">
+      <th>Name</th>
+      <th>Geaender am</th>
+      <th>Erstellt am</th>
+      <th>...</th>
+    </tr>
+    </thead>
+    <% @downloads.each do |download| %>
+      <tr class="admin-download">
+        <td><%= download.name %></td>
+        <td><%= l download.updated_at %></td>
+        <td><%= l download.created_at %></td>
+        <td>
+          <a class="download-show-link"
+             data-hx-get="<%= admin_download_path download %>"
+             data-hx-swap="innerHTML"
+             data-hx-target="#modal"
+             data-hx-on--after-request="document.querySelector('#modal > dialog').showModal()">
+            Aendern
+          </a>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+
+  <div id="modal"></div>
 </div>
-
-<%= link_to "Neuer Download", new_download_path, class: '--bordered' %>

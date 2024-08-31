@@ -1,0 +1,7 @@
+<%= stylesheet_link_tag "team" %>
+
+<div class="container">
+  <h1>Team <%= @team.name %></h1>
+
+  <%= render("form", team: @team, method: 'patch', url: admin_team_path(@team)) %>
+</div>
