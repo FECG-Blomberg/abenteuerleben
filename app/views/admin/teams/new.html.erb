@@ -1,0 +1,7 @@
+<%= stylesheet_link_tag "team" %>
+
+<div class="container">
+  <h1>Neues Team anlegen</h1>
+
+  <%= render("form", team: @team, method: 'post', url: admin_teams_path) %>
+</div>

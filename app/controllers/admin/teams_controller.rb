@@ -1,4 +1,4 @@
-class TeamsController < ApplicationController
+class Admin::TeamsController < ApplicationController
   before_action :set_team, only: %i[ show edit update destroy ]
   before_action :admin_only, except: %i[ catalogue ]
 
@@ -9,6 +9,7 @@ class TeamsController < ApplicationController
 
   # GET /teams/1 or /teams/1.json
   def show
+    render :edit
   end
 
   # GET /teams/new
@@ -26,7 +27,7 @@ class TeamsController < ApplicationController
     @team = Team.new(team_params)
 
     if @team.save
-      redirect_to team_url(@team), notice: "Team erfolgreich erstellt."
+      redirect_to admin_team_url(@team), notice: "Team erfolgreich erstellt."
     else
       render :new, status: :unprocessable_entity
     end

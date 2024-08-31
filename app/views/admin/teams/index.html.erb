@@ -1,0 +1,37 @@
+<%= stylesheet_link_tag "team" %>
+
+<div class="container">
+  <%= render 'admin/back-to-dashboard' %>
+
+  <h1>Teams</h1>
+
+  <div class="teams-table-actions">
+    <div class="teams-table-actions__left">
+<!--      TODO: implement-->
+<!--      <button class="teams-table-actions__item-actions">-->
+        <%#= forticon "chevron-down", height: 18 %>
+<!--        <span>actions</span>-->
+<!--      </button>-->
+    </div>
+    <div class="teams-table-actions__right">
+      <%= link_to "Neues Team", new_admin_team_path %>
+    </div>
+  </div>
+
+  <table class="teams-table">
+    <tr>
+      <th>Name</th>
+      <th>Beschreibung</th>
+    </tr>
+    <% @teams.each do |team| %>
+      <tr>
+        <td>
+          <%= link_to team.name, admin_team_path(team), class: (team.enabled ? "teams-table-item__enabled" : "teams-table-item__disabled" )  %>
+        </td>
+        <td>
+          <%= team.description %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>

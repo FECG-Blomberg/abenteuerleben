@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   #   resources :camps, shallow: true
   # end
 
-  # resources :teams
   # get '/teams/catalogue/:id', to: 'teams#catalogue', as: 'teams_catalogue'
 
   ############################
@@ -61,6 +60,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :pages, except: [ :show ]
     resources :events, only: [ :index, :new, :create, :edit, :update, :destroy ]
+    resources :teams
   end
 
   resources :events, only: [ :index, :show ]
