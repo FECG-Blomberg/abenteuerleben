@@ -53,4 +53,12 @@ class Helper < ApplicationRecord
 
     errors.add :preferredCamp, 'Bitte ein bevorzugtes Camp bei mehr als eine Campanmeldung angeben'
   end
+
+  def self.from_year year
+    Helper
+      .joins(registrations: { camp: :campyear })
+      .where('campyears.year = ?', year)
+      .order(:surname)
+      .distinct
+  end
 end
