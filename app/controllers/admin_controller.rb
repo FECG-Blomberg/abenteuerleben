@@ -7,13 +7,13 @@ class AdminController < ApplicationController
     year = Campyear.active_camp.year
     @helper_count = Helper
                .joins(registrations: { camp: :campyear })
-               .where('campyears.year == ?', year)
+               .where('campyears.year = ?', year)
                .distinct
                .count
 
     @child_count = Child
                      .joins(camp: :campyear)
-                     .where('campyears.year == ?', year)
+                     .where('campyears.year = ?', year)
                      .distinct
                      .count
 
