@@ -9,14 +9,14 @@
   <div class="background-mask"></div>
   <nav class="container">
     <ul>
-      <% if @helpers_open %>
+      <% if @camp.helpers_open %>
         <li>
           <%= link_to new_helper_path, style: 'font-weight: bold; color: #967159; fill: #967159;' do %>
             <%= forticon 'angle-right', height: 18 %></i>Mitarbeiteranmeldung
           <% end %>
         </li>
       <% end %>
-      <% if participant_registrations_open %>
+      <% if @camp.participant_registrations_open %>
         <li>
           <a href="/kinderanmeldung", style="font-weight: bold; color: #967159"><%= forticon 'angle-right', height: 18 %></i>Kinderanmeldung</a>
         </li>

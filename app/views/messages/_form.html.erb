@@ -33,12 +33,14 @@
   </div>
   <% end %>
 
-  <div style="margin-top: 1rem;">
-    <%= hcaptcha_tags theme: :light, hl: 'de' %>
-    <script>
-    hcaptcha.render(document.querySelector('.h-captcha'))
-    </script>
-  </div>
+  <% if ENV['RAILS_ENV'] != 'development' %>
+    <div style="margin-top: 1rem;">
+      <%= hcaptcha_tags theme: :light, hl: 'de' %>
+      <script>
+          hcaptcha.render(document.querySelector('.h-captcha'))
+      </script>
+    </div>
+  <% end %>
 
   <div>
     <%= form.submit "Absenden" %>

@@ -2,7 +2,7 @@
   <%= render_breadcrumbs %>
 </div>
 
-<h1>Children#index</h1>
+<h1>Kinderanmeldungen</h1>
 
 <%= form_with url: children_path, method: :get do |form| %>
   <label for="year">Campjahr</label>
@@ -28,9 +28,38 @@
 
 <br>
 
-<ul>
-    <% @children.each do |c| %>
-        <%= link_to (c.surname + ', ' + c.forename), child_path(c) %>
-        <li></li>
-    <% end %>
-</ul>
+<style>
+  .child-table {
+      border-collapse: collapse;
+      width: 100%;
+  }
+
+  .child-table tr,
+  .child-table td,
+  .child-table th {
+      border: 1px solid black;
+  }
+
+  .child-table td,
+  .child-table th {
+      padding: 0 .5rem;
+  }
+</style>
+<table class="child-table">
+  <tr>
+    <th>Link</th>
+    <th>Nachname</th>
+    <th>Vorname</th>
+    <th>Elternname</th>
+    <th>Jahrgang</th>
+  </tr>
+  <% @children.each do |c| %>
+  <tr>
+    <td><a href="<%= child_path c %>"><%= forticon :link, height: 16 %></a></td>
+    <td><%= c.surname %></td>
+    <td><%= c.forename %></td>
+    <td><%= c.parent.forename %></td>
+    <td><%= c.birthday.year %></td>
+  </tr>
+  <% end %>
+</table>

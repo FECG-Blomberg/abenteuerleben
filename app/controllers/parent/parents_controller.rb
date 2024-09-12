@@ -114,7 +114,7 @@ module Parent
     end
 
     def set_active_campyear
-      @campyear = helpers.get_active_campyear
+      @campyear = Campyear.active_camp
     end
 
     def reset_session

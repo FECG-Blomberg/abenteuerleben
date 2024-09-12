@@ -31,4 +31,28 @@ class Campyear < ApplicationRecord
   def max_child_year
     camps.map{|c| c.participants_year_end}.max
   end
+
+  def helpers_open
+    return false if helper_register_start == nil || helper_register_end == nil
+
+    DateTime.now > helper_register_start && DateTime.now < helper_register_end
+  end
+
+  def participants_open
+    return false if participants_register_start == nil || participants_register_end == nil
+
+    DateTime.now > participants_register_start && DateTime.now < participants_register_end
+  end
+
+  def participant_registrations_open
+    return false if members_only_start == nil || participants_register_start == nil
+
+    bigger_than_start = DateTime.now >= members_only_start || DateTime.now >= participants_register_start
+    smaller_than_end = DateTime.now <= participants_register_end
+    bigger_than_start && smaller_than_end
+  end
+
+  def self.active_camp
+    Campyear.last || Campyear.new
+  end
 end

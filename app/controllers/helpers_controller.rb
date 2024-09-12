@@ -8,7 +8,7 @@ class HelpersController < ApplicationController # rubocop:disable Metrics/ClassL
   add_breadcrumb 'Mitarbeiter', :helpers_path
 
   def index
-    @year = params[:year].to_i != 0 ? params[:year].to_i : helpers.get_active_campyear.year
+    @year = params[:year].to_i != 0 ? params[:year].to_i : Campyear.active_camp.year
 
     @helpers = Helper
                .joins(registrations: { camp: :campyear })
@@ -83,7 +83,7 @@ class HelpersController < ApplicationController # rubocop:disable Metrics/ClassL
   end
 
   def excelify
-    active_campyear = helpers.get_active_campyear
+    active_campyear = Campyear.active_camp
     @helpers = Helper.select('*').joins(registrations: [{ camp: :campyear }]).where('campyears.id' => active_campyear.id)
 
     respond_to do |format|
@@ -104,7 +104,7 @@ class HelpersController < ApplicationController # rubocop:disable Metrics/ClassL
   end
 
   def set_active_camps
-    @camps = helpers.get_active_campyear.camps
+    @camps = Campyear.active_camp.camps
   end
 
   # Only allow a list of trusted parameters through.

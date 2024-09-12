@@ -1,13 +1,6 @@
 class HomeController < ApplicationController
   def index
-    campyear = helpers.get_active_campyear
-    @helpers_open =
-      DateTime.now > campyear.helper_register_start &&
-      DateTime.now < campyear.helper_register_end
-
-    @participants_open =
-      DateTime.now > campyear.participants_register_start &&
-      DateTime.now < campyear.participants_register_end
+    @camp = Campyear.active_camp
 
     @events = Event
               .where(['start_date >= ? OR end_date >= ?', Time.zone.today, Time.zone.today])

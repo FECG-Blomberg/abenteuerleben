@@ -6,64 +6,64 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-Event.create!([
-                {
-                  title: 'testtermin',
-                  description: 'this is the description of the testtermin',
-                  start_date: '2023-12-31',
-                  link: ''
-                },
-                {
-                  title: 'testtermin 2 with a longer title than it should actually be',
-                  description: 'this is the description of the testtermin which is actuall als on the a little bit longer side',
-                  start_date: '2023-12-31'
-                }
-              ])
-
-Page.create!([
-               {
-                 url: 'datenschutz',
-                 content: ''
-               },
-               {
-                 url: 'impressum',
-                 content: ''
-               },
-               {
-                 url: 'mitarbeiter_haftungsausschluss',
-                 content: ''
-               },
-               {
-                 url: 'stornierungsregeln',
-                 content: ''
-               },
-               {
-                 url: 'mitarbeiter_wichtige-infos',
-                 content: ''
-               },
-               {
-                 url: 'eltern_wichtige-informationen',
-                 content: ''
-               },
-               {
-                 url: 'eltern_haftungsausschluss',
-                 content: ''
-               }
-             ])
-
 User.create!([{
-               name: 'admin',
-               password_hash: 'admin',
-               email: '',
-               level: 0b111
-             }, {
-               name: 'moderator',
-               password_hash: 'moderator',
-               email: '',
-               level: 0b001
-             }])
+                name: 'admin',
+                password_hash: 'admin',
+                email: '',
+                level: 0b111
+              }, {
+                name: 'moderator',
+                password_hash: 'moderator',
+                email: '',
+                level: 0b001
+              }])
 
-p "Created #{User.count} users"
+# Event.create!([
+#                 {
+#                   title: 'testtermin',
+#                   description: 'this is the description of the testtermin',
+#                   start_date: '2023-12-31',
+#                   link: ''
+#                 },
+#                 {
+#                   title: 'testtermin 2 with a longer title than it should actually be',
+#                   description: 'this is the description of the testtermin which is actuall als on the a little bit longer side',
+#                   start_date: '2023-12-31'
+#                 }
+#               ])
+
+# Page.create!([
+#                {
+#                  url: 'datenschutz',
+#                  content: ''
+#                },
+#                {
+#                  url: 'impressum',
+#                  content: ''
+#                },
+#                {
+#                  url: 'mitarbeiter_haftungsausschluss',
+#                  content: ''
+#                },
+#                {
+#                  url: 'stornierungsregeln',
+#                  content: ''
+#                },
+#                {
+#                  url: 'mitarbeiter_wichtige-infos',
+#                  content: ''
+#                },
+#                {
+#                  url: 'eltern_wichtige-informationen',
+#                  content: ''
+#                },
+#                {
+#                  url: 'eltern_haftungsausschluss',
+#                  content: ''
+#                }
+#              ])
+
+# p "Created #{User.count} users"
 
 Campyear.create!([{
                    year: 2024,
@@ -96,9 +96,9 @@ Campyear.create!([{
                    ]
                  }])
 
-p "Created #{Campyear.count} campyears"
-p "Created #{Camp.count} camps"
-
+# p "Created #{Campyear.count} campyears"
+# p "Created #{Camp.count} camps"
+#
 Team.create!([
                {
                  name: 'Handwerker',
@@ -127,33 +127,33 @@ Team.create!([
                }
              ])
 
-p "Created #{Team.count} teams"
-
-h = Helper.new({
-                 surname: 'musterman',
-                 forename: 'max',
-                 birthday: '2000-01-01',
-                 birthplace: 'maxstadt',
-                 telephone: '01234',
-                 email: 'my@mail.com',
-
-                 streethouse: 'Industrystreet 14a',
-                 postcity: '32825 Megacity',
-
-                 story: 'this and that',
-                 duty: 'programmer',
-
-                 registrations: [
-                   Registration.new(
-                     camp: Camp.first,
-                     wish_first: 'Sportler',
-                     wish_second: 'Sonstige',
-                     participate: true
-                   )
-                 ]
-               })
-h.photo.attach(io: Tempfile.new('dis is an image.png'), filename: 'img.png')
-h.save
-
-p "Created #{Helper.count} helpers"
-p "Created #{Registration.count} registrations"
+# p "Created #{Team.count} teams"
+#
+# h = Helper.new({
+#                  surname: 'musterman',
+#                  forename: 'max',
+#                  birthday: '2000-01-01',
+#                  birthplace: 'maxstadt',
+#                  telephone: '01234',
+#                  email: 'my@mail.com',
+#
+#                  streethouse: 'Industrystreet 14a',
+#                  postcity: '32825 Megacity',
+#
+#                  story: 'this and that',
+#                  duty: 'programmer',
+#
+#                  registrations: [
+#                    Registration.new(
+#                      camp: Camp.first,
+#                      wish_first: 'Sportler',
+#                      wish_second: 'Sonstige',
+#                      participate: true
+#                    )
+#                  ]
+#                })
+# h.photo.attach(io: Tempfile.new('dis is an image.png'), filename: 'img.png')
+# h.save
+#
+# p "Created #{Helper.count} helpers"
+# p "Created #{Registration.count} registrations"

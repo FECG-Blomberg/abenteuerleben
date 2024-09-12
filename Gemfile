@@ -1,8 +1,6 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.3.0'
-
 gem 'rails', '~> 7.1'
 gem 'bootsnap', require: false
 gem 'breadcrumbs_on_rails'
@@ -12,23 +10,25 @@ gem 'forticons'
 gem 'forticons_helper'
 gem 'image_processing'
 gem 'importmap-rails'
-gem 'pg'
+gem 'pg', '1.5.8'
 gem 'puma'
 gem 'sassc-rails'
 gem 'sprockets-rails'
 gem 'stimulus-rails'
 gem 'turbo-rails'
 gem 'tzinfo-data'
+gem "hcaptcha", "~> 7.1" # todo: migrate to friendlycaptcha
 
 # development
-gem "redis", group: [ :development ]
-gem 'web-console', group: [ :development ]
-gem 'hotwire-livereload', group: [ :development ]
-gem "rubocop-rails-omakase", require: false, group: [ :development ]
+group :development do
+  gem 'sqlite3'
+  gem 'redis'
+  gem 'web-console'
+  gem 'hotwire-livereload'
+  gem 'rubocop-rails-omakase', require: false
+  gem 'capybara'
+  gem 'selenium-webdriver' # todo: migrate to cuprite
 
-# development + test
-gem 'sqlite3', group: [ :development, :test ]
-gem 'capybara', group: [ :development, :test ]
-gem 'selenium-webdriver', group: [ :development, :test ]
-
-gem "hcaptcha", "~> 7.1"
+  # windows specific
+  gem 'wdm', '>= 0.1.0' if Gem.win_platform?
+end

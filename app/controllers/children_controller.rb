@@ -1,7 +1,6 @@
 class ChildrenController < ApplicationController
   before_action :admin_only, except: %i[index new create]
-  before_action :set_active_campyear, only: %i[new create edit update]
-  before_action :set_camps, only: %i[new create edit update]
+  before_action :set_active_camp, only: %i[new create edit update]
   before_action :set_child_and_parent, only: %i[show edit update destroy]
   before_action :set_child_num, only: %i[new create]
 
@@ -9,7 +8,7 @@ class ChildrenController < ApplicationController
   add_breadcrumb 'Kinder', :children_path
 
   def index
-    @year = (params[:year] || helpers.get_active_campyear.year).to_i
+    @year = (params[:year] || Campyear.active_camp.year).to_i
     @campyears = Campyear.all.order(year: :desc).map(&:year)
     @children = Child.from_year @year
   end
@@ -81,8 +80,7 @@ class ChildrenController < ApplicationController
   end
 
   def excelify
-    active_campyear = helpers.get_active_campyear
-    @children = Child.select('*').joins(camp: :campyear).where('campyears.id' => active_campyear.id)
+    @children = Child.select('*').joins(camp: :campyear).where('campyears.id' => Campyear.active_camp.id)
 
     respond_to do |format|
       format.xlsx
@@ -112,11 +110,8 @@ class ChildrenController < ApplicationController
     @parent = @child.parent
   end
 
-  def set_active_campyear
-    @campyear = helpers.get_active_campyear
-  end
-
-  def set_camps
+  def set_active_camp
+    @campyear = Campyear.active_camp
     @camps = @campyear.camps
   end
 
