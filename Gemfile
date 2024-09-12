@@ -19,9 +19,6 @@ gem 'turbo-rails'
 gem 'tzinfo-data'
 gem "hcaptcha", "~> 7.1" # todo: migrate to friendlycaptcha
 
-# windows specific
-gem 'wdm', '>= 0.1.0' if Gem.win_platform?
-
 # development
 group :development do
   gem 'sqlite3'
@@ -31,4 +28,7 @@ group :development do
   gem 'rubocop-rails-omakase', require: false
   gem 'capybara'
   gem 'selenium-webdriver' # todo: migrate to cuprite
+
+  # windows specific
+  gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 end
