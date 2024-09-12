@@ -5,19 +5,9 @@ class AdminController < ApplicationController
     @unread_messages = Message.where(read: nil).or(Message.where(read: false)).count
 
     year = Campyear.active_camp.year
-    @helper_count = Helper
-               .joins(registrations: { camp: :campyear })
-               .where('campyears.year = ?', year)
-               .distinct
-               .count
+    @helper_count = Helper.from_year(year).count
 
-    @child_count = Child
-                     .joins(camp: :campyear)
-                     .where('campyears.year = ?', year)
-                     .distinct
-                     .count
-
-    @child_count = Child.all.count
+    @child_count = Child.from_year(year).count
   end
 
   def dev; end
