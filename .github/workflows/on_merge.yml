@@ -19,9 +19,16 @@ jobs:
       overwrite: true
     secrets: inherit
 
+  production-delay:
+    runs-on: ubuntu-latest
+    needs: deploy-staging
+    steps:
+      - name: Delay deploy to production for cancelling possibility
+        run: sleep 5m
+
   deploy-production:
     uses: FECG-Blomberg/abenteuerleben/.github/workflows/deploy.yml@master
-    needs: deploy-staging
+    needs: production-delay
     with:
       application: aleben
     secrets: inherit
