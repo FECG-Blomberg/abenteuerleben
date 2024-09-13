@@ -1,0 +1,20 @@
+<%# locals: (object:, method:, value:, label:, icon:, placeholder: nil, error: '', type: :text) %>
+
+<%= label object, method, class: 'input-1-0-0', data: {error: error.present?}, onchange: 'this.dataset.error=false' do %>
+  <span class="input-1-0-0__label"><%= label %></span>
+  <div class="input-1-0-0__input-area">
+    <div class="input-1-0-0__icon-holder">
+      <%= forticon icon %>
+    </div>
+
+    <% unless type == :textarea %>
+      <%= text_field_tag "#{object}[#{method}]", value, placeholder: placeholder, type: type %>
+    <% else %>
+      <%= text_area_tag "#{object}[#{method}]", value, placeholder: placeholder %>
+    <% end %>
+  </div>
+
+  <% if error.present? %>
+    <span class="input-1-0-0__error"><%= error %></span>
+  <% end %>
+<% end %>

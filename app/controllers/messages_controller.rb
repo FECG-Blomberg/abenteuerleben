@@ -15,7 +15,10 @@ class MessagesController < ApplicationController
 
   # GET /messages/new
   def new
+    # this route should not exist?
     @message = Message.new
+
+    render :'messages/new', layout: nil
   end
 
   # GET /messages/1/edit
@@ -26,13 +29,22 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
 
-    if verify_hcaptcha(model: @message) && @message.save
-      redirect_to(root_path, notice: "Nachricht erfolgreich abgeschickt.")
+    unless ENV['RAILS_ENV'] == 'development' || ENV['RAILS_ENV'] == 'test'
+      unless verify_hcaptcha(model: @message)
+        @message.validate
+        render 'messages/new', layout: nil
+        return
+      end
+    end
+
+    if @message.save
+      render plain: '<p style="text-align: center; color: green; border: 1px solid green; padding: 4px;">Erfolgreich abgeschickt</p>'
     else
       flash[:message] = @message
       flash[:notice] = 'Fehler beim abschicken der Nachricht. Bitte erneut versuchen.'
       flash[:error] = true
-      redirect_to(root_path)
+
+      render 'messages/new', layout: nil
     end
   end
 

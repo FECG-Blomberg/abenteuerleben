@@ -20,3 +20,4 @@ pin "prosemirror-view" # @1.32.7
 pin "rope-sequence" # @1.3.4
 pin "w3c-keyname" # @2.2.8
 pin "sweetalert2" # @11.10.5
+pin "htmx.org" # @2.0.1

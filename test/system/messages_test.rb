@@ -1,47 +1,18 @@
 require "application_system_test_case"
 
 class MessagesTest < ApplicationSystemTestCase
-  # setup do
-  #   @message = messages(:one)
-  # end
+  test 'creating message works' do
+    visit root_url
 
-  # test "visiting the index" do
-  #   visit messages_url
-  #   assert_selector "h1", text: "Messages"
-  # end
+    fill_in "Name *", with: "It's me"
+    fill_in "Email *", with: 'me@example.com'
+    fill_in 'Nachricht *', with: 'This is but a test message'
 
-  # test "should create message" do
-  #   visit messages_url
-  #   click_on "New message"
+    click_on 'Absenden'
 
-  #   fill_in "Email", with: @message.email
-  #   fill_in "Message", with: @message.message
-  #   fill_in "Name", with: @message.name
-  #   check "Read" if @message.read
-  #   click_on "Create Message"
+    assert_content "Erfolgreich abgeschickt"
 
-  #   assert_text "Message was successfully created"
-  #   click_on "Back"
-  # end
-
-  # test "should update Message" do
-  #   visit message_url(@message)
-  #   click_on "Edit this message", match: :first
-
-  #   fill_in "Email", with: @message.email
-  #   fill_in "Message", with: @message.message
-  #   fill_in "Name", with: @message.name
-  #   check "Read" if @message.read
-  #   click_on "Update Message"
-
-  #   assert_text "Message was successfully updated"
-  #   click_on "Back"
-  # end
-
-  # test "should destroy Message" do
-  #   visit message_url(@message)
-  #   click_on "Destroy this message", match: :first
-
-  #   assert_text "Message was successfully destroyed"
-  # end
+    msg = Message.last
+    assert_equal 'me@example.com', msg.email
+  end
 end

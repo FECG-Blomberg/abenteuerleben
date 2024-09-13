@@ -1,0 +1,12 @@
+<%# locals: (text:, icon: nil, icon_pos: :right, color: 'blue') %>
+<button type="submit" class="btn-1-0-0 <%= color %>">
+  <% if !!icon && icon_pos == :left %>
+    <%= forticon icon %>
+  <% end %>
+
+  <span><%= text %></span>
+
+  <% if !!icon && icon_pos == :right %>
+    <%= forticon icon %>
+  <% end %>
+</button>

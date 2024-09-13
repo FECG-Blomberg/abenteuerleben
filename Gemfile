@@ -28,7 +28,4 @@ group :development do
   gem 'rubocop-rails-omakase', require: false
   gem 'capybara'
   gem 'selenium-webdriver' # todo: migrate to cuprite
-
-  # windows specific
-  gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 end
