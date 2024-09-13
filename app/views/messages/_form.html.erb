@@ -33,7 +33,7 @@
              type: :textarea,
              error: message.errors['message'].first) %>
 
-  <% if ENV['RAILS_ENV'] != 'development' %>
+  <% unless ENV['RAILS_ENV'] == 'development' || ENV['RAILS_ENV'] == 'test' %>
     <div style="margin-top: 1rem;">
       <%= hcaptcha_tags theme: :light, hl: 'de' %>
       <script>

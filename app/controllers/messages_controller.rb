@@ -29,8 +29,15 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
 
-    if (ENV['RAILS_ENV'] == 'development' || verify_hcaptcha(model: @message)) && @message.save
+    unless ENV['RAILS_ENV'] == 'development' || ENV['RAILS_ENV'] == 'test'
+      unless verify_hcaptcha(model: @message)
+        @message.validate
+        render 'messages/new', layout: nil
+        return
+      end
+    end
 
+    if @message.save
       render plain: '<p style="text-align: center; color: green; border: 1px solid green; padding: 4px;">Erfolgreich abgeschickt</p>'
     else
       flash[:message] = @message
