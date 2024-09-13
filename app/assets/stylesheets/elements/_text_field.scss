@@ -1,0 +1,85 @@
+.input-1-0-0 {
+
+  display: block;
+  margin-bottom: 16px;
+
+  $input_height: 40px;
+  $input_height_textarea: 160px;
+
+  .input-1-0-0__label {
+    font-size: 16px;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .input-1-0-0__error {
+    color: var(--red-200);
+    display: none;
+    font-size: 16px;
+  }
+
+  .input-1-0-0__input-area {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: $input_height;
+    border: 1px solid var(--gray-500);
+    border-radius: 4px;
+    overflow: hidden;
+
+    &:has(textarea) {
+      height: $input_height_textarea;
+
+      .input-1-0-0__icon-holder {
+        height: $input_height_textarea;
+      }
+    }
+
+    input {
+      height: 100%;
+      border: none;
+      border-radius: 0;
+      width: auto;
+      font-size: 16px;
+      padding: 0 8px;
+      flex-grow: 1;
+      color: var(--black);
+    }
+
+    textarea {
+      @extend input;
+
+      padding: 8px;
+      resize: none;
+    }
+  }
+
+  .input-1-0-0__icon-holder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: $input_height;
+    width: $input_height;
+    background-color: var(--gray-500);
+
+    svg {
+      color: var(--gray-200);
+      height: 16px;
+    }
+  }
+
+  &[data-error='true'] {
+    .input-1-0-0__error {
+      display: block;
+    }
+
+    .input-1-0-0__input-area {
+      border-color: var(--red-200);
+    }
+
+    .input-1-0-0__icon-holder {
+      background-color: var(--red-400);
+    }
+  }
+}

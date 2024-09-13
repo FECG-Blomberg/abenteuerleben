@@ -76,14 +76,12 @@
 
 <div class="container">
   <div id="termine" style="margin-top: var(--spacing-xl);">
-    <div class="ico centered">
-      <% if @events.length == 0 %>
-        <%= forticon 'calendar', height: 32, style: 'fill: var(--gray-200)' %>
-      <% else %>
-        <%= forticon 'calendar-day', height: 32, style: 'fill: var(--gray-200)' %>
-      <% end %>
-    </div>
-    <h2 class="centered">Termine</h2>
+    <% if @events.length == 0 %>
+      <%= render'home/section-title', title: 'Termine', icon: :calendar %>
+    <% else %>
+      <%= render'home/section-title', title: 'Termine', icon: 'calendar-day' %>
+    <% end %>
+
     <div style="display: flex; flex-direction: column; align-items: start;">
 
       <% if @events.length == 0 %>
@@ -103,10 +101,7 @@
   <hr style="margin: var(--spacing-xl) 0;">
 
   <div id="kontakt" style="margin: 0 var(--spacing-sm);">
-    <div class="ico centered">
-        <%= forticon 'envelope', height: 32, style: 'fill: var(--gray-200)' %>
-    </div>
-    <h2 class="centered">Kontakt</h2>
+    <%= render'home/section-title', title: 'Kontakt', icon: :envelope %>
     <%= render 'messages/form', message: @message %>
   </div>
 </div>

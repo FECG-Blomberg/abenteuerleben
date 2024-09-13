@@ -1,48 +1,37 @@
-<%= form_with(model: message) do |form| %>
-  <% if message.errors.any? || message.errored %>
-    <div style="color: red">
-      <p style="color: red">Fehler beim abschicken der Nachricht. Bitte erneut versuchen.</p>
+<%# locals: (message:) %>
 
-      <ul>
-        <% message.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<form data-hx-post="<%= messages_path %>" data-turbo="false">
+  <%= method_tag(:post) %>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name, required: true %>
-  </div>
+  <%= render('components/text_field',
+             object: 'message',
+             method: :name,
+             value: message.name,
+             label: "Name *",
+             icon: 'address-card',
+             placeholder: "Name",
+             error: message.errors['name'].first) %>
 
-  <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.email_field :email, required: true %>
-  </div>
+  <%= render('components/text_field',
+             object: :message,
+             method: :email,
+             value: message.email,
+             label: "Email *",
+             icon: :envelope,
+             placeholder: "Email",
+             type: :email,
+             error: message.errors['email'].first) %>
 
-  <div>
-    <%= form.label "Nachricht", style: "display: block" %>
-    <%= form.text_area :message, rows: 5, required: true %>
-  </div>
+  <%= render('components/text_field',
+             object: :message,
+             method: :message,
+             value: message.message,
+             label: "Nachricht *",
+             icon: :message,
+             placeholder: "Nachricht",
+             type: :textarea,
+             error: message.errors['message'].first) %>
 
-  <% if @message.id %>
-  <div>
-    <%= form.label :read, style: "display: block" %>
-    <%= form.check_box :read %>
-  </div>
-  <% end %>
-
-  <% if ENV['RAILS_ENV'] != 'development' %>
-    <div style="margin-top: 1rem;">
-      <%= hcaptcha_tags theme: :light, hl: 'de' %>
-      <script>
-          hcaptcha.render(document.querySelector('.h-captcha'))
-      </script>
-    </div>
-  <% end %>
-
-  <div>
-    <%= form.submit "Absenden" %>
-  </div>
-<% end %>
+  <%= render 'components/button', text: 'Absenden', icon: 'arrow-right' %>
+</form>

@@ -1,6 +1,6 @@
 @import '../mixins/*';
 
-button,
+button:not(.btn-1-0-0),
 input[type="submit"] {
   @include bordered;
 
@@ -80,4 +80,38 @@ input[type="submit"] {
 
 .button-passive {
   background-color: var(--gray-400) !important;
+}
+
+.btn-1-0-0 {
+  width: 100%;
+  border: none;
+  margin: 0;
+  display: flex;
+  padding: .8rem 1.2rem;
+  color: white;
+  cursor: pointer;
+
+  svg {
+    height: 16px;
+    width: auto;
+  }
+
+  &.blue {
+    background-color: var(--blue-200);
+
+    &:hover, &:focus {
+      background-color: var(--blue-100);
+    }
+  }
+
+  &:has(:nth-child(2)) {
+    span {
+      flex-grow: 1;
+    }
+    justify-content: space-between;
+  }
+
+  &:not(:has(:nth-child(2))) {
+    justify-content: space-around;
+  }
 }

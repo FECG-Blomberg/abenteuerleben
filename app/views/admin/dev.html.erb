@@ -1,7 +1,7 @@
 <hgroup>
-<h1>Developer space</h1>
-<p>Showcase of various design elements</p1>
-<hgroup>
+  <h1>Developer space</h1>
+  <p>Showcase of various design elements</p>
+</hgroup>
 
 <br>
 
@@ -11,7 +11,7 @@
   <% 1.upto(6).each do |i| %>
   <h<%= i %>>h<%= i %> - Text</h<%= i %>>
   <% end %>
-<div>
+</div>
 
 
 <h2>Colors</h2>
@@ -33,7 +33,6 @@
 </div>
 
 <br>
-<br>
 <h2>Design elements</h2>
 
 <br>
@@ -50,21 +49,52 @@
   <p>which are card like and have a nice background shadow effekt</p>
 </article>
 
-<turbo-frame id='radio-groups'>
-  <h3>Radio Groups</h3>
-  <form action="" method="get">
-    <div class="radio-group">
-      <label class="radio-group__button">
-        <input class="radio-group__input" type=radio name=rtest value=r1 checked onclick="this.closest('form').requestSubmit()">
-        <span class=radio-group__label>b1</span>
-      </label>
+<h3>Radio Groups</h3>
+<form action="" method="get">
+  <div class="radio-group">
+    <label class="radio-group__button">
+      <input class="radio-group__input" type=radio name=rtest value=r1 checked onclick="this.closest('form').requestSubmit()">
+      <span class=radio-group__label>b1</span>
+    </label>
 
 
-      <label class="radio-group__button">
-        <input class="radio-group__input" type=radio name=rtest value=r2 onclick="this.closest('form').requestSubmit()">
-        <span class=radio-group__label>b2</span>
-      </label>
-    </div>
-  </form>
-</turbo-frame id='radio-groups'>
+    <label class="radio-group__button">
+      <input class="radio-group__input" type=radio name=rtest value=r2 onclick="this.closest('form').requestSubmit()">
+      <span class=radio-group__label>b2</span>
+    </label>
+  </div>
+</form>
 
+<br>
+<div>
+  <h3>Buttons</h3>
+
+  <%= render 'components/button', text: 'Sample' %>
+  <%= render 'components/button', text: 'Sample', icon: 'arrow-right' %>
+  <%= render 'components/button', text: 'Sample', icon: 'arrow-left', icon_pos: :left %>
+</div>
+
+<br>
+<div>
+  <h3>Inputs</h3>
+
+  <%= render('components/text_field',
+             object: :dev,
+             method: :one,
+             value: '',
+             label: "Email *",
+             icon: :envelope,
+             placeholder: "One",
+             type: :email,
+             error: 'email wrong') %>
+
+  <%= render('components/text_field',
+             object: :dev,
+             method: :two,
+             value: 'this is the value',
+             label: "Nachricht *",
+             icon: :message,
+             placeholder: "Two",
+             type: :textarea,
+             error: 'too long message') %>
+</div>
