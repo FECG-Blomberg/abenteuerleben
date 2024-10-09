@@ -41,7 +41,7 @@ jobs:
         run: |
           echo '${{ steps.setup-chrome.outputs.chrome-path }}'
           export BROWSER_PATH='${{ steps.setup-chrome.outputs.chrome-path }}'
-          echo BROWSER_PATH=$BROWSER_PATHn
+          echo BROWSER_PATH=$BROWSER_PATH
       # Add or replace dependency steps here
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@v1
