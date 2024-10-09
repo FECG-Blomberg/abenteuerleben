@@ -35,8 +35,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - uses: browser-actions/setup-chrome@v1
-        id: setup-chrome
+      - name: Setup Chrome
+        uses: browser-actions/setup-chrome@latest
+        with:
+          chrome-version: stable
       - name: Set Chrome path
         run: |
           echo '${{ steps.setup-chrome.outputs.chrome-path }}'
