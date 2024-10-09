@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-gem 'rails', '~> 7.1'
+gem 'rails', '~> 7.2'
 gem 'bootsnap', require: false
 gem 'breadcrumbs_on_rails'
 gem 'caxlsx', '~> 4.0'

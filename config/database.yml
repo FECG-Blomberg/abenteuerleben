@@ -3,11 +3,11 @@ default: &default
 
 development:
   <<: *default
-  database: db/dev.sqlite3
+  database: storage/dev.sqlite3
 
 test:
   <<: *default
-  database: db/test.sqlite3
+  database: storage/test.sqlite3
 
 production:
   <<: *default
