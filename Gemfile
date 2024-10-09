@@ -22,10 +22,8 @@ gem "hcaptcha", "~> 7.1" # todo: migrate to friendlycaptcha
 # development
 group :development do
   gem 'sqlite3'
-  gem 'redis'
   gem 'web-console'
-  gem 'hotwire-livereload'
   gem 'rubocop-rails-omakase', require: false
   gem 'capybara'
-  gem 'selenium-webdriver' # todo: migrate to cuprite
+  gem 'cuprite'
 end
