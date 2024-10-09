@@ -74,6 +74,43 @@ class HelpersTest < ApplicationSystemTestCase
     assert_text "Teamwunsch eins und zwei dürfen nicht das gleiche Team sein"
   end
 
+  test "should hide and unhide preferred camp input box" do
+    visit new_helper_url
+
+    # not shown yet
+    check 'helper_registrations_attributes_0_participate'
+    assert_no_select 'helper_preferredCamp'
+
+    # now it's shown
+    check 'helper_registrations_attributes_1_participate'
+    assert_select 'helper_preferredCamp'
+
+    # now it's hidden again
+    uncheck 'helper_registrations_attributes_1_participate'
+    assert_no_select 'helper_preferredCamp'
+
+    # show it again
+    check 'helper_registrations_attributes_1_participate'
+    assert_select 'helper_preferredCamp'
+
+    # click on register without selecting anything
+    check "helper_liability_exclusion"
+    click_on "Als gelesen markieren"
+    check "helper_important_information"
+    click_on "Als gelesen markieren"
+    click_on "Verbindlich und zahlungspflichtig anmelden"
+
+    # check that error message says it has to be filled
+    assert_text 'Bitte ein bevorzugtes Camp bei mehr als einer Campanmeldung angeben'
+
+    # fill in answer ans resubmit
+    select 'Camp 2', from: 'helper_preferredCamp'
+    click_on "Verbindlich und zahlungspflichtig anmelden"
+
+    # check that error message is gone now
+    assert_no_text 'Bitte ein bevorzugtes Camp bei mehr als einer Campanmeldung angeben'
+  end
+
   test "should create Helper" do
     visit new_helper_url
 
@@ -106,10 +143,4 @@ class HelpersTest < ApplicationSystemTestCase
 
     assert_text 'Erfolgreich als Mitarbeiter angemeldet.'
   end
-
-  # test 'should create helper with self assigned team'
-  # end
-
-  # test 'should edit helper'
-  # end
 end

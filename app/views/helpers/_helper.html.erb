@@ -1,66 +1,60 @@
-<div id="<%= dom_id helper %>">
-  <h2>Mitarbeiter infos</h2>
-  <p>
-    <strong>Nachname:</strong>
-    <%= helper.surname %>
-  </p>
+<style>
+  .helper-info-table {
+      width: 100%;
+      margin-bottom: 16px;
+  }
+  .helper-info-table th {
+      text-align: left;
+      padding-right: 8px;
+  }
 
-  <p>
-    <strong>Vorname:</strong>
-    <%= helper.forename %>
-  </p>
-
-  <p>
-    <strong>Geburtstag:</strong>
-    <%= helper.birthday %>
-  </p>
-
-  <p>
-    <strong>Geburtsort:</strong>
-    <%= helper.birthplace %>
-  </p>
-
-  <p>
-    <strong>Telefonnummer:</strong>
-    <%= helper.telephone %>
-  </p>
-
-  <p>
-    <strong>Email:</strong>
-    <%= helper.email %>
-  </p>
-
-  <p>
-    <strong>Straße und Hausnummer:</strong>
-    <%= helper.streethouse %>
-  </p>
-
-  <p>
-    <strong>PLZ Ort:</strong>
-    <%= helper.postcity %>
-  </p>
-
-  <p>
-    <strong>Deine Geschichte:</strong>
-    <%= helper.story %>
-  </p>
-
-  <p>
-    <strong>Dienst:</strong>
-    <%= helper.duty %>
-  </p>
-
-  <br>
-  <h2>Camp anmeldungen</h2>
-
+  .helper-info-table tr:nth-child(even) {
+      background-color: #0000000a;
+  }
+</style>
+<table class="helper-info-table">
+  <tr>
+    <th>Geburtstag:</th>
+    <td><%= l helper.birthday %></td>
+  </tr>
+  <tr>
+    <th>Geburtsort:</th>
+    <td><%= helper.birthplace %></td>
+  </tr>
+  <tr>
+    <th>Telefon:</th>
+    <td><%= helper.telephone %></td>
+  </tr>
+  <tr>
+    <th>Email:</th>
+    <td><%= helper.email %></td>
+  </tr>
+  <tr>
+    <th>Straße und Hausnummer:</th>
+    <td><%= helper.streethouse %></td>
+  </tr>
+  <tr>
+    <th>PLZ Ort:</th>
+    <td><%= helper.postcity %></td>
+  </tr>
+  <tr>
+    <th>Geschichte:</th>
+    <td><%= helper.story %></td>
+  </tr>
+  <tr>
+    <th>Dienst:</th>
+    <td><%= helper.duty %></td>
+  </tr>
   <% unless helper.registrations.count < 2 %>
-    <p>
-      <strong>Bevorzugtes Camp:</strong>
-      <%= helper.preferredCamp %>
-    </p>
-    <br>
+    <tr>
+      <th>Bevorzugtes Camp:</th>
+      <td><%= helper.preferredCamp %></td>
+    </tr>
   <% end %>
+</table>
 
+<div id="<%= dom_id helper %>">
+  <h2>Camp anmeldungen</h2>
   <div>
     <% helper.registrations.each do |registration| %>
       <%= render 'registrations/registration', registration: registration %>

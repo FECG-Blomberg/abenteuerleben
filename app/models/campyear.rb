@@ -16,6 +16,10 @@ class Campyear < ApplicationRecord
     errors.add :members_only_date, 'muss gleich oder früher als der Start aller sein'
   end
 
+  def camp_names
+    camps.map(&:name)
+  end
+
   def full?
     camps.filter(&:not_full?).empty?
   end

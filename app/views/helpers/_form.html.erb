@@ -147,18 +147,22 @@
     <% end %>
   </div>
 
-    <%= render 'formelements/input',
-               form: form,
-               record: helper,
-               field_name: :preferredCamp,
-               label: 'Falls sich zu viele Mitarbeiter anmelden und du deshalb nur auf ein Camp mitmachen kannst, welches würdest du bevorzugen?' %>
+  <%# render 'formelements/input',
+             form: form,
+             record: helper,
+             field_name: :preferredCamp,
+             label: 'falls sich zu viele mitarbeiter anmelden und du deshalb nur auf ein camp mitmachen kannst, welches würdest du bevorzugen?' %>
 
-<!--
-  <div class="input">
-    <%= form.label :preferredCamp, "Falls sich zu viele Mitarbeiter anmelden und du deshalb nur auf ein Camp mitmachen kannst, welches würdest du bevorzugen?" %>
-    <%= form.text_field :preferredCamp %>
+    <%= render 'formelements/select',
+               form: form,
+               field_name: :preferredCamp,
+               record: @helper,
+               options: @campyear.camp_names.map {|name| ["Camp #{name}", name]},
+               label: 'Falls sich zu viele Mitarbeiter anmelden und du deshalb nur auf ein Camp mitmachen kannst, welches würdest du bevorzugen?'%>
+  <div>
+    <%# form.label 'falls sich zu viele mitarbeiter anmelden und du deshalb nur auf ein camp mitmachen kannst, welches würdest du bevorzugen?' %>
+    <%# form.select :preferredCamp, @campyear.camp_names %>
   </div>
--->
 
   <br><br>
   <%= render "formelements/dialog-checkbox", form_name: :liability_exclusion, label_text: "Ich habe den Haftungsausschluss gelesen und bin damit einverstanden", form: form do %>

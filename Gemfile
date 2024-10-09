@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-gem 'rails', '~> 7.1'
+gem 'rails', '~> 7.2'
 gem 'bootsnap', require: false
 gem 'breadcrumbs_on_rails'
 gem 'caxlsx', '~> 4.0'
@@ -22,10 +22,8 @@ gem "hcaptcha", "~> 7.1" # todo: migrate to friendlycaptcha
 # development
 group :development do
   gem 'sqlite3'
-  gem 'redis'
   gem 'web-console'
-  gem 'hotwire-livereload'
   gem 'rubocop-rails-omakase', require: false
   gem 'capybara'
-  gem 'selenium-webdriver' # todo: migrate to cuprite
+  gem 'cuprite'
 end

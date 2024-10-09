@@ -28,7 +28,7 @@ module AbenteuerLeben
     require 'forticons'
 
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 7.1
+    config.load_defaults 7.2
 
     config.i18n.default_locale = :de
 

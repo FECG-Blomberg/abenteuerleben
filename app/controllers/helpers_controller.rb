@@ -104,7 +104,8 @@ class HelpersController < ApplicationController # rubocop:disable Metrics/ClassL
   end
 
   def set_active_camps
-    @camps = Campyear.active_camp.camps
+    @campyear = Campyear.active_camp
+    @camps = @campyear.camps
   end
 
   # Only allow a list of trusted parameters through.

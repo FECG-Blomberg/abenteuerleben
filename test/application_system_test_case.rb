@@ -1,8 +1,10 @@
 require "test_helper"
+require 'capybara/cuprite'
+require 'test_helpers/cuprite_helpers'
+require 'test_helpers/cuprite_setup'
 
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
-  DRIVER = ENV['DRIVER'] ? ENV["DRIVER"].to_sym : :headless_chrome
-  driven_by :selenium, using: DRIVER, screen_size: [1400, 900]
+  driven_by :better_cuprite
 
   def logging_in
     admin = users(:admin)
