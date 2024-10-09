@@ -51,7 +51,7 @@ class Helper < ApplicationRecord
 
     return if preferredCamp.present?
 
-    errors.add :preferredCamp, 'Bitte ein bevorzugtes Camp bei mehr als eine Campanmeldung angeben'
+    errors.add :preferredCamp, 'Bitte ein bevorzugtes Camp bei mehr als einer Campanmeldung angeben'
   end
 
   def self.from_year year

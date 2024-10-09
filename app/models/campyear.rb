@@ -4,6 +4,7 @@ class Campyear < ApplicationRecord
   validates :participants_register_start, presence: true
   validates :members_only_start, presence: true
   validates :participants_register_end, presence: true
+  validates :preferredCamp, presence: true
 
   validate :participant_member_date_earlier_all_date
 
@@ -14,6 +15,10 @@ class Campyear < ApplicationRecord
     end
 
     errors.add :members_only_date, 'muss gleich oder früher als der Start aller sein'
+  end
+
+  def camp_names
+    camps.map(&:name)
   end
 
   def full?

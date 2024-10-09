@@ -1,4 +1,4 @@
-<%# arguments(form, field_name, record, options, label) %>
+<%# locals: (form:, field_name:, record:, options:, label:) %>
 <div class="form-input">
   <%# label %>
   <%= form.label field_name,  class: class_names('form-input__label') do %>
@@ -11,7 +11,7 @@
   <% end %>
 
   <%# input element %>
-  <%= form.select field_name, options, class: class_names('form-input__select') %>
+  <%= form.select field_name, options, class: class_names('form-input__select'), selected: record[field_name], include_blank: true %>
 
   <%# errormsg %>
   <%= render 'formelements/errormsg', record: record, field: field_name %>
