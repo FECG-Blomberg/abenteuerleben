@@ -38,6 +38,10 @@ jobs:
       # Install Chrome
       - name: Setup Chrome
         uses: browser-actions/setup-chrome@v1
+      - name: Set Chrome path
+        run: |
+          BROWSER_PATH=${{ steps.setup-chrome.outputs.chrome-path }}
+          echo BROWSER_PATH=$BROWSER_PATH
       # Add or replace dependency steps here
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@v1
