@@ -12,7 +12,7 @@ Capybara.register_driver(:better_cuprite) do |app|
       browser_options: {},
       process_timeout: 10,
       inspector: true,
-      headless: false
+      headless: ENV.fetch("CI", false)
     }
   )
 end
