@@ -35,14 +35,13 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      # Install Chrome
-      - name: Setup Chrome
-        uses: browser-actions/setup-chrome@v1
+      - uses: browser-actions/setup-chrome@v1
+        id: setup-chrome
       - name: Set Chrome path
         run: |
           echo '${{ steps.setup-chrome.outputs.chrome-path }}'
           export BROWSER_PATH='${{ steps.setup-chrome.outputs.chrome-path }}'
-          echo BROWSER_PATH=$BROWSER_PATH
+          echo BROWSER_PATH=$BROWSER_PATHn
       # Add or replace dependency steps here
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@v1
