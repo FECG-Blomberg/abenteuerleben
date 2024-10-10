@@ -5,7 +5,7 @@
   }
 </style>
 
-<%= form_with(model: helper, class: 'helper-form') do |form| %>
+<%= form_with(model: helper, class: 'helper-form', data: { turbo: false }) do |form| %>
   <% if helper.errors.any? %>
     <div>
       <h2 style="color: var(--danger)">
