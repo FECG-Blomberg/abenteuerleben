@@ -6,7 +6,7 @@
 <h1><%= t 'parent.form-title' %></h1>
 <h2><%= t '.title' %></h2>
 
-<%= form_with class: 'registration-ack', model: @parent do |form| %>
+<%= form_with class: 'registration-ack', model: @parent, data: { turbo: false } do |form| %>
   <h3><%= forticon :user, height: 20 %> Elterninfos</h3>
   <%= render 'parent/parent-info-table', parent: @parent %>
 
