@@ -1,0 +1,184 @@
+<%= content_for :head do %>
+  <%= stylesheet_link_tag "home", "data-turbo-track": "reload" %>
+<% end %>
+
+<%= content_for :content do %>
+  <header class="header galaxy-background">
+    <%= link_to root_path do %>
+      <%= image_tag '/images/logo.png',
+                    srcset: {
+                      '/images/logo-sm.png': '640w',
+                      '/images/logo-md.png': '1024w'
+                    },
+                    sizes: '100vw',
+                    alt: 'logo',
+                    id: 'logo',
+                    data: { turbo_permanent: true } %>
+    <% end %>
+
+    <hgroup class="centered">
+      <h1>Abenteuer Leben e.V.</h1>
+      <h2>Sommercamps für Kinder und Teens</h2>
+    </hgroup>
+  </header>
+
+  <style>
+      :root {
+          --primary: #03285d;
+      }
+
+      @media (min-width: 900px) {
+          .galaxy-background {
+              background-position: center -100px;
+          }
+      }
+
+      .galaxy-background {
+          background-color: #0c182c;
+          margin: 0;
+          padding: 2rem 0;
+          text-shadow: 0 0 3px #36eff9;
+          background-image: url(/images/galaxy/galaxy-earth.jpg);
+          background-size: cover;
+          background-position: center;
+          height: 50vh;
+
+          h1 {
+              color: #103d79;
+          }
+
+          h2 {
+              margin-top: 0.4rem;
+              color: #2b2f62;
+          }
+      }
+
+      .nav .background-mask::before {
+          background-color: #042f6b;
+      }
+
+      .about .background-mask::after {
+          background: linear-gradient(to bottom, #042f6b, #e6f4e9);
+      }
+
+      .input-1-0-0 .input-1-0-0__icon-holder {
+          background-color: #00649e;
+      }
+
+      .input-1-0-0 .input-1-0-0__icon-holder svg {
+          color: #bfdcd4;
+      }
+
+      #was-wir-machen > div > svg,
+      #wer-wir-sind > div > svg {
+          fill: var(--primary);
+      }
+  </style>
+
+  <div class="nav">
+    <div class="background-mask"></div>
+    <nav class="container">
+      <ul>
+        <% if @camp.helpers_open %>
+          <li>
+            <%= link_to new_helper_path, style: 'font-weight: bold; color: #b29757; fill: #b29757;' do %>
+              <%= forticon 'angle-right', height: 18 %></i>Mitarbeiteranmeldung
+            <% end %>
+          </li>
+        <% end %>
+        <% if @camp.participant_registrations_open %>
+          <li>
+            <a href="/kinderanmeldung" , style="font-weight: bold; color: #b29757"><%= forticon 'angle-right', height: 18 %></i>Kinderanmeldung</a>
+          </li>
+        <% end %>
+        <li>
+          <a href="#wer-wir-sind"><%= forticon 'angle-right', height: 18 %>Wer wir sind</a>
+        </li>
+        <li>
+          <a href="#was-wir-machen"><%= forticon 'angle-right', height: 18 %>Was wir machen</a>
+        </li>
+        <li>
+          <a href="#termine"><%= forticon 'angle-right', height: 18 %>Termine</a>
+        </li>
+        <li>
+          <a href="#kontakt"><%= forticon 'angle-right', height: 18 %>Kontakt</a>
+        </li>
+        <li>
+          <%= link_to downloads_path do %><%= forticon 'angle-right', height: 18 %>Downloads
+          <% end %>
+        </li>
+        <li>
+          <a href="/pages/spenden"><%= forticon 'angle-right', height: 18 %>Spenden / Unterstützen</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="about">
+    <div class="background-mask"></div>
+    <div class="container">
+      <article id="wer-wir-sind">
+        <div class="ico">
+          <%= forticon 'people-line', height: 32 %>
+        </div>
+        <h2>
+          Wer wir sind
+        </h2>
+        <p>
+          Wir sind eine Gruppe motivierter Christen, die biblische Werte und Prinzipien vertreten und diese gemeinsam
+          mit der heranwachsenden Generation ausleben möchten.
+          <br>
+          Ein Team ehrenamtlicher Mitarbeiter macht es sich zur Aufgabe, zwei Wochen Ferienzeit zu einem interessanten
+          und außergewöhnlichen Erlebnis zu gestalten!
+        </p>
+      </article>
+
+      <article id="was-wir-machen">
+        <div class="ico">
+          <%= forticon :briefcase, height: 32 %>
+        </div>
+        <h2 class="centered">Was wir machen</h2>
+        <p>
+          Unsere Camps bieten eine gute Möglichkeit, eine Woche lang zusammen zu sein, gute Gemeinschaft zu erleben,
+          miteinander in der Bibel zu forschen, zu beten, Jesus Christus persönlich zu begegnen, persönliche Gespräche
+          zu führen und neue Freunde kennenzulernen.
+          <br>
+          Auf den Sommercamps sollen junge Menschen die Möglichkeit haben, christlichen Glauben zu leben, zu vertiefen,
+          bzw. diesen ganz neu kennenzulernen.
+        </p>
+      </article>
+    </div>
+  </div>
+
+  <div class="container">
+    <div id="termine" style="margin-top: var(--spacing-xl);">
+      <% if @events.length == 0 %>
+        <%= render 'home/section-title', title: 'Termine', icon: :calendar %>
+      <% else %>
+        <%= render 'home/section-title', title: 'Termine', icon: 'calendar-day' %>
+      <% end %>
+
+      <div style="display: flex; flex-direction: column; align-items: start;">
+
+        <% if @events.length == 0 %>
+          <div class="termine--empty">
+          <span>
+            Derzeit stehen keine Termine an
+          </span>
+          </div>
+        <% end %>
+
+        <% @events.each do |event| %>
+          <%= render 'events/event', event: event %>
+        <% end %>
+      </div>
+    </div>
+
+    <hr style="margin: var(--spacing-xl) 0;">
+
+    <div id="kontakt" style="margin: 0 var(--spacing-sm);">
+      <%= render 'home/section-title', title: 'Kontakt', icon: :envelope %>
+      <%= render 'messages/form', message: @message %>
+    </div>
+  </div>
+<% end %>

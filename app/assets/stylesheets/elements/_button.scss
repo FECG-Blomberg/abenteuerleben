@@ -104,6 +104,14 @@ input[type="submit"] {
     }
   }
 
+  &.galaxy-blue {
+    background-color: #03285d;
+
+    &:hover, &:focus {
+      background-color: #19488a;
+    }
+  }
+
   &:has(:nth-child(2)) {
     span {
       flex-grow: 1;

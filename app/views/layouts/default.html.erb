@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Abenteuer-Leben e.V.</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= javascript_importmap_tags %>
+  <%= stylesheet_link_tag "application" %>
+  <%= yield :head %>
+</head>
+
+<body>
+<% if notice %>
+  <p style="padding: .4rem; text-align: center; border-bottom: 1px solid #aaa; color: <%= flash[:error] ?  'red' : 'green' %>">
+    <%= notice %>
+  </p>
+<% end %>
+
+<%= yield :content %>
+
+<footer style="border-top: 1px solid #aaa;">
+  <div style="display: flex; flex-direction: column;">
+    <%= link_to 'Startseite', root_path, class: 'centered' %>
+    <%= link_to 'Downloads', downloads_path, class: 'centered' %>
+  </div>
+
+  <div style="display: flex; flex-direction: column;">
+    <%= link_to "Datenschutz", page_path("datenschutz"), class: 'centered' %>
+    <%= link_to "Impressum", page_path("impressum"), class: 'centered' %>
+  </div>
+
+  <!-- login/logout -->
+  <div style="display: flex; flex-direction: column;">
+    <% if @current_user.has_read_rights %>
+      <%= link_to 'Admin Dashboard', admin_dashboard_path, class: 'centered' %>
+      <%= link_to 'Logout', logout_path, class: 'danger centered' %>
+    <% else %>
+      <%= link_to 'Login', login_path, class: 'centered' %>
+    <% end %>
+  </div>
+</footer>
+</body>
+</html>
