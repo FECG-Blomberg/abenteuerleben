@@ -1,61 +1,25 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Abenteuer-Leben e.V.</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<%= content_for :head do %>
+ <%= yield :head %>
+<% end %>
 
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css"> -->
-    <%= javascript_importmap_tags %>
-    <%= stylesheet_link_tag "application" %>
-    <%= hotwire_livereload_tags if Rails.env.development? %>
-  </head>
-
-  <body>
-    <% if notice %>
-      <p style="padding: .4rem; text-align: center; border-bottom: 1px solid #aaa; color: <%= flash[:error] ?  'red' : 'green' %>">
-        <%= notice %>
-      </p>
+<%= content_for :content do %>
+  <header class="header">
+    <%= link_to root_path do %>
+      <%= image_tag '/images/logo.png',
+                    srcset: {
+                      '/images/logo-sm.png': '640w',
+                      '/images/logo-md.png': '1024w'
+                    },
+                    sizes: '100vw',
+                    alt: 'logo',
+                    id: 'logo',
+                    data: {turbo_permanent: true} %>
     <% end %>
-    <header class="header">
-      <%= link_to root_path do %>
-        <%= image_tag '/images/logo.png',
-          srcset: {
-            '/images/logo-sm.png': '640w',
-            '/images/logo-md.png': '1024w'
-          },
-          sizes: '100vw',
-          alt: 'logo',
-          id: 'logo',
-          data: {turbo_permanent: true} %>
-      <% end %>
-    </header>
+  </header>
 
-    <main class="<%= 'container' if controller_name != 'home' %> <%= 'page' if controller_name == 'pages' %>">
-      <%= yield %>
-    </main>
+  <main class="<%= 'container' if controller_name != 'home' %> <%= 'page' if controller_name == 'pages' %>">
+    <%= yield %>
+  </main>
+<% end %>
 
-    <footer style="border-top: 1px solid #aaa;">
-      <div style="display: flex; flex-direction: column;">
-        <%= link_to 'Startseite', root_path, class: 'centered' %>
-        <%= link_to 'Downloads', downloads_path, class: 'centered' %>
-      </div>
-
-      <div style="display: flex; flex-direction: column;">
-        <%= link_to "Datenschutz", page_path("datenschutz"), class: 'centered' %>
-        <%= link_to "Impressum", page_path("impressum"), class: 'centered' %>
-      </div>
-
-      <!-- login/logout -->
-      <div style="display: flex; flex-direction: column;">
-        <% if @current_user.has_read_rights %>
-          <%= link_to 'Admin Dashboard', admin_dashboard_path, class: 'centered' %>
-          <%= link_to 'Logout', logout_path, class: 'danger centered' %>
-        <% else %>
-          <%= link_to 'Login', login_path, class: 'centered' %>
-        <% end %>
-      </div>
-    </footer>
-  </body>
-</html>
+<%= render template: "layouts/default" %>

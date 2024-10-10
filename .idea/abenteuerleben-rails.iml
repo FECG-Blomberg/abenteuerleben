@@ -62,7 +62,6 @@
     <orderEntry type="library" scope="PROVIDED" name="forticons_helper (v0.0.4, ruby-3.3.5) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="globalid (v1.2.1, ruby-3.3.5) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="hcaptcha (v7.1.0, ruby-3.3.5) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="hotwire-livereload (v1.4.1, ruby-3.3.5) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="htmlentities (v4.3.4, ruby-3.3.5) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="i18n (v1.14.6, ruby-3.3.5) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="image_processing (v1.13.0, ruby-3.3.5) [gem]" level="application" />
@@ -71,7 +70,6 @@
     <orderEntry type="library" scope="PROVIDED" name="irb (v1.14.1, ruby-3.3.5) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="json (v2.7.2, ruby-3.3.5) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="language_server-protocol (v3.17.0.3, ruby-3.3.5) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="listen (v3.9.0, ruby-3.3.5) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="logger (v1.6.1, ruby-3.3.5) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="loofah (v2.22.0, ruby-3.3.5) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mail (v2.8.1, ruby-3.3.5) [gem]" level="application" />
@@ -104,11 +102,7 @@
     <orderEntry type="library" scope="PROVIDED" name="railties (v7.2.1, ruby-3.3.5) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rainbow (v3.1.1, ruby-3.3.5) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rake (v13.2.1, ruby-3.3.5) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rb-fsevent (v0.11.2, ruby-3.3.5) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rb-inotify (v0.11.1, ruby-3.3.5) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rdoc (v6.7.0, ruby-3.3.5) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="redis (v5.3.0, ruby-3.3.5) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="redis-client (v0.22.2, ruby-3.3.5) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="regexp_parser (v2.9.2, ruby-3.3.5) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="reline (v0.5.10, ruby-3.3.5) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubocop (v1.66.1, ruby-3.3.5) [gem]" level="application" />
