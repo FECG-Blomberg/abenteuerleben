@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   ############################
   # helper registration related
   ############################
+  get 'helpers/registration_complete', to: 'helpers#registration_complete'
   resources :helpers
   get '/excel/helpers', to: 'helpers#excelify'
   get '/mitarbeiteranmeldung', to: 'helpers#new'

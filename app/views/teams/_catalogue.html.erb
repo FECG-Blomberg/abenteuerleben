@@ -5,7 +5,8 @@
     <% teams.each do |team| %>
       <div class="<%= class_names('team-catalogue__item': true, 'team-catalogue__item--selected': team.name == selected_team.name) %>">
 
-        <%= content_tag 'div',
+        <%= content_tag 'a',
+                        href: '',
                         class: 'team-catalogue__item-label',
                         data: {
                           'hx-get': teams_catalogue_path(team),

@@ -1,5 +1,5 @@
 class HelpersController < ApplicationController # rubocop:disable Metrics/ClassLength
-  before_action :admin_only, except: %i[new create]
+  before_action :admin_only, except: %i[new create registration_complete]
   before_action :set_active_camps, only: %i[new create edit update]
   before_action :set_available_teams, only: %i[new create edit update]
   before_action :set_helper, only: %i[show edit update destroy]
@@ -48,7 +48,13 @@ class HelpersController < ApplicationController # rubocop:disable Metrics/ClassL
 
       @helper.save
       HelperMailer.with(helper: @helper).registered_mail.deliver_later
-      redirect_to root_path, notice: 'Erfolgreich als Mitarbeiter angemeldet.'
+
+      if request.headers.include? 'Hx-Request'
+        response.add_header 'HX-Redirect', helpers_registration_complete_path
+        render plain: ''
+      else
+        redirect_to helpers_registration_complete_path
+      end
     else
       @helper.registrations.each do |r|
         unless @available_teams.include? r.wish_first
@@ -64,6 +70,10 @@ class HelpersController < ApplicationController # rubocop:disable Metrics/ClassL
 
       render :new
     end
+  end
+
+  def registration_complete
+
   end
 
   # PATCH/PUT /helpers/1 or /helpers/1.json
