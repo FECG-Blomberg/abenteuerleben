@@ -62,7 +62,7 @@ class HelpersController < ApplicationController # rubocop:disable Metrics/ClassL
         end
       end
 
-      render :new, status: :unprocessable_entity
+      render :new
     end
   end
 

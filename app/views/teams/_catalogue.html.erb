@@ -1,25 +1,30 @@
-<%= turbo_frame_tag 'team-catalogue' do %>
-  <div class="team-catalogue">
-    <sup>(Team Name anklicken zum ausklappen der Teambeschreibung)</sup>
+<div class="team-catalogue">
+  <sup>(Team Name anklicken zum ausklappen der Teambeschreibung)</sup>
 
-    <div>
-      <% teams.each do |team| %>
-        <div class="<%= class_names('team-catalogue__item': true, 'team-catalogue__item--selected': team.name == selected_team.name) %>">
+  <div>
+    <% teams.each do |team| %>
+      <div class="<%= class_names('team-catalogue__item': true, 'team-catalogue__item--selected': team.name == selected_team.name) %>">
 
-          <%= link_to teams_catalogue_path(team), class: 'team-catalogue__item-label' do %>
-            <% if team.name == selected_team.name %>
-              <%= forticon 'chevron-up', width: 16 %>
-            <% else %>
-              <%= forticon 'chevron-down', width: 16  %>
-            <% end %>
-            <%= team.name %>
+        <%= content_tag 'div',
+                        class: 'team-catalogue__item-label',
+                        data: {
+                          'hx-get': teams_catalogue_path(team),
+                          'hx-select': '.team-catalogue',
+                          'hx-target': '.team-catalogue',
+                          'hx-swap': 'show:none'
+                        } do %>
+          <% if team.name == selected_team.name %>
+            <%= forticon 'chevron-up', width: 16 %>
+          <% else %>
+            <%= forticon 'chevron-down', width: 16  %>
           <% end %>
+          <%= team.name %>
+        <% end %>
 
-          <p class="team-catalogue__item-description"><%= team.description %></p>
+        <p class="team-catalogue__item-description"><%= team.description %></p>
 
-        </div>
-      <% end %>
-    </div>
-
+      </div>
+    <% end %>
   </div>
-<% end %>
+
+</div>

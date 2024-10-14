@@ -53,6 +53,7 @@ class TeamsController < ApplicationController
 
     @selected_team = Team.find(team_params[:id])
     @teams = Team.where(enabled: true).order(:name)
+    render :catalogue, layout: false
   end
 
   private
