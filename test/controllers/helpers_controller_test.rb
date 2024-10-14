@@ -52,7 +52,7 @@ class HelpersControllerTest < ActionDispatch::IntegrationTest # rubocop:disable 
       }
     end
 
-    assert_redirected_to root_url
+    assert_redirected_to helpers_registration_complete_path
   end
 
   test 'should not create helper when photo is missing' do
