@@ -5,7 +5,10 @@
   }
 </style>
 
-<%= form_with(model: helper, class: 'helper-form', data: { turbo: false }) do |form| %>
+<%= form_with(model: helper,
+              class: 'helper-form',
+              data: { turbo: false, 'hx-post': helpers_path, 'hx-select': 'form', 'hx-swap': 'outerHTML show:top' }
+    ) do |form| %>
   <% if helper.errors.any? %>
     <div>
       <h2 style="color: var(--danger)">
@@ -31,7 +34,10 @@
     <% if defined? edit_photo || !helper.photo.attached? %>
       <div>
         <%= form.label :photo, "Ein Foto von dir" %>
-        <%= form.file_field :photo, accept: 'image/png,image/jpeg,image/webp', data: {'turbo-permanent': true}, onchange: 'squashImageFile(this)' %>
+        <%= form.file_field :photo,
+                            accept: 'image/png,image/jpeg,image/webp',
+                            data: { 'hx-preserve': true },
+                            onchange: 'squashImageFile(this)' %>
         <%= render 'formelements/errormsg', record: helper, field: :photo %>
       </div>
     <% end %>

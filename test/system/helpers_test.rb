@@ -140,7 +140,19 @@ class HelpersTest < ApplicationSystemTestCase
     click_on "Als gelesen markieren"
 
     click_on "Verbindlich und zahlungspflichtig anmelden"
+    assert_text 'Deine Registrierung war erfolgreich.'
+  end
 
-    assert_text 'Erfolgreich als Mitarbeiter angemeldet.'
+  test 'team catalogue toggles the team descriptions' do
+    visit new_helper_url
+
+    click_on 'Handwerker'
+    assert_text 'Handler bauen dies und das'
+
+    click_on 'Sportler'
+    assert_text 'Athletisch belastbar'
+
+    # still be able to register
+    assert_button 'Verbindlich und zahlungspflichtig anmelden'
   end
 end
