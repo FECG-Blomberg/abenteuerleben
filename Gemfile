@@ -10,7 +10,6 @@ gem 'forticons'
 gem 'forticons_helper'
 gem 'image_processing'
 gem 'importmap-rails'
-gem 'pg', '1.5.8'
 gem 'puma'
 gem 'sassc-rails'
 gem 'sprockets-rails'
@@ -27,3 +26,4 @@ group :development do
   gem 'capybara'
   gem 'cuprite'
 end
+

@@ -54,6 +54,10 @@ class Helper < ApplicationRecord
     errors.add :preferredCamp, 'Bitte ein bevorzugtes Camp bei mehr als einer Campanmeldung angeben'
   end
 
+  def full_name
+    "#{surname}, #{forename}"
+  end
+
   def self.from_year year
     Helper
       .joins(registrations: { camp: :campyear })
