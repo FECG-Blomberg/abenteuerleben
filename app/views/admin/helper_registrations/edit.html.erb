@@ -1,0 +1,44 @@
+<h1>Mitarbeiter Anmeldung bearbeiten</h1>
+
+<%= form_with model: @registration, url: admin_helper_registration_path do |form| %>
+  <% if @registration.errors.any? %>
+    <p>Errors:</p>
+    <ul style="color: red;">
+      <% @registration.errors.full_messages.each do |error_message| %>
+        <li><%= error_message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+
+  <%= form.hidden_field :helper_id, value: @registration.helper_id %>
+  <%= form.hidden_field :camp_id, value: @registration.camp_id %>
+
+  <table>
+    <tr>
+      <th>Name</th>
+      <td><%= @registration.helper.full_name %></td>
+    </tr>
+    <tr>
+      <th>Camp</th>
+      <td><%= @registration.camp.name %></td>
+    </tr>
+    <tr>
+      <th>Erstwunsch</th>
+      <td><%= form.text_field :wish_first %></td>
+    </tr>
+    <tr>
+      <th>Zweitwunsch</th>
+      <td><%= form.text_field :wish_second %></td>
+    </tr>
+
+    <tr>
+      <td colspan="2">
+        <div style="display: flex; justify-content: end; align-items: center; gap: 8px;">
+          <%= link_to 'Abbrechen', helper_path(@registration.helper_id) %>
+          <%= form.submit 'Speichern' %>
+        </div>
+      </td>
+    </tr>
+  </table>
+<% end %>

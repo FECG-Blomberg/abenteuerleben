@@ -5,6 +5,10 @@ de:
       child: 'Kind'
       parent/parent: 'Elternteil'
     attributes:
+      helper:
+        forename: 'Vorname'
+        surname: 'Nachname'
+        birthday: 'Geburtstag'
       camp:
         name: 'Name'
         date_start: 'Startdatum'

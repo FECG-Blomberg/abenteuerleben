@@ -30,6 +30,20 @@
   <% end %>
 
   <%= render @helper %>
+  <%= link_to "Mitarbeiter bearbeiten", edit_helper_path(@helper) %>
+  <br>
+  <br>
+
+  <div>
+    <h2>Camp anmeldungen</h2>
+    <div>
+      <% @helper.registrations.each do |registration| %>
+        <%= render 'registrations/registration', registration: registration %>
+        <%= link_to 'Anmeldung bearbeiten', edit_admin_helper_registration_path(registration) %>
+        <br>
+      <% end %>
+    </div>
+  </div>
 </div>
 
 <%= render "formelements/delete_action", url: @helper %>
