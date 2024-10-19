@@ -1,5 +1,6 @@
 class Admin::HelperRegistrationsController < ApplicationController
   before_action :set_registration
+  before_action :admin_only
 
   def edit; end
 
