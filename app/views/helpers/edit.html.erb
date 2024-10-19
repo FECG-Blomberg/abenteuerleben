@@ -1,10 +1,75 @@
-<h1>Bearbeiten Mitarbeiter</h1>
+<h1>Mitarbeiter bearbeiten</h1>
 
-<%= render "form", helper: @helper %>
+<style>
+  table {
+      width: 100%;
+      max-width: 768px;
 
-<br>
+       th {
+          text-align: start;
+          padding-right: 8px;
+      }
+  }
+</style>
 
-<div>
-  <%= link_to "Anzeigen", @helper %> |
-  <%= link_to "Zurück zu allen Mitarbeitern", helpers_path %>
-</div>
+<%= form_with model: @helper do |form| %>
+  <% if @helper.errors.any? %>
+    <p>Errors:</p>
+    <ul style="color: red;">
+      <% @helper.errors.full_messages.each do |error_message| %>
+        <li><%= error_message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <table>
+    <tr>
+      <th>Nachname *</th>
+      <td><%= form.text_field :surname %></td>
+    </tr>
+    <tr>
+      <th>Vorname *</th>
+      <td><%= form.text_field :forename %></td>
+    </tr>
+    <tr>
+      <th>Geburtstag *</th>
+      <td><%= form.date_field :birthday %></td>
+    </tr>
+    <tr>
+      <th>Geburtsort *</th>
+      <td><%= form.text_field :birthplace %></td>
+    </tr>
+    <tr>
+      <th>Telefonnr. *</th>
+      <td><%= form.text_field :telephone %></td>
+    </tr>
+    <tr>
+      <th>Email *</th>
+      <td><%= form.text_field :email %></td>
+    </tr>
+    <tr>
+      <th>Straße, Hausnr *</th>
+      <td><%= form.text_field :streethouse %></td>
+    </tr>
+    <tr>
+      <th>PLZ, Stadt *</th>
+      <td><%= form.text_field :postcity %></td>
+    </tr>
+    <tr>
+      <th>Deine Geschichte *</th>
+      <td><%= form.text_area :story %></td>
+    </tr>
+    <tr>
+      <th>Dienst</th>
+      <td><%= form.text_field :duty %></td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <div style="display: flex; justify-content: end; align-items: center; gap: 8px;">
+            <%= link_to 'Abbrechen', helper_path(@helper) %>
+            <%= form.submit 'Speichern' %>
+        </div>
+      </td>
+    </tr>
+  </table>
+<% end %>

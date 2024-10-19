@@ -1,7 +1,6 @@
 <style>
   .helper-info-table {
       width: 100%;
-      margin-bottom: 16px;
   }
   .helper-info-table th {
       text-align: left;
@@ -52,14 +51,3 @@
     </tr>
   <% end %>
 </table>
-
-<div id="<%= dom_id helper %>">
-  <h2>Camp anmeldungen</h2>
-  <div>
-    <% helper.registrations.each do |registration| %>
-      <%= render 'registrations/registration', registration: registration %>
-      <br>
-    <% end %>
-  </div>
-
-</div>

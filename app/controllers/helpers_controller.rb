@@ -78,10 +78,12 @@ class HelpersController < ApplicationController # rubocop:disable Metrics/ClassL
 
   # PATCH/PUT /helpers/1 or /helpers/1.json
   def update
-    if @helper.update(helper_params_update)
-      redirect_to helper_url(@helper), notice: 'Mitarbeiter erfolgreich geändert.'
-    else
+    @helper.update(helper_params_update)
+
+    if @helper.errors.any?
       render :edit, status: :unprocessable_entity
+    else
+      redirect_to helper_url(@helper), notice: 'Mitarbeiter erfolgreich bearbeitet'
     end
   end
 
