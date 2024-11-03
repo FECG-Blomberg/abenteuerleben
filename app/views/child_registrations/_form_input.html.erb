@@ -1,0 +1,12 @@
+<%# locals: (form:, field:, label:, required: false, placeholder: '') %>
+
+<%= form.label field, style: "grid-area: " + field.to_s do %>
+  <div class="field">
+    <span><%= label %> <%= " *" if required %></span>
+    <%= form.text_field field,
+                        style: 'flex: 1;',
+                        onkeydown: "this.closest('label').querySelector('.error-msg').innerHTML = ''",
+                        placeholder: placeholder%>
+  </div>
+  <span class="error-msg"><%= form.object.errors[field].first %></span>
+<% end %>

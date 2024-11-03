@@ -35,6 +35,9 @@ Rails.application.routes.draw do
     resources :parents, only: %i[index new create edit update]
   end
 
+  resources :child_registrations, only: [ :index, :new, :create ]
+  get 'child_registrations/acknowledge', to: 'child_registrations#acknowledge'
+
   resources :children
   # --------------------------
 

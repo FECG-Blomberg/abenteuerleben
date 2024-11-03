@@ -1,0 +1,47 @@
+<style>
+  .dual-input {
+      display: flex;
+      flex-direction: row;
+      gap: 4px;
+      justify-content: space-between;
+
+      > div {
+          flex: 1;
+      }
+  }
+</style>
+
+<div data-turbo="false">
+  <%= simple_form_for @parent, url: child_registrations_path do |f| %>
+    <h2>Elterndaten</h2>
+  <!-- personal data-->
+    <div class="dual-input">
+      <%= f.input :surname %>
+      <%= f.input :forename %>
+    </div>
+
+  <!-- contact data-->
+    <%= f.input :telephone %>
+    <%= f.input :housephone %>
+    <%= f.input :email %>
+
+    <div class="dual-input">
+      <%= f.input :street %>
+      <%= f.input :house %>
+    </div>
+    <div class="dual-input">
+      <%= f.input :post %>
+      <%= f.input :city %>
+    </div>
+
+    <div>
+      <h2>Kinderinfos</h2>
+      <%= f.simple_fields_for :children do |cf|  %>
+          <%= cf.input :surname %>
+      <% end %>
+      <%= f.submit 'Kind hinzufuegen' %>
+    </div>
+
+    <%= f.button :submit %>
+  <% end %>
+</div>

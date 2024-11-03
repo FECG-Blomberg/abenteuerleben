@@ -1,0 +1,253 @@
+<style>
+  .grid {
+      display: grid;
+
+      &.parent {
+        grid-template-areas:
+          "surname forename"
+          "email email"
+          "telephone telephone"
+          "housephone housephone"
+          "street house"
+          "post city";
+
+          @media (max-width: 768px) {
+            grid-template-areas:
+              "surname surname"
+              "forename forename"
+              "email email"
+              "telephone telephone"
+              "housephone housephone"
+              "street street"
+              "house house"
+              "post post"
+              "city city";
+          }
+      }
+
+      &.child {
+        grid-template-areas:
+          "surname forename"
+          "birthday birthday"
+          "notes notes"
+          "medicals medicals"
+          "wishmate wishmate"
+          "camp camp";
+
+        @media (max-width: 768px) {
+          grid-template-areas:
+            "surname surname"
+            "forename forename"
+            "birthday birthday"
+            "notes notes"
+            "medicals medicals"
+            "wishmate wishmate"
+            "camp camp";
+        }
+      }
+
+      grid-template-rows: auto;
+      grid-template-columns: 1fr 1fr;
+      border: 1px solid #35578e;
+      background-color: #e7ecf4;
+
+      label {
+          padding: 4px 8px;
+          border: .5px solid #35578e;
+          margin: 0;
+
+          .field {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 8px;
+            color: #35578e;
+              span {
+                  width: 7rem;
+              }
+          }
+
+          input {
+              border: none;
+              min-width: 2rem;
+              color: black;
+          }
+      }
+      .error-msg {
+          display: block;
+          color: red;
+          font-size: .7rem;
+      }
+  }
+
+  .child-form__header {
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .child-form__remove-child {
+    color: red;
+    box-shadow: none;
+    background: transparent;
+    cursor: pointer;
+    border: 1px solid red;
+    padding: 4px 8px;
+    margin: 4px 0 0 0;
+    display: inline-block;
+  }
+
+  .child-form__add-child {
+      color: green;
+      box-shadow: none;
+      background: transparent;
+      cursor: pointer;
+      border: 1px solid green;
+      padding: 8px 16px;
+      margin: 16px 0 0 0;
+      display: inline-block;
+  }
+
+  .camp-select__camp-info {
+      font-size: .8rem;
+  }
+
+  .form__submit {
+      display: block;
+      margin-top: 32px;
+  }
+</style>
+
+<div data-turbo="false">
+  <%= form_with model: @parent, url: child_registrations_path,
+                data: { 'hx-post': child_registrations_path, 'hx-select': 'form', 'hx-target': 'form', 'hx-swap': 'outerHTML' } do |form| %>
+    <h2>Elterinfos</h2>
+    <p>* = erforderlich</p>
+    <div class="grid parent">
+<!--      name-->
+      <%= render 'child_registrations/form_input',
+                  form: form,
+                  field: :surname,
+                  label: "Familienname",
+                  required: true %>
+
+      <%= render 'child_registrations/form_input',
+                 form: form,
+                 field: :forename,
+                 label: "Vorname",
+                 required: true %>
+
+      <!--      contact-->
+      <%= render 'child_registrations/form_input',
+                 form: form,
+                 field: :email,
+                 label: "Email",
+                 required: true %>
+      <%= render 'child_registrations/form_input',
+                 form: form,
+                 field: :telephone,
+                 label: "Telefonnr. 1",
+                 required: true %>
+      <%= render 'child_registrations/form_input',
+                 form: form,
+                 field: :housephone,
+                 label: "Telefonnr. 2",
+                 required: false %>
+
+<!--      address-->
+      <%= render 'child_registrations/form_input',
+                 form: form,
+                 field: :street,
+                 label: "Strasse",
+                 required: true %>
+      <%= render 'child_registrations/form_input',
+                 form: form,
+                 field: :house,
+                 label: "Hausnr.",
+                 required: true %>
+      <%= render 'child_registrations/form_input',
+                 form: form,
+                 field: :post,
+                 label: "PLZ",
+                 required: true %>
+      <%= render 'child_registrations/form_input',
+                 form: form,
+                 field: :city,
+                 label: "Stadt",
+                 required: true %>
+    </div>
+
+    <h2>Kinderinfos</h2>
+    <% @parent.errors[:children].any? do %>
+      <p style="color: red">
+        Keine kinder ausgewaehlt
+      </p>
+    <% end %>
+
+    <%= form.fields_for :children do |child_form| %>
+      <h3 class="child-form__header">Kind <%= child_form.index + 1 %></h3>
+
+      <div class="grid child">
+        <%= render 'child_registrations/form_input',
+                   form: child_form,
+                   field: :surname,
+                   label: "Familienname",
+                   required: true %>
+        <%= render 'child_registrations/form_input',
+                   form: child_form,
+                   field: :forename,
+                   label: "Vorname",
+                   required: true %>
+        <%= render 'child_registrations/form_input',
+                   form: child_form,
+                   field: :birthday,
+                   label: "Geburtstag",
+                   placeholder: "z.B. 24.03.2010",
+                   required: true %>
+        <%= render 'child_registrations/form_input',
+                   form: child_form,
+                   field: :notes,
+                   label: "Notizen",
+                   required: false %>
+        <%= render 'child_registrations/form_input',
+                   form: child_form,
+                   field: :medicals,
+                   label: "Medikamente / Risiko",
+                   required: false %>
+        <%= render 'child_registrations/form_input',
+                   form: child_form,
+                   field: :wishmate,
+                   label: "Wunschpartner",
+                   required: false %>
+
+        <div style="grid-area: camp; display: flex; justify-content: space-around;" class="camp-select">
+          <% @camps.each do |camp| %>
+            <%= render 'camp-select', form: child_form, camp: camp %>
+          <% end %>
+        </div>
+      </div>
+
+      <% if  @parent.children.length > 1 %>
+        <%= label_tag 'child-form__remove-child-' + child_form.index.to_s, class: 'child-form__remove-child' do %>
+          <%= forticon :minus, height: 16 %>
+           Kind <%= (child_form.index + 1).to_s %> entfernen
+          <%= form.submit 'Kind ' + (child_form.index + 1).to_s + " entfernen",
+                          id: 'child-form__remove-child-' + child_form.index.to_s,
+                          style: 'display: none;' %>
+        <% end %>
+      <% end %>
+    <% end %>
+    <br>
+
+    <%= label_tag 'child-form__add-child', class: 'child-form__add-child' do %>
+      <%= forticon :plus, height: 16 %>
+      Kind hinzufuegen
+      <%= form.submit 'Kind hinzufuegen',
+                      id: 'child-form__add-child',
+                      style: 'display: none;' %>
+    <% end %>
+
+    <input type="submit" value="Absenden" class="stock btn-1-0-0 blue form__submit">
+  <% end %>
+
+</div>
