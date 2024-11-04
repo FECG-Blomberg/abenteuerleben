@@ -26,4 +26,5 @@ group :development do
   gem 'rubocop-rails-omakase', require: false
   gem 'capybara'
   gem 'cuprite'
+  gem "simplecov", "~> 0.22.0"
 end
