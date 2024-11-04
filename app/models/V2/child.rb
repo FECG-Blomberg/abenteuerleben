@@ -7,7 +7,7 @@ module V2
     validates :forename, presence: true
     validates :birthday, presence: true
     validate :birthday_format
-    validate :age_approprivate_for_camp
+    validate :age_appropriate_for_camp
     validates :sex, inclusion: { in: %i[ boy, girl ] }
 
     attr_accessor :sex
@@ -18,7 +18,7 @@ module V2
     attr_accessor :notes
     attr_accessor :wishmate
 
-    def age_approprivate_for_camp
+    def age_appropriate_for_camp
       return if self.errors[:birthday].any?
 
       bday = Date.parse(self.birthday)
