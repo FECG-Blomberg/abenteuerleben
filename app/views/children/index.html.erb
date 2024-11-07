@@ -16,7 +16,7 @@
 <% end %>
 <br>
 
-<%= link_to new_child_path, class: '--bordered' do %>
+<%= link_to new_child_registration_path, class: '--bordered' do %>
   <%= forticon 'user-plus', height: 18, style: "margin-right: var(--spacing-sm)" %>
   Kind hinzufügen
 <% end %>
@@ -29,6 +29,10 @@
 <br>
 
 <style>
+  .child-table-scrollable {
+      overflow-x: scroll;
+  }
+
   .child-table {
       border-collapse: collapse;
       width: 100%;
@@ -45,21 +49,25 @@
       padding: 0 .5rem;
   }
 </style>
-<table class="child-table">
-  <tr>
-    <th>Link</th>
-    <th>Nachname</th>
-    <th>Vorname</th>
-    <th>Elternname</th>
-    <th>Jahrgang</th>
-  </tr>
-  <% @children.each do |c| %>
-  <tr>
-    <td><a href="<%= child_path c %>"><%= forticon :link, height: 16 %></a></td>
-    <td><%= c.surname %></td>
-    <td><%= c.forename %></td>
-    <td><%= c.parent.forename %></td>
-    <td><%= c.birthday.year %></td>
-  </tr>
-  <% end %>
-</table>
+<div class="child-table-scrollable">
+  <table class="child-table">
+    <tr>
+      <th>Link</th>
+      <th>Nachname</th>
+      <th>Vorname</th>
+      <th>Elternname</th>
+      <th>Jahrgang</th>
+      <th>Camp</th>
+    </tr>
+    <% @children.each do |c| %>
+    <tr>
+      <td><a href="<%= child_path c %>"><%= forticon :link, height: 16 %></a></td>
+      <td><%= c.surname %></td>
+      <td><%= c.forename %></td>
+      <td><%= c.parent.forename %></td>
+      <td><%= c.birthday.year %></td>
+      <td><%= c.camp.name %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>

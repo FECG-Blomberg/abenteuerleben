@@ -13,14 +13,14 @@ module V2
     validates :post, presence: true
     validates :city, presence: true
 
-    attr_accessor :surname
-    attr_accessor :forename
-    attr_accessor :telephone
-    attr_accessor :housephone
-    attr_accessor :email
-    attr_accessor :street
-    attr_accessor :house
-    attr_accessor :post
-    attr_accessor :city
+    # attr_accessor :surname
+    # attr_accessor :forename
+    # attr_accessor :telephone
+    # attr_accessor :housephone
+    # attr_accessor :email
+    # attr_accessor :street
+    # attr_accessor :house
+    # attr_accessor :post
+    # attr_accessor :city
   end
 end

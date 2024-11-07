@@ -28,6 +28,7 @@
       &.child {
         grid-template-areas:
           "surname forename"
+          "sex sex"
           "birthday birthday"
           "notes notes"
           "medicals medicals"
@@ -38,6 +39,7 @@
           grid-template-areas:
             "surname surname"
             "forename forename"
+            "sex sex"
             "birthday birthday"
             "notes notes"
             "medicals medicals"
@@ -67,16 +69,20 @@
               }
           }
 
-          input {
+          input, select {
+              flex: 1;
               border: none;
               min-width: 2rem;
               color: black;
           }
       }
+      .field__note {
+        font-size: .7rem;
+      }
       .error-msg {
-          display: block;
-          color: red;
-          font-size: .7rem;
+        display: block;
+        color: red;
+        font-size: .7rem;
       }
   }
 
@@ -95,12 +101,13 @@
     padding: 4px 8px;
     margin: 4px 0 0 0;
     display: inline-block;
+    background-color: #fee;
   }
 
   .child-form__add-child {
       color: green;
       box-shadow: none;
-      background: transparent;
+      background-color: #efe;
       cursor: pointer;
       border: 1px solid green;
       padding: 8px 16px;
@@ -118,6 +125,7 @@
   }
 </style>
 
+<h1>Anmeldung Kinder</h1>
 <div data-turbo="false">
   <%= form_with model: @parent, url: child_registrations_path,
                 data: { 'hx-post': child_registrations_path, 'hx-select': 'form', 'hx-target': 'form', 'hx-swap': 'outerHTML' } do |form| %>
@@ -198,12 +206,22 @@
                    field: :forename,
                    label: "Vorname",
                    required: true %>
+        <%= child_form.label :sex, style: "grid-area: sex" do %>
+          <div class="field">
+            <span>Geschlecht *</span>
+            <%= child_form.select :sex, [["Junge", :boy], ["Mädchen", :girl]],
+                                          { include_blank: true },
+                                          { onchange: "this.closest('label').querySelector('.error-msg').innerHTML = ''" } %>
+          </div>
+          <span class="error-msg"><%= child_form.object.errors[:sex].first %></span>
+        <% end %>
         <%= render 'child_registrations/form_input',
                    form: child_form,
                    field: :birthday,
                    label: "Geburtstag",
-                   placeholder: "z.B. 24.03.2010",
-                   required: true %>
+                   required: true do %>
+          Im Format: <i>tag.monat.jahr</i>, z.B. 24.03.2010
+        <% end %>
         <%= render 'child_registrations/form_input',
                    form: child_form,
                    field: :notes,
@@ -218,7 +236,11 @@
                    form: child_form,
                    field: :wishmate,
                    label: "Wunschpartner",
-                   required: false %>
+                   required: false do  %>
+          Mit folgender Person möchte mein Kind nach Möglichkeit in eine Gruppe kommen.<br>
+          <strong>Wichtig:</strong> Es handelt sich um ein Wunsch, nicht immer kann darauf eingegangen werden!<br>
+          Bitte max. 1 Person eintragen.
+        <% end %>
 
         <div style="grid-area: camp; display: flex; justify-content: space-around;" class="camp-select">
           <% @camps.each do |camp| %>

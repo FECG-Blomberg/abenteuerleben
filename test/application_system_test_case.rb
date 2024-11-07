@@ -1,4 +1,3 @@
-require "simplecov"
 require "test_helper"
 require "capybara/cuprite"
 require "test_helpers/cuprite_helpers"

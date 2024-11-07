@@ -4,9 +4,9 @@
   <div class="field">
     <span><%= label %> <%= " *" if required %></span>
     <%= form.text_field field,
-                        style: 'flex: 1;',
                         onkeydown: "this.closest('label').querySelector('.error-msg').innerHTML = ''",
                         placeholder: placeholder%>
   </div>
+  <span class="field__note"><%= yield %></span>
   <span class="error-msg"><%= form.object.errors[field].first %></span>
 <% end %>

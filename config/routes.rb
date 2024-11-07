@@ -33,6 +33,7 @@ Rails.application.routes.draw do
     resources :optionals, only: %i[new create]
     resources :child_stats, only: %i[new create]
     resources :parents, only: %i[index new create edit update]
+    resources :parents, only: %i[edit update]
   end
 
   resources :child_registrations, only: [ :index, :new, :create ]
