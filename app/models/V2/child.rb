@@ -20,6 +20,7 @@ module V2
 
     def age_appropriate_for_camp
       return if self.errors[:birthday].any?
+      return if camp.nil?
 
       if birthday.year > camp.participants_year_end || birthday.year < camp.participants_year_start
         self.errors.add('camp_' + self.camp_id.to_s, 'zu alt/jung fuer dieses camp')

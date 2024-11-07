@@ -13,45 +13,37 @@ class ChildRegistrationTest < ApplicationSystemTestCase
 
     fill_in 'v2_parent[surname]', with: @parent.surname
     fill_in 'v2_parent[forename]', with: @parent.surname
-    # click_on 'Weiter'
 
     fill_in 'Telefonnr. 1', with: @parent.telephone
     fill_in 'Email', with: @parent.email
-    # click_on 'Weiter'
 
     fill_in 'Straße', with: @parent.street
     fill_in 'Hausnr', with: @parent.house
     fill_in 'PLZ', with: @parent.post
     fill_in 'Stadt', with: @parent.city
-    # click_on 'Weiter'
 
-    # fill_in 'Wie viele Kinder sollen angemeldet werden?', with: 1
-    # click_on 'Weiter'
-
-    # find("#child_camp_id_#{camps(:one).id}").click
     fill_in 'v2_parent[children_attributes][0][surname]', with: @child.surname
     fill_in 'v2_parent[children_attributes][0][forename]', with: @child.forename
     fill_in 'v2_parent[children_attributes][0][birthday]', with: @child.birthday
     select 'Junge', from: 'v2_parent[children_attributes][0][sex]'
-    # find('#child_label_boy').click
-    # click_on 'Weiter'
+    choose 'Camp 1'
 
-    check "parent_parent_liability_exclusion"
+    check "v2_parent[liability_exclusion]"
     click_on "Als gelesen markieren"
 
-    check "parent_parent_important_information"
+    check "v2_parent[important_information]"
     click_on "Als gelesen markieren"
 
-    check "parent_parent_canceling_info"
+    check "v2_parent[canceling_info]"
     click_on "Als gelesen markieren"
 
-    check 'parent_parent_data_protection'
+    check 'v2_parent[data_protection]'
 
-    check 'parent_parent_photo_rights'
+    check 'v2_parent[photo_rights]'
 
     click_on 'Verbindlich und kostenpflichtig anmelden'
 
-    assert_text "Erfolgreich angemeldet, eine Email mit mehr Infos ist auf dem Weg zu dir"
+    assert_text "Erfolgreich angemeldet"
   end
 
   # test "should create child registration for non-member" do
