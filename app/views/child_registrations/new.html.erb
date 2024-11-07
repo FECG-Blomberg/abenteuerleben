@@ -166,7 +166,7 @@
       <%= render 'child_registrations/form_input',
                  form: form,
                  field: :street,
-                 label: "Strasse",
+                 label: "Straße",
                  required: true %>
       <%= render 'child_registrations/form_input',
                  form: form,
@@ -269,7 +269,45 @@
                       style: 'display: none;' %>
     <% end %>
 
-    <input type="submit" value="Absenden" class="stock btn-1-0-0 blue form__submit">
+    <br>
+    <br>
+    <br>
+    <%= render "formelements/dialog-checkbox", form_name: :liability_exclusion,
+               label_text: "Ich habe den Haftungsausschluss gelesen und bin damit einverstanden",
+               form: form do %>
+      <%= raw @page_liability %>
+    <% end %>
+
+    <br>
+    <%= render "formelements/dialog-checkbox", form_name: :important_information,
+               label_text: "Ich habe den Wichtigen Informationen gelesen und bin damit einverstanden",
+               form: form do %>
+      <%= raw @page_important_info %>
+    <% end %>
+
+    <br>
+    <%= render "formelements/dialog-checkbox", form_name: :canceling_info,
+               label_text: "Ich habe die geltenden Stornierungsregeln zur Kenntnis genommen",
+               form: form do %>
+      <%= raw @page_cancle_rules %>
+    <% end %>
+
+    <br>
+    <%= render 'formelements/input', form: form, record: @parent,
+               field_name: :data_protection, label: '', input_type: :checkbox_required,
+               required: true do %>
+      Ich akzeptiere die <%= link_to "Datenschutzbestimmungen", page_path("datenschutz"), style: 'display: contents; margin: 0; margin-left: .2rem; padding: 0; line-height: 1.2rem;'%>
+    <% end %>
+
+    <br>
+    <%= render 'formelements/input', form: form, record: @parent,
+               field_name: :photo_rights, input_type: :checkbox_required, required: true,
+               label: 'Einwilligung zur Verwendung / Veröffentlichung von Foto- und Videomaterial' %>
+
+    <br>
+    <p><%= t '.info-verification-email' %></p>
+
+    <input type="submit" value="<%= t('.button-register') %>" class="stock btn-1-0-0 blue form__submit">
   <% end %>
 
 </div>
