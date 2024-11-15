@@ -1,0 +1,30 @@
+<style>
+  .sponsors h3 {
+      margin-top: 0;
+  }
+  .sponsors p {
+      margin-bottom: 0;
+  }
+
+  .sponsors .page {
+      text-align: center;
+  }
+</style>
+<div class="container sponsors">
+  <h1>Sponsoren</h1>
+
+  <br><br>
+
+  <div class="page">
+    <% if @page == '<p><br></p>' # blank page %>
+      <div>
+        <%= forticon :'circle-exclamation', height: 16, style: 'color: orange;' %>
+        <span style="margin-left: 8px;">
+          Zurzeit sind noch keine Sponsoren eingetragen.
+        </span>
+      </div>
+    <% else %>
+      <%= raw @page %>
+    <% end %>
+  </div>
+</div>

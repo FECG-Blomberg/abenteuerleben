@@ -1,10 +1,10 @@
-<h1>Editing page [/<%= @page.url %>]</h1>
+<h1>Editiere Seite [/<%= @page.url %>]</h1>
 
 <%= render "form", page: @page %>
 
 <br>
 
 <div>
-  <%= link_to "Show this page", page_path(@page.url) %> |
-  <%= link_to "Back to pages", pages_path %>
+  <%= link_to "Diese Seite anzeigen", page_path(@page.url) %> |
+  <%= link_to "Zurück zu allen Seiten", pages_path %>
 </div>

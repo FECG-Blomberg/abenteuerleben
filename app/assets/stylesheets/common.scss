@@ -94,7 +94,11 @@
 .container {
   margin-right: auto;
   margin-left: auto;
-  padding: 3rem 1rem;
+  padding: 1rem .5rem;
+
+  h1 {
+    text-align: center;
+  }
 
   @media (min-width: 576px) {
     width: 100%;

@@ -4,6 +4,7 @@ de:
     models:
       child: 'Kind'
       parent/parent: 'Elternteil'
+      page: 'Seite'
     attributes:
       helper:
         forename: 'Vorname'
