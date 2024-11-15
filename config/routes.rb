@@ -51,5 +51,6 @@ Rails.application.routes.draw do
   resources :events
   resources :messages
 
+  get '/sponsoren', to: 'home#sponsors'
   root 'home#index'
 end

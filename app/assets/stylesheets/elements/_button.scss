@@ -1,7 +1,7 @@
 @import '../mixins/*';
 
-button:not(.btn-1-0-0),
-input[type="submit"] {
+button:not(.btn-1-0-0):not([class*="toastui-"]),
+input[type="submit"]:not(.stock) {
   @include bordered;
 
   color: var(--white);

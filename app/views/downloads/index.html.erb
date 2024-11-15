@@ -1,21 +1,30 @@
-<h1>Downloads</h1>
+<div class="container">
+  <h1>Downloads</h1>
 
-<%= raw @download_page_before.content %>
-
-<br>
-
-<div id="downloads">
-  <% @downloads.each do |download| %>
-    <% if download.file.attached? %>
-
-      <%= link_to rails_blob_path(download.file, disposition: 'attachment'), class: 'download-link' do %>
-        <%= forticon 'angle-right', height: 18, class: 'download-link__icon' %><%= download.file.filename %>
-      <% end %>
-
-    <% end %>
+  <% if @downloads.size == 0 %>
+    <div style="text-align: center;">
+      <%= forticon :'circle-exclamation', height: 16, style: 'color: orange;' %>
+      <span style="margin-left: 8px;">
+            Zurzeit sind keine Downloads eingetragen.
+          </span>
+    </div>
   <% end %>
+
+  <%= raw @download_page_before.content %>
+  <br>
+
+  <div id="downloads">
+    <% @downloads.each do |download| %>
+      <% if download.file.attached? %>
+
+        <%= link_to rails_blob_path(download.file, disposition: 'attachment'), class: 'download-link' do %>
+          <%= forticon 'angle-right', height: 18, class: 'download-link__icon' %><%= download.file.filename %>
+        <% end %>
+
+      <% end %>
+    <% end %>
+  </div>
+
+  <br>
+  <%= raw @download_page_after.content %>
 </div>
-
-<br>
-
-<%= raw @download_page_after.content %>
