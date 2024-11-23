@@ -36,11 +36,13 @@ module V2
   end
 
   def add_new_child!
+    # TODO: test this
     self.children << V2::Child.new
   end
 
   def unlink_child index
-    child = @parent.children[index]
-    @parent.children.delete(child)
+    # TODO: test this
+    child = self.children[index]
+    self.children.delete(child)
   end
 end
