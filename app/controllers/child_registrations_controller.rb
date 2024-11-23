@@ -5,11 +5,10 @@ class ChildRegistrationsController < ApplicationController
     @camps = Campyear.active_camp.camps
     @parent = V2::Parent.new
     @parent.children << V2::Child.new
-    @parent.children.first.camp_id = 123
 
     @page_liability = Page.where(url: 'eltern_haftungsausschluss').first&.content || ''
     @page_important_info =  Page.where(url: 'eltern_wichtige-informationen').first&.content || ''
-    @page_cancle_rules = Page.where(url: 'stornierungsregeln').first&.content || ''
+    @page_cancel_rules = Page.where(url: 'stornierungsregeln').first&.content || ''
   end
 
   # HTMX endpoint
