@@ -308,3 +308,5 @@ de:
   admin:
     dashboard:
       title: "Admin Übersicht"
+  boy: "Junge"
+  girl: "Mädchen"

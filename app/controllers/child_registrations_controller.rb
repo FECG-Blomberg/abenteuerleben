@@ -19,12 +19,17 @@ class ChildRegistrationsController < ApplicationController
       :surname, :forename,
       :email, :telephone, :housephone,
       :street, :house, :post, :city,
+      :liability_exclusion,
+      :important_information,
+      :canceling_info,
+      :data_protection,
+      :photo_rights,
       children_attributes: [ :surname, :forename, :sex, :birthday, :notes, :medicals, :wishmate, :camp_id ]
     )
 
     if params[:commit]
       # TODO put into own method
-      if params[:commit] == 'Kind hinzufuegen'
+      if params[:commit] == 'add-child'
         @parent.children << V2::Child.new
         return render :new
       elsif params[:commit].start_with?('Kind') && params[:commit].end_with?('entfernen')

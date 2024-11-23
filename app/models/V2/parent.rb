@@ -12,6 +12,17 @@ module V2
     validates :house, presence: true
     validates :post, presence: true
     validates :city, presence: true
+    validates :liability_exclusion, presence: true
+    validates :important_information, presence: true
+    validates :canceling_info, presence: true
+    validates :data_protection, presence: true
+    validates :photo_rights, presence: true
+
+    attr_accessor :liability_exclusion
+    attr_accessor :important_information
+    attr_accessor :canceling_info
+    attr_accessor :data_protection
+    attr_accessor :photo_rights
 
     # attr_accessor :surname
     # attr_accessor :forename

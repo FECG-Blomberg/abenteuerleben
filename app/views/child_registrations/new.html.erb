@@ -27,24 +27,24 @@
 
       &.child {
         grid-template-areas:
+          "camp camp"
           "surname forename"
           "sex sex"
           "birthday birthday"
           "notes notes"
           "medicals medicals"
-          "wishmate wishmate"
-          "camp camp";
+          "wishmate wishmate";
 
         @media (max-width: 768px) {
           grid-template-areas:
+            "camp camp"
             "surname surname"
             "forename forename"
             "sex sex"
             "birthday birthday"
             "notes notes"
             "medicals medicals"
-            "wishmate wishmate"
-            "camp camp";
+            "wishmate wishmate";
         }
       }
 
@@ -119,6 +119,21 @@
       font-size: .8rem;
   }
 
+  .child-form__required-notices {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin: 48px 0;
+  }
+
+  .child-firm__general-error {
+    font-size: 16px;
+    color: red;
+    border-left: 2px solid red;
+    padding: 4px 4px 4px 16px;
+      background-color: #ffeeee;
+  }
+
   .form__submit {
       display: block;
       margin-top: 32px;
@@ -129,7 +144,7 @@
 <div data-turbo="false">
   <%= form_with model: @parent, url: child_registrations_path,
                 data: { 'hx-post': child_registrations_path, 'hx-select': 'form', 'hx-target': 'form', 'hx-swap': 'outerHTML' } do |form| %>
-    <h2>Elterinfos</h2>
+    <h2>Elterninfos</h2>
     <p>* = erforderlich</p>
     <div class="grid parent">
 <!--      name-->
@@ -196,6 +211,12 @@
       <h3 class="child-form__header">Kind <%= child_form.index + 1 %></h3>
 
       <div class="grid child">
+        <div style="grid-area: camp; display: flex; justify-content: space-around;" class="camp-select">
+          <% @camps.each do |camp| %>
+            <%= render 'camp-select', form: child_form, camp: camp %>
+          <% end %>
+        </div>
+
         <%= render 'child_registrations/form_input',
                    form: child_form,
                    field: :surname,
@@ -241,12 +262,6 @@
           <strong>Wichtig:</strong> Es handelt sich um ein Wunsch, nicht immer kann darauf eingegangen werden!<br>
           Bitte max. 1 Person eintragen.
         <% end %>
-
-        <div style="grid-area: camp; display: flex; justify-content: space-around;" class="camp-select">
-          <% @camps.each do |camp| %>
-            <%= render 'camp-select', form: child_form, camp: camp %>
-          <% end %>
-        </div>
       </div>
 
       <% if  @parent.children.length > 1 %>
@@ -263,50 +278,58 @@
 
     <%= label_tag 'child-form__add-child', class: 'child-form__add-child' do %>
       <%= forticon :plus, height: 16 %>
-      Kind hinzufuegen
-      <%= form.submit 'Kind hinzufuegen',
+      Weiteres Kind hinzufügen
+      <%= form.submit 'add-child',
                       id: 'child-form__add-child',
                       style: 'display: none;' %>
     <% end %>
 
-    <br>
-    <br>
-    <br>
-    <%= render "formelements/dialog-checkbox", form_name: :liability_exclusion,
-               label_text: "Ich habe den Haftungsausschluss gelesen und bin damit einverstanden",
-               form: form do %>
-      <%= raw @page_liability %>
-    <% end %>
+    <div class="child-form__required-notices">
+      <% if @parent.errors[:liability_exclusion] || @parent.errors[:important_information] || @parent.errors[:canceling_info] || @parent.errors[:data_protection] || @parent.errors[:photo_rights] %>
+        <p class="child-firm__general-error">
+          Alle folgenden Felder müssen akzeptiert werden
+        </p>
+      <% end %>
 
-    <br>
-    <%= render "formelements/dialog-checkbox", form_name: :important_information,
-               label_text: "Ich habe den Wichtigen Informationen gelesen und bin damit einverstanden",
-               form: form do %>
-      <%= raw @page_important_info %>
-    <% end %>
+      <%= render 'checkbox-dialog', form: form, field: :liability_exclusion, label: 'Ich habe den Haftungsausschluss gelesen und bin damit einverstanden' do %>
+        <%= raw @page_liability %>
+      <% end %>
 
-    <br>
-    <%= render "formelements/dialog-checkbox", form_name: :canceling_info,
-               label_text: "Ich habe die geltenden Stornierungsregeln zur Kenntnis genommen",
-               form: form do %>
-      <%= raw @page_cancle_rules %>
-    <% end %>
+      <%= render 'checkbox-dialog', form: form, field: :important_information, label: 'Ich habe den Wichtigen Informationen gelesen und bin damit einverstanden' do %>
+        <%= raw @page_important_info %>
+      <% end %>
 
-    <br>
-    <%= render 'formelements/input', form: form, record: @parent,
-               field_name: :data_protection, label: '', input_type: :checkbox_required,
-               required: true do %>
-      Ich akzeptiere die <%= link_to "Datenschutzbestimmungen", page_path("datenschutz"), style: 'display: contents; margin: 0; margin-left: .2rem; padding: 0; line-height: 1.2rem;'%>
-    <% end %>
+      <%= render 'checkbox-dialog', form: form, field: :canceling_info, label: 'Ich habe die geltenden Stornierungsregeln zur Kenntnis genommen' do %>
+        <%= raw @page_cancle_rules %>
+      <% end %>
 
-    <br>
-    <%= render 'formelements/input', form: form, record: @parent,
-               field_name: :photo_rights, input_type: :checkbox_required, required: true,
-               label: 'Einwilligung zur Verwendung / Veröffentlichung von Foto- und Videomaterial' %>
+      <div class="inline-checkbox">
+        <%= form.label :data_protection, class: 'inline-checkbox__label' do %>
+          <%= form.check_box :data_protection, class: 'inline-checkbox__checkbox' %>
+          <span class="inline-checkbox__text">
+            Ich akzeptiere die <%= link_to "Datenschutzbestimmungen", page_path("datenschutz"), style: 'display: contents; margin: 0; margin-left: .2rem; padding: 0; line-height: 1.2rem;'%>
+          </span>
+        <% end %>
+      </div>
 
-    <br>
+      <div class="inline-checkbox">
+        <%= form.label :photo_rights, class: 'inline-checkbox__label' do %>
+          <%= form.check_box :photo_rights, class: 'inline-checkbox__checkbox' %>
+          <span class="inline-checkbox__text">
+            Einwilligung zur Verwendung / Veröffentlichung von Foto- und Videomaterial
+          </span>
+        <% end %>
+      </div>
+    </div>
+
     <p><%= t '.info-verification-email' %></p>
 
     <input type="submit" value="<%= t('.button-register') %>" class="stock btn-1-0-0 blue form__submit">
+    <% if @parent.errors.any? %>
+      <p class="child-firm__general-error">
+        Einige Fehler haben das Absenden der Anmeldung verhindert,
+        bitte überprüfe alle Eingabefelder vor einer erneuten Absendung
+      </p>
+    <% end %>
   <% end %>
 </div>
