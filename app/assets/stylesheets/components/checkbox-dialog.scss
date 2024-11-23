@@ -12,16 +12,12 @@
 }
 
 .checkbox-dialog__content {
-  display: none;
   max-width: 100vw;
   width: 768px;
   margin: auto;
-  max-height: 68vh;
-  height: 280px;
-}
-
-.checkbox-dialog__content[data-open="true"] {
-  display: block;
+  max-height: 80vh;
+  height: 500px;
+  padding: 8px;
 }
 
 .checkbox-dialog__close-content {

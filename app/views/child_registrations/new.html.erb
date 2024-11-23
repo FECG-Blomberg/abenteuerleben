@@ -291,25 +291,35 @@
         </p>
       <% end %>
 
-      <%= render 'checkbox-dialog', form: form, field: :liability_exclusion, label: 'Ich habe den Haftungsausschluss gelesen und bin damit einverstanden' do %>
-        <%= raw @page_liability %>
-      <% end %>
-
-      <%= render 'checkbox-dialog', form: form, field: :important_information, label: 'Ich habe den Wichtigen Informationen gelesen und bin damit einverstanden' do %>
-        <%= raw @page_important_info %>
-      <% end %>
-
-      <%= render 'checkbox-dialog', form: form, field: :canceling_info, label: 'Ich habe die geltenden Stornierungsregeln zur Kenntnis genommen' do %>
-        <%= raw @page_cancel_rules %>
-      <% end %>
-
-      <div class="inline-checkbox">
-        <%= form.label :data_protection, class: 'inline-checkbox__label' do %>
-          <%= form.check_box :data_protection, class: 'inline-checkbox__checkbox' %>
-          <span class="inline-checkbox__text">
-            Ich akzeptiere die <%= link_to "Datenschutzbestimmungen", page_path("datenschutz"), style: 'display: contents; margin: 0; margin-left: .2rem; padding: 0; line-height: 1.2rem;'%>
-          </span>
+      <div>
+        <%= render 'checkbox-dialog', form: form, field: :liability_exclusion, label: 'Ich habe den Haftungsausschluss gelesen und bin damit einverstanden' do %>
+          <%= raw @page_liability %>
         <% end %>
+        <%= link_to '> Haftungsausschluss', page_path('eltern_haftungsausschluss'), target: :blank %>
+      </div>
+
+      <div>
+        <%= render 'checkbox-dialog', form: form, field: :important_information, label: 'Ich habe den Wichtigen Informationen gelesen und bin damit einverstanden' do %>
+          <%= raw @page_important_info %>
+        <% end %>
+        <%= link_to '> Wichtigen Informationen', page_path('eltern_wichtige-informationen'), target: :blank %>
+      </div>
+
+      <div>
+        <%= render 'checkbox-dialog', form: form, field: :canceling_info, label: 'Ich habe die geltenden Stornierungsregeln zur Kenntnis genommen' do %>
+          <%= raw @page_cancel_rules %>
+        <% end %>
+        <%= link_to '> Stornierungsregeln', page_path('stornierungsregeln'), target: :blank %>
+      </div>
+
+      <div>
+        <div class="inline-checkbox">
+          <%= form.label :data_protection, class: 'inline-checkbox__label' do %>
+            <%= form.check_box :data_protection, class: 'inline-checkbox__checkbox' %>
+            <span class="inline-checkbox__text">Ich akzeptiere die Datenschutzbestimmungen</span>
+          <% end %>
+        </div>
+        <%= link_to '> Datenschutzbestimmungen', page_path('datenschutz'), target: :blank %>
       </div>
 
       <div class="inline-checkbox">

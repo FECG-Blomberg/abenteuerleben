@@ -2,10 +2,11 @@
 
 <div class="checkbox-dialog">
   <%= form.label field do %>
+
     <label class="checkbox-dialog__label">
       <%= form.check_box field,
                          class: 'checkbox-dialog__checkbox',
-                         onchange: "this.checked ? this.closest('.checkbox-dialog').querySelector('.checkbox-dialog__content').dataset.open='true' : null;"%>
+                         onchange: "this.checked ? this.closest('.checkbox-dialog').querySelector('.checkbox-dialog__content').showModal() : null;"%>
       <span class="checkbox-dialog__text"><%= label %></span>
     </label>
 
@@ -13,7 +14,7 @@
       <%= yield %>
       <button type="button"
               class="checkbox-dialog__close-content"
-              onclick="this.closest('.checkbox-dialog__content').dataset.open = 'false'">
+              onclick="this.closest('dialog').close()">
         Als gelesen markieren
       </button>
     </dialog>
