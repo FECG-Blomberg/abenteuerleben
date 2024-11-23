@@ -285,7 +285,7 @@
     <% end %>
 
     <div class="child-form__required-notices">
-      <% if @parent.errors[:liability_exclusion] || @parent.errors[:important_information] || @parent.errors[:canceling_info] || @parent.errors[:data_protection] || @parent.errors[:photo_rights] %>
+      <% if @parent.errors[:liability_exclusion].any? || @parent.errors[:important_information].any? || @parent.errors[:canceling_info].any? || @parent.errors[:data_protection].any? || @parent.errors[:photo_rights].any? %>
         <p class="child-firm__general-error">
           Alle folgenden Felder müssen akzeptiert werden
         </p>
