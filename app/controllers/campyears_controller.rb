@@ -58,8 +58,6 @@ class CampyearsController < ApplicationController
       :participants_register_end,
       :helper_register_start,
       :helper_register_end,
-      :accentcolor_primary,
-      :accentcolor_secondary
     )
   end
 end

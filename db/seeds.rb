@@ -72,8 +72,6 @@ Campyear.create!([{
                    members_only_start: '2023-01-01',
                    helper_register_start: '2023-04-01',
                    helper_register_end: '2023-04-10',
-                   accentcolor_primary: '#ff0000',
-                   accentcolor_secondary: '#fee000',
                    camps: [
                      Camp.new(
                        name: '1',

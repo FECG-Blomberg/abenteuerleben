@@ -21,8 +21,6 @@ class CampyearsControllerTest < ActionDispatch::IntegrationTest # rubocop:disabl
     assert_difference('Campyear.count', 0) do
       post campyears_url,
            params: { campyear: {
-             accentcolor_primary: @campyear.accentcolor_primary,
-             accentcolor_secondary: @campyear.accentcolor_secondary,
              helper_register_end: @campyear.helper_register_end,
              helper_register_start: @campyear.helper_register_start,
              participants_register_end: @campyear.participants_register_end,
@@ -38,8 +36,6 @@ class CampyearsControllerTest < ActionDispatch::IntegrationTest # rubocop:disabl
     assert_difference('Campyear.count', 0) do
       post campyears_url,
            params: { campyear: {
-             accentcolor_primary: @campyear.accentcolor_primary,
-             accentcolor_secondary: @campyear.accentcolor_secondary,
              helper_register_end: @campyear.helper_register_end,
              helper_register_start: @campyear.helper_register_start,
              participants_register_end: @campyear.participants_register_end,
@@ -55,8 +51,6 @@ class CampyearsControllerTest < ActionDispatch::IntegrationTest # rubocop:disabl
     assert_difference('Campyear.count', 0) do
       post campyears_url,
            params: { campyear: {
-             accentcolor_primary: @campyear.accentcolor_primary,
-             accentcolor_secondary: @campyear.accentcolor_secondary,
              helper_register_end: @campyear.helper_register_end,
              helper_register_start: @campyear.helper_register_start,
              participants_register_start: @campyear.participants_register_start,
@@ -72,8 +66,6 @@ class CampyearsControllerTest < ActionDispatch::IntegrationTest # rubocop:disabl
     assert_difference('Campyear.count') do
       post campyears_url,
            params: { campyear: {
-             accentcolor_primary: @campyear.accentcolor_primary,
-             accentcolor_secondary: @campyear.accentcolor_secondary,
              helper_register_end: @campyear.helper_register_end,
              helper_register_start: @campyear.helper_register_start,
              participants_register_end: @campyear.participants_register_end,
@@ -99,8 +91,6 @@ class CampyearsControllerTest < ActionDispatch::IntegrationTest # rubocop:disabl
   test 'should update campyear' do
     patch campyear_url(@campyear),
           params: { campyear: {
-            accentcolor_primary: @campyear.accentcolor_primary,
-            accentcolor_secondary: @campyear.accentcolor_secondary,
             helper_register_end: @campyear.helper_register_end,
             helper_register_start: @campyear.helper_register_start,
             participants_register_end: @campyear.participants_register_end,
