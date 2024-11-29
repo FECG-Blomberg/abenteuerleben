@@ -14,8 +14,6 @@ class CampyearsTest < ApplicationSystemTestCase
   #   visit campyears_url
   #   click_on "New campyear"
 
-  #   fill_in "Accentcolor primary", with: @campyear.accentcolor_primary
-  #   fill_in "Accentcolor secondary", with: @campyear.accentcolor_secondary
   #   fill_in "Helper register end", with: @campyear.helper_register_end
   #   fill_in "Helper register start", with: @campyear.helper_register_start
   #   fill_in "Participants register end", with: @campyear.participants_register_end
@@ -31,8 +29,6 @@ class CampyearsTest < ApplicationSystemTestCase
   #   visit campyear_url(@campyear)
   #   click_on "Edit this campyear", match: :first
 
-  #   fill_in "Accentcolor primary", with: @campyear.accentcolor_primary
-  #   fill_in "Accentcolor secondary", with: @campyear.accentcolor_secondary
   #   fill_in "Helper register end", with: @campyear.helper_register_end
   #   fill_in "Helper register start", with: @campyear.helper_register_start
   #   fill_in "Participants register end", with: @campyear.participants_register_end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_15_084757) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_29_100917) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -59,8 +59,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_15_084757) do
     t.date "participants_register_end"
     t.date "helper_register_start"
     t.date "helper_register_end"
-    t.string "accentcolor_primary"
-    t.string "accentcolor_secondary"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.date "members_only_start"
