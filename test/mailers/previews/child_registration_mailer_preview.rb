@@ -9,15 +9,14 @@ class ChildRegistrationMailerPreview < ActionMailer::Preview
     parent.email = 'max_musterman@example.com'
     parent.street = 'musterstr.'
     parent.house = '111'
-    parent.post = '12345'
     parent.city = 'musterstadt'
-    parent.post = 'false'
-    parent.church = ''
+    parent.post = '12345'
+
     child = Child.new
     child.surname = 'Musterman'
     child.forename = 'Asdfine'
     child.birthday = '2000-01-01'
-    child.sex = 'maedchen'
+    child.sex = 'girl'
     child.medicals = 'nothing'
     child.notes = 'also nothing'
     child.wishmate = 'The one from family B'
