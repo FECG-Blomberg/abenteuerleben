@@ -1,3 +1,5 @@
+require_relative 'seeds/helper_seed'
+require_relative 'seeds/camp_seed'
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
@@ -5,6 +7,9 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+campyear = Seeds::CampSeed.create_campyear
+camp = Seeds::CampSeed.create_camp(campyear.id)
+helper = Seeds::HelperSeed.create_helper(camp.id)
 
 User.create!([{
                 name: 'admin',
@@ -65,38 +70,6 @@ User.create!([{
 
 # p "Created #{User.count} users"
 
-Campyear.create!([{
-                   year: 2024,
-                   participants_register_start: '2023-07-10',
-                   participants_register_end: '2024-08-10',
-                   members_only_start: '2023-01-01',
-                   helper_register_start: '2023-04-01',
-                   helper_register_end: '2023-04-10',
-                   camps: [
-                     Camp.new(
-                       name: '1',
-                       date_start: '2024-08-01',
-                       date_end: '2024-08-05',
-                       participants_year_start: 2000,
-                       participants_year_end: 2004,
-                       max_participant_count: 60,
-                       price: 50
-                     ),
-                     Camp.new(
-                       name: '2',
-                       date_start: '2024-08-07',
-                       date_end: '2024-08-12',
-                       participants_year_start: 2005,
-                       participants_year_end: 2008,
-                       max_participant_count: 80,
-                       price: 30
-                     )
-                   ]
-                 }])
-
-# p "Created #{Campyear.count} campyears"
-# p "Created #{Camp.count} camps"
-#
 Team.create!([
                {
                  name: 'Handwerker',
@@ -126,32 +99,3 @@ Team.create!([
              ])
 
 # p "Created #{Team.count} teams"
-#
-# h = Helper.new({
-#                  surname: 'musterman',
-#                  forename: 'max',
-#                  birthday: '2000-01-01',
-#                  birthplace: 'maxstadt',
-#                  telephone: '01234',
-#                  email: 'my@mail.com',
-#
-#                  streethouse: 'Industrystreet 14a',
-#                  postcity: '32825 Megacity',
-#
-#                  story: 'this and that',
-#                  duty: 'programmer',
-#
-#                  registrations: [
-#                    Registration.new(
-#                      camp: Camp.first,
-#                      wish_first: 'Sportler',
-#                      wish_second: 'Sonstige',
-#                      participate: true
-#                    )
-#                  ]
-#                })
-# h.photo.attach(io: Tempfile.new('dis is an image.png'), filename: 'img.png')
-# h.save
-#
-# p "Created #{Helper.count} helpers"
-# p "Created #{Registration.count} registrations"
