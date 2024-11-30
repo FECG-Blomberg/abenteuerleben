@@ -11,7 +11,7 @@ module Seeds
       )
     end
 
-    def self.create_camp campyear_id
+    def self.create_camp(campyear_id, camp_name: '1')
       Camp.create!(
         campyear_id: campyear_id,
         date_start: '2030-02-01',
@@ -19,7 +19,7 @@ module Seeds
         participants_year_start: 2009,
         participants_year_end: 2010,
         max_participant_count: 101,
-        name: '1',
+        name: camp_name,
         price: 42
       )
     end

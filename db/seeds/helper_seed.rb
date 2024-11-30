@@ -16,6 +16,7 @@ module Seeds
       helper.preferredCamp = 'none particularly'
       helper.registrations.push(new_helper_registration(camp_id))
       helper.save!
+      helper
     end
 
     def self.new_helper_registration camp_id

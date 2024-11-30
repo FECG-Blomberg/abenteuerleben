@@ -55,55 +55,17 @@
   Hier noch einmal deine Anmeldedaten zum nachlesen:
 </p>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <td><%= @helper.forename %> <%= @helper.surname %></td>
-  </tr>
-  <tr>
-    <th>Geboren</th>
-    <td><%= l @helper.birthday %>, <%= @helper.birthplace %></td>
-  </tr>
-  <tr>
-    <th>Wohnort</th>
-    <td><%= @helper.streethouse %>, <%= @helper.postcity %></td>
-  </tr>
-  <tr>
-    <th>Telefonnummer</th>
-    <td><%= @helper.telephone %></td>
-  </tr>
-  <tr>
-    <th>EMail</th>
-    <td><%= @helper.email %></td>
-  </tr>
-  <tr>
-    <th>Dein Dienst</th>
-    <td><%= @helper.duty %></td>
-  </tr>
-  <tr>
-    <th>Deine Geschichte</th>
-    <td><%= @helper.story %></td>
-  </tr>
-  <tr>
-    <th>Bevorzugtes Camp</th>
-    <td><%= @helper.preferredCamp.blank? ? '/' : @helper.preferredCamp %></td>
-  </tr>
-</table>
+<%= render 'info-table', helper: @helper %>
 
 <p>
   Du hast dich für <%= pluralize(@helper.registrations.count, "Camp", "Camps") %> angemeldet.
 </p>
 
-<% @helper.registrations.each do |registration| %>
-  <p>
-    <u>Anmeldung Camp</u>: <%= registration.camp.name %></br>
-    Datum des Camps: <%= l registration.camp.date_start %> - <%= l registration.camp.date_end %></br>
-    Jahrgang des Camps: <%= registration.camp.participants_year_start %>
-    - <%= registration.camp.participants_year_end %></br>
-    Team Erstwunsch: <%= registration.wish_first %></br>
-    Team Zweitwunsch: <%= registration.wish_second %></br>
-  </p>
-<% end %>
+<div>
+  <% @helper.registrations.each do |registration| %>
+    <%= render 'registration-table', registration: registration %>
+  <% end %>
+</div>
 
 <hr>
 
@@ -116,7 +78,24 @@
 </div>
 
 <style>
-    tr {
-        text-align: left;
-    }
+  table {
+      width: 100%;
+      max-width: 768px;
+      border: 1px solid #333;
+  }
+  table:not(:last-child) {
+      margin-bottom: 8px;
+  }
+  th {
+      padding-right: 8px;
+  }
+
+  tr {
+    text-align: left;
+    background-color: #fff;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f0f0f0;
+  }
 </style>

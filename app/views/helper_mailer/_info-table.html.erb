@@ -1,0 +1,52 @@
+<%# locals: (helper:) %>
+
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+  <tr>
+    <td><%= helper.forename %> <%= helper.surname %></td>
+  </tr>
+  <tr>
+    <th>Geboren</th>
+  </tr>
+  <tr>
+    <td><%= l helper.birthday %>, <%= helper.birthplace %></td>
+  </tr>
+  <tr>
+    <th>Wohnort</th>
+  </tr>
+  <tr>
+    <td><%= helper.streethouse %>, <%= helper.postcity %></td>
+  </tr>
+  <tr>
+    <th>Telefonnummer</th>
+  </tr>
+  <tr>
+    <td><%= helper.telephone %></td>
+  </tr>
+  <tr>
+    <th>EMail</th>
+  </tr>
+  <tr>
+    <td><%= helper.email %></td>
+  </tr>
+  <tr>
+    <th>Dein Dienst</th>
+  </tr>
+  <tr>
+    <td><%= helper.duty %></td>
+  </tr>
+  <tr>
+    <th>Deine Geschichte</th>
+  </tr>
+  <tr>
+    <td><%= helper.story %></td>
+  </tr>
+  <tr>
+    <th>Bevorzugtes Camp</th>
+  </tr>
+  <tr>
+    <td><%= helper.preferredCamp.blank? ? '/' : helper.preferredCamp %></td>
+  </tr>
+</table>
