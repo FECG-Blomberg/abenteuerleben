@@ -10,9 +10,12 @@
       <span class="checkbox-dialog__text"><%= label %></span>
     </label>
 
-    <dialog class="checkbox-dialog__content" data-open="false">
-      <%= yield %>
+    <dialog class="checkbox-dialog__content">
+      <div tabindex="1">
+        <%= yield %>
+      </div>
       <button type="button"
+              tabindex="2"
               class="checkbox-dialog__close-content"
               onclick="this.closest('dialog').close()">
         Als gelesen markieren

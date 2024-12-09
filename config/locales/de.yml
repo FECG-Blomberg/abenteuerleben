@@ -270,8 +270,14 @@ de:
 
   child_registrations:
     new:
+      title: 'Anmeldung Kinder'
       info-verification-email: "Du wirst von uns eine Bestätigungsemail von uns erhalten mit weiteren Infos"
       button-register: "Verbindlich und kostenpflichtig anmelden"
+      parent_section:
+        title: 'Elterninfos'
+      child_section:
+        title: 'Kinderinfos'
+        no_children_selected: 'Keine kinder ausgewählt'
 
   parent:
     form-title: 'Kinderanmeldung'
@@ -310,3 +316,4 @@ de:
       title: "Admin Übersicht"
   boy: "Junge"
   girl: "Mädchen"
+  star_required: '* = erforderlich'

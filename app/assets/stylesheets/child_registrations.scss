@@ -1,0 +1,139 @@
+.grid {
+  display: grid;
+
+  &.parent {
+    grid-template-areas:
+          "surname forename"
+          "email email"
+          "telephone telephone"
+          "housephone housephone"
+          "street house"
+          "post city";
+
+    @media (max-width: 768px) {
+      grid-template-areas:
+              "surname surname"
+              "forename forename"
+              "email email"
+              "telephone telephone"
+              "housephone housephone"
+              "street street"
+              "house house"
+              "post post"
+              "city city";
+    }
+  }
+
+  &.child {
+    grid-template-areas:
+          "camp camp"
+          "surname forename"
+          "sex sex"
+          "birthday birthday"
+          "notes notes"
+          "medicals medicals"
+          "wishmate wishmate";
+
+    @media (max-width: 768px) {
+      grid-template-areas:
+            "camp camp"
+            "surname surname"
+            "forename forename"
+            "sex sex"
+            "birthday birthday"
+            "notes notes"
+            "medicals medicals"
+            "wishmate wishmate";
+    }
+  }
+
+  grid-template-rows: auto;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid #35578e;
+  background-color: #e7ecf4;
+
+  label {
+    padding: 4px 8px;
+    border: .5px solid #35578e;
+    margin: 0;
+
+    .field {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 8px;
+      color: #35578e;
+      span {
+        width: 7rem;
+      }
+    }
+
+    input, select {
+      flex: 1;
+      border: none;
+      min-width: 2rem;
+      color: black;
+    }
+  }
+  .field__note {
+    font-size: .7rem;
+  }
+  .error-msg {
+    display: block;
+    color: red;
+    font-size: .7rem;
+  }
+}
+
+.child-form__header {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.child-form__remove-child {
+  color: red;
+  box-shadow: none;
+  background: transparent;
+  cursor: pointer;
+  border: 1px solid red;
+  padding: 4px 8px;
+  margin: 4px 0 0 0;
+  display: inline-block;
+  background-color: #fee;
+}
+
+.child-form__add-child {
+  color: green;
+  box-shadow: none;
+  background-color: #efe;
+  cursor: pointer;
+  border: 1px solid green;
+  padding: 8px 16px;
+  margin: 16px 0 0 0;
+  display: inline-block;
+}
+
+.camp-select__camp-info {
+  font-size: .8rem;
+}
+
+.child-form__required-notices {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 48px 0;
+}
+
+.child-firm__general-error {
+  font-size: 16px;
+  color: red;
+  border-left: 2px solid red;
+  padding: 4px 4px 4px 16px;
+  background-color: #ffeeee;
+}
+
+.form__submit {
+  display: block;
+  margin-top: 32px;
+}
