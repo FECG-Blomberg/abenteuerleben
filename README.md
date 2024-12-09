@@ -1,5 +1,8 @@
 # Abenteuerleben Rails version
 
+## Rules
+- Always use i18n texts, no inline texts
+
 ## Deployment
 
 Github actions automatically deploys all changes to master to the dokku environment (production has to be triggered manually as long as no customer-journey and e2e tests are in place)
