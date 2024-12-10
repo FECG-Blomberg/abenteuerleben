@@ -27,3 +27,7 @@ group :development do
   gem 'capybara'
   gem 'cuprite'
 end
+
+gem "net-sftp", "~> 4.0"
+gem "ed25519", "~> 1.3"
+gem "bcrypt_pbkdf", "~> 1.1"

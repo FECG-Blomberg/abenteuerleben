@@ -55,6 +55,8 @@ Rails.application.routes.draw do
   resources :events
   resources :messages
 
+  get '/gallery', to: 'gallery#index'
+  get '/gallery/file', to: 'gallery#file', as: :gallery_file
   get '/sponsoren', to: 'home#sponsors'
   root 'home#index'
 end

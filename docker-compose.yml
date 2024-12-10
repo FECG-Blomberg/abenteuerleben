@@ -1,0 +1,9 @@
+services:
+  sftp:
+    image: 'drakkan/sftpgo:latest'
+    ports:
+      - "8080:8080"
+      - "2022:2022"
+    volumes:
+        - ./storage/sftpgodata:/srv/sftpgo
+        - ./storage/sftpgohome:/var/lib/sftpgo

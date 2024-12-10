@@ -8,11 +8,14 @@ class HomeController < ApplicationController
 
     @message = Message.new flash[:message]
     @message.errored = true if flash[:message]
+    @images = Rails.cache.fetch('gallery_list', expires_in: 5.minutes) do
+      Gallery.list_files
+    end
 
     render :index_galaxy, layout: "default"
   end
 
   def sponsors
-    @page = Page.find_by(url: "sponsoren").content || 'Seite nicht angelegt, bitte an den Admin melden'
+    @page = Page.find_by(url: "sponsoren")&.content || 'Seite nicht angelegt, bitte an den Admin melden'
   end
 end

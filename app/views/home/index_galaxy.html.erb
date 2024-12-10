@@ -1,4 +1,6 @@
 <%= content_for :head do %>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.19.0/cdn/themes/light.css" />
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.19.0/cdn/shoelace-autoloader.js"></script>
   <%= stylesheet_link_tag "home", "data-turbo-track": "reload" %>
 <% end %>
 
@@ -175,6 +177,20 @@
           <%= render 'events/event', event: event %>
         <% end %>
       </div>
+    </div>
+
+    <hr style="margin: var(--spacing-xl) 0;">
+
+    <div class="container" style="margin-left: -1rem; margin-right: -1rem">
+      <% cache 'gallery' do %>
+        <sl-carousel autoplay navigation mouse-dragging loop>
+          <% @images.each do |i| %>
+            <sl-carousel-item>
+              <%= image_tag gallery_file_path(file: i.name) %>
+            </sl-carousel-item>
+          <% end %>
+        </sl-carousel>
+      <% end %>
     </div>
 
     <hr style="margin: var(--spacing-xl) 0;">

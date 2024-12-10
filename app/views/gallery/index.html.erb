@@ -1,0 +1,17 @@
+<h1>Gallerie</h1>
+
+<%= stylesheet_link_tag 'https://rawcdn.githack.com/nextapps-de/spotlight/0.7.8/dist/css/spotlight.min.csss' %>
+<%= javascript_include_tag 'https://rawcdn.githack.com/nextapps-de/spotlight/0.7.8/dist/js/spotlight.min.js' %>
+
+<style>
+    img { max-width: 100%;}
+</style>
+
+
+<div id="lightgallery">
+  <% @images.each do |i| %>
+    <a data-src="<%= gallery_file_path(file: i.name) %>" class="spotlight">
+      <%= image_tag gallery_file_path(file: i.name) %>
+    </a>
+  <% end %>
+</div>
