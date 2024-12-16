@@ -19,7 +19,8 @@ class ChildRegistrationsController < ApplicationController
     # special commands
     if params[:commit]
       # add child
-      @parent.add_new_child! if add_child_command
+      logger.debug @parent.methods
+      @parent.add_child! if add_child_command
       # remove child
       @parent.unlink_child(params[:commit].split(' ')[1].to_i - 1) if remove_child_command
 

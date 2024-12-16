@@ -23,7 +23,7 @@ module V2
       return if camp.nil?
 
       if birthday.year > camp.participants_year_end || birthday.year < camp.participants_year_start
-        self.errors.add('camp_' + self.camp_id.to_s, 'zu alt/jung fuer dieses camp')
+        self.errors.add('camp_' + self.camp_id.to_s, 'Zu alt/jung für dieses Camp')
       end
     end
 
