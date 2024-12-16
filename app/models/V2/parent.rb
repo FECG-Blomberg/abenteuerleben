@@ -33,16 +33,16 @@ module V2
     # attr_accessor :house
     # attr_accessor :post
     # attr_accessor :city
-  end
 
-  def add_new_child!
-    # TODO: test this
-    self.children << V2::Child.new
-  end
+    def add_child!
+      # TODO: test this
+      self.children << V2::Child.new
+    end
 
-  def unlink_child index
-    # TODO: test this
-    child = self.children[index]
-    self.children.delete(child)
+    def unlink_child(index)
+      # TODO: test this
+      child = self.children[index]
+      self.children.delete(child)
+    end
   end
 end
