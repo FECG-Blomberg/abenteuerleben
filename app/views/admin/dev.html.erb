@@ -1,9 +1,17 @@
 <hgroup>
   <h1>Developer space</h1>
-  <p>Showcase of various design elements</p>
+  <p>Various design elements</p>
 </hgroup>
 
 <br>
+<%= form_with model: V2::Parent.new, url: '#' do |form| %>
+  <%= render 'child_registrations/checkbox-dialog', form: form, field: :liability_exclusion, label: 'Test checkbox' do %>
+    <%= raw Page.where(url: 'eltern_haftungsausschluss').first&.content || 'error' %>
+  <% end %>
+  <%= link_to '> Test', '#test', target: :blank %>
+<% end %>
+<br>
+<hr>
 
 <h2>Typography</h2>
 

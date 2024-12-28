@@ -3,6 +3,8 @@ module V2
     has_many :children, class_name: 'V2::Child'
     accepts_nested_attributes_for :children
 
+    before_validation :strip_email_blanks
+
     validates :children, presence: true
     validates :surname, presence: true
     validates :forename, presence: true
@@ -33,6 +35,10 @@ module V2
     # attr_accessor :house
     # attr_accessor :post
     # attr_accessor :city
+
+    def strip_email_blanks
+      self.email.strip!
+    end
 
     def add_child!
       # TODO: test this

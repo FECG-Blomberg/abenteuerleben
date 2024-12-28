@@ -35,4 +35,20 @@ class ParentTest < ActiveSupport::TestCase
     # check
     assert_equal "221234567", formatted_number
   end
+
+  test 'parent email is being stripped of whitespace before validation' do
+    # without space works
+    p = V2::Parent.new
+    p.email = 'example@example.com'
+    p.validate
+    puts p.errors.to_json
+    refute_includes p.errors, 'email'
+
+    # with space at end also works
+    p = V2::Parent.new
+    p.email = 'example@example.com '
+    p.validate
+    puts p.errors.to_json
+    refute_includes p.errors, 'email'
+  end
 end
