@@ -112,6 +112,9 @@ GEM
     cuprite (0.15.1)
       capybara (~> 3.0)
       ferrum (~> 0.15.0)
+    dartsass-rails (0.5.1)
+      railties (>= 6.0.0)
+      sass-embedded (~> 1.63)
     date (3.4.1)
     debug (1.10.0)
       irb (~> 1.10)
@@ -137,6 +140,7 @@ GEM
     ffi (1.17.0-x86_64-darwin)
     ffi (1.17.0-x86_64-linux-gnu)
     ffi (1.17.0-x86_64-linux-musl)
+    foreman (0.88.1)
     forticons (0.0.4)
     forticons_helper (0.0.4)
       actionview
@@ -147,6 +151,24 @@ GEM
       raabro (~> 1.4)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    google-protobuf (4.29.2)
+      bigdecimal
+      rake (>= 13)
+    google-protobuf (4.29.2-aarch64-linux)
+      bigdecimal
+      rake (>= 13)
+    google-protobuf (4.29.2-arm64-darwin)
+      bigdecimal
+      rake (>= 13)
+    google-protobuf (4.29.2-x86-linux)
+      bigdecimal
+      rake (>= 13)
+    google-protobuf (4.29.2-x86_64-darwin)
+      bigdecimal
+      rake (>= 13)
+    google-protobuf (4.29.2-x86_64-linux)
+      bigdecimal
+      rake (>= 13)
     hcaptcha (7.1.0)
       json
     htmlentities (4.3.4)
@@ -312,6 +334,26 @@ GEM
       ffi (~> 1.12)
       logger
     rubyzip (2.3.2)
+    sass-embedded (1.83.0-aarch64-linux-gnu)
+      google-protobuf (~> 4.28)
+    sass-embedded (1.83.0-aarch64-linux-musl)
+      google-protobuf (~> 4.28)
+    sass-embedded (1.83.0-arm-linux-gnueabihf)
+      google-protobuf (~> 4.28)
+    sass-embedded (1.83.0-arm-linux-musleabihf)
+      google-protobuf (~> 4.28)
+    sass-embedded (1.83.0-arm64-darwin)
+      google-protobuf (~> 4.28)
+    sass-embedded (1.83.0-x86-linux-gnu)
+      google-protobuf (~> 4.28)
+    sass-embedded (1.83.0-x86-linux-musl)
+      google-protobuf (~> 4.28)
+    sass-embedded (1.83.0-x86_64-darwin)
+      google-protobuf (~> 4.28)
+    sass-embedded (1.83.0-x86_64-linux-gnu)
+      google-protobuf (~> 4.28)
+    sass-embedded (1.83.0-x86_64-linux-musl)
+      google-protobuf (~> 4.28)
     securerandom (0.3.1)
     solid_cable (3.0.5)
       actioncable (>= 7.2)
@@ -402,7 +444,9 @@ DEPENDENCIES
   caxlsx (~> 4.0)
   caxlsx_rails (~> 0.6)
   cuprite
+  dartsass-rails (~> 0.5.1)
   debug
+  foreman (~> 0.88.1)
   forticons
   forticons_helper
   hcaptcha (~> 7.1)

@@ -16,14 +16,14 @@ gem "turbo-rails"
 gem "stimulus-rails"
 # Nice breadcrumbs
 gem 'breadcrumbs_on_rails'
-# Generating excel files support
+# Generating Excel files support
 gem 'caxlsx', '~> 4.0'
 gem 'caxlsx_rails', '~> 0.6'
 # Server side fonticons
 gem 'forticons'
 gem 'forticons_helper'
-# TODO: what about scss?
-# gem 'sassc-rails'
+# SCSS support
+gem "dartsass-rails", "~> 0.5.1"
 # Captcha for public forms
 gem "hcaptcha", "~> 7.1" # todo: migrate to friendlycaptcha
 
@@ -66,4 +66,7 @@ group :development do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem 'cuprite'
+
+  # For dartsass
+  gem "foreman", "~> 0.88.1"
 end

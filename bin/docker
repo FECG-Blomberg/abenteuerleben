@@ -1,0 +1,4 @@
+#!/bin/bash -e
+
+docker build -t aleben:build .
+docker run -p 3000:3000 -e SECRET_KEY_BASE_DUMMY=1 -e HCAPTCHA_SECRET_KEY=test -e HCAPTCHA_SITE_KEY=test aleben:build

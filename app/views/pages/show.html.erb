@@ -1,4 +1,4 @@
-<%= render @page %>
+<%= render @page if @page %>
 
 <% if @current_user.has_read_rights %>
   <div>

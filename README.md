@@ -35,4 +35,6 @@ environment variables in production to your Mailtrap credentials.
 - EMAIL_PASS - smtp password
 - EMAIL_ADDRESS - smtp remote mail server
 - EMAIL_PORT (optional) - smtp port (default: 587)
+- HCAPTCHA_SECRET_KEY
+- HCAPTCHA_SITE_KEY
 

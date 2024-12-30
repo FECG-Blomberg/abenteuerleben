@@ -1,6 +1,6 @@
 class DownloadsController < ApplicationController
-  before_action :set_download, only: %i[ show edit update destroy download ]
-  before_action :admin_only, except: %i[ index download ]
+  before_action :set_download, only: %i[show edit update destroy]
+  before_action :admin_only, except: %i[index]
 
   def index
     @download_page_before = Page.where(url: 'download_before').first!
@@ -24,7 +24,7 @@ class DownloadsController < ApplicationController
     @download = Download.new(download_params)
 
     if @download.save
-      redirect_to download_url(@download), notice: "Download was successfully created."
+      redirect_to download_url(@download), notice: 'Download was successfully created.'
     else
       render :new, status: :unprocessable_entity
     end
@@ -32,7 +32,7 @@ class DownloadsController < ApplicationController
 
   def update
     if @download.update(download_params)
-      redirect_to download_url(@download), notice: "Download was successfully updated."
+      redirect_to download_url(@download), notice: 'Download was successfully updated.'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -41,10 +41,14 @@ class DownloadsController < ApplicationController
   def destroy
     @download.destroy
 
-    redirect_to downloads_admin_url, notice: "Download was successfully destroyed."
+    redirect_to downloads_admin_url, notice: 'Download was successfully destroyed.'
   end
 
   private
+
+  def require_login
+    logger.error 'you are not logged in ...'
+  end
 
   def set_download
     @download = Download.find(params[:id])
