@@ -18,7 +18,8 @@ servers:
 # Note: If using Cloudflare, set encryption mode in SSL/TLS setting to "Full" to enable CF-to-app encryption.
 proxy:
   ssl: false
-  host: sesam.fritz.box:3033
+  host: sesam.fritz.box
+  forward_headers: true
 #  host: www2.abenteuerleben-ev.de
 # docker run --name kamal-proxy --network kamal --detach --volume kamal-proxy-config:/home/kamal-proxy/.config/kamal-proxy -p 3033:80 --log-opt max-size=10m basecamp/kamal-proxy:v0.8.4
 
