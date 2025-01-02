@@ -531,17 +531,6 @@
               <RakeTaskImpl description="" fullCommand="solid_cable:update" id="update" />
             </subtasks>
           </RakeTaskImpl>
-          <RakeTaskImpl id="solid_cache">
-            <subtasks>
-              <RakeTaskImpl description="Copy over the migration, and set cache" fullCommand="solid_cache:install" id="install" />
-            </subtasks>
-          </RakeTaskImpl>
-          <RakeTaskImpl id="solid_queue">
-            <subtasks>
-              <RakeTaskImpl description="Install Solid Queue" fullCommand="solid_queue:install" id="install" />
-              <RakeTaskImpl description="start solid_queue supervisor to dispatch and process jobs" fullCommand="solid_queue:start" id="start" />
-            </subtasks>
-          </RakeTaskImpl>
           <RakeTaskImpl description="Report code statistics (KLOCs, etc) from the application or engine" fullCommand="stats" id="stats" />
           <RakeTaskImpl id="stimulus">
             <subtasks>
