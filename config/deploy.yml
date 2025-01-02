@@ -18,11 +18,13 @@ servers:
 # Note: If using Cloudflare, set encryption mode in SSL/TLS setting to "Full" to enable CF-to-app encryption.
 proxy:
   ssl: false
+  host: sesam.fritz.box:5000
 #  host: www2.abenteuerleben-ev.de
 # docker run --name kamal-proxy --network kamal --detach --volume kamal-proxy-config:/home/kamal-proxy/.config/kamal-proxy -p 3033:80 --log-opt max-size=10m basecamp/kamal-proxy:v0.8.4
 
 # Credentials for your image host.
 registry:
+  # server added as insecure registry in docker, because it's private and without auth
   # server: registry.digitalocean.com / ghcr.io / ...
   server: sesam.fritz.box:5000
   username: local
@@ -56,7 +58,6 @@ aliases:
 # Recommended to change this to a mounted volume path that is backed up off server.
 volumes:
   - "aleben_storage:/rails/storage"
-
 
 # Bridge fingerprinted assets, like JS and CSS, between versions to avoid
 # hitting 404 on in-flight requests. Combines all files from new and old
