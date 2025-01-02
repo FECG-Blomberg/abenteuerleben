@@ -1,0 +1,55 @@
+name: Deploy Staging
+run-name: Deploying application to staging server
+
+on:
+  - workflow_dispatch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      KAMAL_REGISTRY_PASSWORD: ${{ secrets.KAMAL_REGISTRY_PASSWORD }}
+      RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+
+      # docker setup
+      - uses: docker/setup-buildx-action@v3
+      - run: docker --version
+      - run: echo "registering registry"
+      - run: cat /etc/docker/daemon.json
+      - run: |
+          sudo echo '{ "insecure-registries": ["sesam.fritz.box:5000"] }' | sudo tee /etc/docker/daemon.json
+      - run: sudo systemctl restart docker
+      - run: cat /etc/docker/daemon.json
+
+      # ruby setup
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - run: echo "Installing kamal"
+      - run: gem install kamal -v 1.5.2
+      - run: kamal version
+
+      # vpn setup
+      - uses: egor-tensin/setup-wireguard@v1
+        with:
+          endpoint: "${{ vars.STAGING_WIREGUARD }}"
+          endpoint_public_key: "${{ vars.STAGING_WIREGUARD_PUBLIC_KEY }}"
+          ips: "${{ vars.STAGING_WIREGUARD_IPS }}"
+          allowed_ips: "${{ vars.STAGING_WIREGUARD_ALLOWED_IPS }}"
+          private_key: "${{ secrets.staging_wireguard_private_key }}"
+          preshared_key: "${{ vars.STAGING_WIREGUARD_PRESHARED_KEY }}"
+      - run: echo "Checking connection of VPN"
+      - run: sudo echo "192.168.178.10 sesam.fritz.box" | sudo tee -a /etc/hosts
+      - run: ping sesam.fritz.box -c 1
+
+      # ssh setup
+      - uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.PRIVATE_KEY }}
+
+      # kamal deploy
+      - run: kamal env push
+      - run: kamal registry login
+      - run: kamal deploy
