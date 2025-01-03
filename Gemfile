@@ -70,3 +70,5 @@ group :development do
   # For dartsass
   gem "foreman", "~> 0.88.1"
 end
+
+gem "pg", "~> 1.5"
