@@ -37,4 +37,4 @@ environment variables in production to your Mailtrap credentials.
 - EMAIL_PORT (optional) - smtp port (default: 587)
 - HCAPTCHA_SECRET_KEY
 - HCAPTCHA_SITE_KEY
-
+- SECRET_KEY_BASE_DUMMY=1 - tell rails to not use master key
