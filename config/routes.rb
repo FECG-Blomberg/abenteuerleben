@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 Rails.application.routes.draw do
   get "admin/helper_registrations/:id/edit", to: 'admin/helper_registrations#edit', as: 'edit_admin_helper_registration'
   patch "admin/helper_registrations/:id",  to: 'admin/helper_registrations#update', as: 'admin_helper_registration'
@@ -57,4 +55,6 @@ Rails.application.routes.draw do
 
   get '/sponsoren', to: 'home#sponsors'
   root 'home#index'
+
+  get "up" => "rails/health#show", as: :rails_health_check
 end

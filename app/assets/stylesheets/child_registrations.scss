@@ -1,5 +1,7 @@
 .grid {
-  display: grid;
+  & {
+    display: grid;
+  }
 
   &.parent {
     grid-template-areas:
@@ -47,10 +49,12 @@
     }
   }
 
-  grid-template-rows: auto;
-  grid-template-columns: 1fr 1fr;
-  border: 1px solid #35578e;
-  background-color: #e7ecf4;
+  & {
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr;
+    border: 1px solid #35578e;
+    background-color: #e7ecf4;
+  }
 
   label {
     padding: 4px 8px;

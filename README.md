@@ -26,3 +26,15 @@ environment variables in production to your Mailtrap credentials.
 ### Environment Cleanup
 - `docker system prune -a`
 - `dokku cleanup`
+
+## Runnning the Application
+
+### Environment Variables
+- EMAIL_ENABLED - use emailing service
+- EMAIL_USER - smtp user
+- EMAIL_PASS - smtp password
+- EMAIL_ADDRESS - smtp remote mail server
+- EMAIL_PORT (optional) - smtp port (default: 587)
+- HCAPTCHA_SECRET_KEY
+- HCAPTCHA_SITE_KEY
+- SECRET_KEY_BASE_DUMMY=1 - tell rails to not use master key

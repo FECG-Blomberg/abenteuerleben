@@ -172,12 +172,12 @@
 
   <br><br>
   <%= render "formelements/dialog-checkbox", form_name: :liability_exclusion, label_text: "Ich habe den Haftungsausschluss gelesen und bin damit einverstanden", form: form do %>
-    <%= raw Page.where(url: 'mitarbeiter_haftungsausschluss').first.content %>
+    <%= raw Page.where(url: 'mitarbeiter_haftungsausschluss').first&.content || 'kein text angelegt' %>
   <% end %>
 
   <br>
   <%= render "formelements/dialog-checkbox", form_name: :important_information, label_text: "Ich habe den Wichtigen Informationen gelesen und bin damit einverstanden", form: form do %>
-    <%= raw Page.where(url: 'mitarbeiter_wichtige-infos').first.content %>
+    <%= raw Page.where(url: 'mitarbeiter_wichtige-infos').first&.content || 'kein text angelegt' %>
   <% end %>
 
   <br>
