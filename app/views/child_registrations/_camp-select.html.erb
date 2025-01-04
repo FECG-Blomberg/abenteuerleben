@@ -3,12 +3,18 @@
 <%= form.label 'camp_id_' + camp.id.to_s,  class: 'camp-select__label', style: 'flex: 1;' do %>
   <div class="field camp-select__field" style="gap: 0;">
     <span class="camp-select__label-text">Camp <%= camp.name %></span>
-    <%= form.radio_button :camp_id,
-                          camp.id,
-                          checked: form.object.camp_id == camp.id,
-                          class: 'camp-select__radio',
-                          style: 'flex: 1;',
-                          onchange: "this.closest('.camp-select').querySelectorAll('.error-msg').forEach(err => err.innerHTML = '')" %>
+    <% if camp.full? %>
+      <span class="camp-select__full-camp-label" style="">
+        (ausgebucht)
+      </span>
+    <% else %>
+      <%= form.radio_button :camp_id,
+                            camp.id,
+                            checked: form.object.camp_id == camp.id,
+                            class: 'camp-select__radio',
+                            style: 'flex: 1;',
+                            onchange: "this.closest('.camp-select').querySelectorAll('.error-msg').forEach(err => err.innerHTML = '')" %>
+    <% end %>
   </div>
   <p class="camp-select__camp-info"><%= camp.participants_year_start %> - <%= camp.participants_year_end %></p>
   <span class="error-msg"><%= form.object.errors['camp_' + camp.id.to_s].first %></span>

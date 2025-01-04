@@ -3,7 +3,7 @@ default: &default
 
 development:
   <<: *default
-  database: storage/dev.sqlite3
+  database: storage/development.sqlite3
 
 test:
   <<: *default
