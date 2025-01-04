@@ -118,6 +118,27 @@
   display: inline-block;
 }
 
+.camp-select__label:has(.camp-select__full-camp-label) {
+  & {
+    background-color: #ccc;
+    opacity: .7;
+  }
+
+  .camp-select__field {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .camp-select__full-camp-label {
+    width: auto;
+    color: var(--red-100);
+    font-size: .8rem;
+  }
+  .camp-select__label-text {
+    width: auto;
+  }
+}
+
 .camp-select__camp-info {
   font-size: .8rem;
 }

@@ -9,7 +9,8 @@ require_relative 'seeds/camp_seed'
 #   Character.create(name: "Luke", movie: movies.first)
 campyear = Seeds::CampSeed.create_campyear
 camp = Seeds::CampSeed.create_camp(campyear.id)
-helper = Seeds::HelperSeed.create_helper(camp.id)
+Seeds::CampSeed.create_camp(campyear.id, camp_name: '2', max_participants: 1)
+Seeds::HelperSeed.create_helper(camp.id)
 
 User.create!([{
                 name: 'admin',
