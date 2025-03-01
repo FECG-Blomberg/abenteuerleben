@@ -35,7 +35,7 @@
 
   <%= form.label :sex, class: 'mt-3 text-bold' do |label| %>
     <span><%= label %></span>
-    <%= form.select :sex, ['Junge', 'Mädchen'] %>
+    <%= form.select :sex, [["Junge", :boy], ["Mädchen", :girl]] %>
   <% end %>
 
   <%= form.label :medicals, class: 'mt-3 text-bold' do |label| %>
